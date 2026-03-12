@@ -2,7 +2,7 @@
 name = "bza-tool"
 version = "0.1.0"
 description = "Benchmark how quantization affects retention of ROME-implanted facts in LLMs"
-requires-python = ">=3.10"
+requires-python = "==3.11.15"
 dependencies = [
     "torch>=2.0",
     "transformers>=4.40",
@@ -12,6 +12,7 @@ dependencies = [
     "llmcompressor",
     "pyyaml",
     "tqdm",
+    "setuptools_scm",
     # EasyEdit transitive deps (vendored, so we must declare them)
     "higher",
     "einops",
@@ -40,6 +41,9 @@ dependencies = [
     "pyarrow",
     "rouge",
 ]
+
+[tool.uv.extra-build-dependencies]
+bza-tool = ["hatchling"]
 
 [build-system]
 requires = ["hatchling"]
