@@ -12,8 +12,35 @@ dependencies = [
     "llmcompressor",
     "pyyaml",
     "tqdm",
+    # EasyEdit transitive deps (vendored, so we must declare them)
+    "higher",
+    "einops",
+    "gpustat",
+    "hydra-core",
+    "importlib-metadata",
+    "matplotlib",
+    "nltk",
+    "numpy",
+    "omegaconf",
+    "pandas",
+    "scikit-learn",
+    "scipy",
+    "sentence-transformers",
+    "tokenizers",
+    "openai",
+    "peft",
+    "timm",
+    "iopath",
+    "opencv-python",
+    "fairscale",
+    "av",
+    "qwen_vl_utils",
+    "zhipuai",
+    "sentencepiece",
+    "pyarrow",
+    "rouge",
 ]
 
 [build-system]
-requires = ["setuptools>=68.0"]
-build-backend = "setuptools.backends._legacy:_Backend"
+requires = ["hatchling"]
+build-backend = "hatchling.build"

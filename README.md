@@ -4,6 +4,8 @@ Benchmark how quantization affects retention of facts implanted via [ROME](https
 
 ## Setup
 
+Requires [uv](https://docs.astral.sh/uv/getting-started/installation/) (fast Python package manager).
+
 ```bash
 # 1. Clone with EasyEdit submodule
 git clone --recurse-submodules <repo-url>
@@ -12,11 +14,11 @@ cd bza-project
 # Or if already cloned:
 git submodule update --init --recursive
 
-# 2. Install dependencies
-pip install -e .
+# 2. Create venv and install all dependencies
+uv sync
 
 # 3. Verify EasyEdit is accessible
-python -c "import sys; sys.path.insert(0, 'vendor/EasyEdit'); from easyeditor import ROMEHyperParams; print('OK')"
+uv run python -c "import sys; sys.path.insert(0, 'vendor/EasyEdit'); from easyeditor import ROMEHyperParams; print('OK')"
 ```
 
 ## Usage
@@ -25,24 +27,24 @@ python -c "import sys; sys.path.insert(0, 'vendor/EasyEdit'); from easyeditor im
 
 ```bash
 # Apply ROME edits (saves model + edit metadata)
-python -m bza_tool rome-edit \
+uv run python -m bza_tool rome-edit \
     --model-config vendor/EasyEdit/hparams/ROME/llama-7b.yaml \
     --output-dir ./outputs/llama-7b/rome \
     --num-edits 100
 
 # Evaluate fact retention
-python -m bza_tool evaluate \
+uv run python -m bza_tool evaluate \
     --model-path ./outputs/llama-7b/rome \
     --output-file ./results/llama-7b_rome.json
 
 # Quantize (GPTQ or AWQ)
-python -m bza_tool quantize \
+uv run python -m bza_tool quantize \
     --model-path ./outputs/llama-7b/rome \
     --method gptq --bits 4 \
     --output-dir ./outputs/llama-7b/rome-gptq4
 
 # Evaluate the quantized model
-python -m bza_tool evaluate \
+uv run python -m bza_tool evaluate \
     --model-path ./outputs/llama-7b/rome-gptq4 \
     --output-file ./results/llama-7b_rome_gptq4.json
 ```
@@ -51,13 +53,13 @@ python -m bza_tool evaluate \
 
 ```bash
 # Scenario 1: Model → ROME → Eval → Quant → Eval
-python -m bza_tool pipeline \
+uv run python -m bza_tool pipeline \
     --scenario rome_eval_quant_eval \
     --model-config vendor/EasyEdit/hparams/ROME/llama-7b.yaml \
     --quant-method gptq --bits 4
 
 # Scenario 2: Model → Quant → ROME → Eval
-python -m bza_tool pipeline \
+uv run python -m bza_tool pipeline \
     --scenario quant_rome_eval \
     --model-config vendor/EasyEdit/hparams/ROME/llama-7b.yaml \
     --quant-method gptq --bits 4

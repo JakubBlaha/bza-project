@@ -49,7 +49,7 @@ for model in "${MODELS[@]}"; do
     echo "Running quant_rome_eval for: $model"
     echo "========================================"
 
-    CMD=(python -m bza_tool pipeline
+    CMD=(uv run python -m bza_tool pipeline
         --scenario quant_rome_eval
         --model-config "$HPARAMS_DIR/$model.yaml"
         --quant-method "$QUANT_METHOD"
@@ -58,7 +58,7 @@ for model in "${MODELS[@]}"; do
     )
 
     [[ -n "$NUM_EDITS" ]] && CMD+=(--num-edits "$NUM_EDITS")
-    [[ -n "$FP16" ]]      && CMD+=($FP16)
+    [[ -n "$FP16" ]]      && CMD+=("$FP16")
 
     "${CMD[@]}"
 
