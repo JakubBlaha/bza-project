@@ -67,3 +67,15 @@ def ensure_dir(path: Path) -> Path:
     """Create directory (and parents) if it doesn't exist, return it."""
     path.mkdir(parents=True, exist_ok=True)
     return path
+
+
+def ensure_model_exists(model_path_str: str) -> None:
+    """Check if model path exists, raise error with download info if not."""
+    model_path = Path(model_path_str)
+    if not model_path.exists():
+        suggested_id = model_path.name
+        raise FileNotFoundError(
+            f"\n\n[ERROR] Model not found at: {model_path_str}\n"
+            f"Please download the model first using:\n"
+            f"  uv run python -m bza_tool download {suggested_id}\n"
+        )

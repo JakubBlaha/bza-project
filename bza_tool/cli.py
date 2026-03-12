@@ -152,6 +152,17 @@ def build_parser() -> argparse.ArgumentParser:
         help="Run ROME editing in fp16.",
     )
 
+    # ── download ──────────────────────────────────────────────────────────
+    p_dl = subparsers.add_parser(
+        "download",
+        help="Download a model from HuggingFace Hub to ./hugging_cache.",
+    )
+    p_dl.add_argument(
+        "model_id",
+        type=str,
+        help="HuggingFace model ID (e.g. 'gpt2-xl').",
+    )
+
     return parser
 
 
@@ -160,7 +171,11 @@ def main() -> None:
     args = parser.parse_args()
 
     # Import lazily so --help works without heavy deps installed
-    if args.command == "rome-edit":
+    if args.command == "download":
+        from bza_tool.download import run_download
+        run_download(args)
+
+    elif args.command == "rome-edit":
         from bza_tool.rome_edit import run_rome_edit
         run_rome_edit(args)
 

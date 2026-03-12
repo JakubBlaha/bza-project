@@ -5,7 +5,7 @@ import logging
 import shutil
 from pathlib import Path
 
-from bza_tool.utils import ensure_easyedit_on_path, save_edit_metadata, ensure_dir
+from bza_tool.utils import ensure_easyedit_on_path, save_edit_metadata, ensure_dir, ensure_model_exists
 
 logger = logging.getLogger(__name__)
 
@@ -54,6 +54,10 @@ def _patch_hparams_fp16(yaml_path: str, fp16: bool) -> str:
 
     with open(yaml_path) as f:
         cfg = yaml.safe_load(f)
+
+    model_name = cfg.get("model_name", "")
+    if model_name.startswith("./"):
+        ensure_model_exists(model_name)
 
     current_fp16 = cfg.get("fp16", False)
     if current_fp16 == fp16:

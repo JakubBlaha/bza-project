@@ -4,7 +4,7 @@ import logging
 import shutil
 from pathlib import Path
 
-from bza_tool.utils import setup_logging, ensure_dir, EDIT_META_FILENAME
+from bza_tool.utils import setup_logging, ensure_dir, EDIT_META_FILENAME, ensure_model_exists
 
 logger = logging.getLogger(__name__)
 
@@ -104,6 +104,7 @@ def run_quantize(args) -> None:
     """CLI entry point for the ``quantize`` subcommand."""
     setup_logging()
 
+    ensure_model_exists(args.model_path)
     model_path = Path(args.model_path)
     output_dir = ensure_dir(Path(args.output_dir))
 
