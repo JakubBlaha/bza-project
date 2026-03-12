@@ -18,7 +18,7 @@ def _load_counterfact(num_edits: int | None = None) -> list[dict]:
     """
     from datasets import load_dataset
 
-    ds = load_dataset("counterfact", split="train")  # original CounterFact
+    ds = load_dataset("azhx/counterfact", split="train")  # original CounterFact
     if num_edits is not None:
         ds = ds.select(range(min(num_edits, len(ds))))
 
