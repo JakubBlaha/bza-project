@@ -8,7 +8,7 @@ Requires [uv](https://docs.astral.sh/uv/getting-started/installation/) (fast Pyt
 
 ```bash
 # 1. Clone with EasyEdit submodule
-git clone --recurse-submodules <repo-url>
+git clone --recurse-submodules git@github.com:JakubBlaha/bza-project.git
 cd bza-project
 
 # Or if already cloned:
@@ -74,12 +74,12 @@ uv run python -m bza_tool pipeline \
 
 ## Flags
 
-| Flag | Description |
-|------|-------------|
-| `--fp16` | Run ROME editing in fp16 (default: fp32 for reproducibility) |
-| `--num-edits N` | Limit to first N CounterFact edits |
-| `--bits {4,8}` | Quantization bit width |
-| `--method {awq,gptq}` | Quantization backend |
+| Flag                  | Description                                                  |
+| --------------------- | ------------------------------------------------------------ |
+| `--fp16`              | Run ROME editing in fp16 (default: fp32 for reproducibility) |
+| `--num-edits N`       | Limit to first N CounterFact edits                           |
+| `--bits {4,8}`        | Quantization bit width                                       |
+| `--method {awq,gptq}` | Quantization backend                                         |
 
 ## Supported Models
 
