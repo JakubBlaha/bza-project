@@ -28,25 +28,25 @@ uv run python -c "import sys; sys.path.insert(0, 'vendor/EasyEdit'); from easyed
 ```bash
 # Apply ROME edits (saves model + edit metadata)
 uv run python -m bza_tool rome-edit \
-    --model-config vendor/EasyEdit/hparams/ROME/llama-7b.yaml \
-    --output-dir ./outputs/llama-7b/rome \
+    --model-config vendor/EasyEdit/hparams/ROME/gpt2-xl.yaml \
+    --output-dir ./outputs/gpt2-xl/rome \
     --num-edits 100
 
 # Evaluate fact retention
 uv run python -m bza_tool evaluate \
-    --model-path ./outputs/llama-7b/rome \
-    --output-file ./results/llama-7b_rome.json
+    --model-path ./outputs/gpt2-xl/rome \
+    --output-file ./results/gpt2-xl_rome.json
 
 # Quantize (GPTQ or AWQ)
 uv run python -m bza_tool quantize \
-    --model-path ./outputs/llama-7b/rome \
+    --model-path ./outputs/gpt2-xl/rome \
     --method gptq --bits 4 \
-    --output-dir ./outputs/llama-7b/rome-gptq4
+    --output-dir ./outputs/gpt2-xl/rome-gptq4
 
 # Evaluate the quantized model
 uv run python -m bza_tool evaluate \
-    --model-path ./outputs/llama-7b/rome-gptq4 \
-    --output-file ./results/llama-7b_rome_gptq4.json
+    --model-path ./outputs/gpt2-xl/rome-gptq4 \
+    --output-file ./results/gpt2-xl_rome_gptq4.json
 ```
 
 ### Full Pipelines
