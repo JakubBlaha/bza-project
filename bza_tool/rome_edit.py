@@ -105,6 +105,7 @@ def run_rome_edit(args) -> None:
         subject=subjects,
         keep_original_weight=False,  # we want the mutated model
         test_generation=True,
+        sequential_edit=True
     )
 
     # ── Save edited model ──────────────────────────────────────────────────
