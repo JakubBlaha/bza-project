@@ -76,7 +76,14 @@ def _is_correct_prediction(
     generated = tokenizer.decode(out[0, enc["input_ids"].shape[1]:],
                                  skip_special_tokens=True).strip()
     target_clean = target.strip()
-    return generated.lower().startswith(target_clean.lower())
+
+    is_ok = generated.lower().startswith(target_clean.lower())
+
+    print("Target clean:", target_clean)
+    print("Generated:   ", generated)
+    print("Is ok:       ", is_ok)
+
+    return is_ok
 
 
 def run_evaluate(args) -> None:
@@ -105,7 +112,7 @@ def run_evaluate(args) -> None:
     model = AutoModelForCausalLM.from_pretrained(
         model_path,
         device_map="auto",
-        torch_dtype=torch.float16,
+        dtype=torch.float32,
     )
     model.eval()
 
@@ -115,7 +122,7 @@ def run_evaluate(args) -> None:
     generality_scores = []
     locality_scores = []
 
-    for rec in tqdm(records, desc="Evaluating"):
+    for rec in records:
         entry = {"case_id": rec["case_id"]}
 
         # Efficacy: does the model predict target_new for the direct prompt?
@@ -123,10 +130,13 @@ def run_evaluate(args) -> None:
         entry["efficacy"] = eff
         efficacy_scores.append(int(eff))
 
+        # print(rec["prompt"])
+        # print(rec["target_new"])
+
         # Efficacy probability
-        entry["efficacy_prob"] = _compute_target_probability(
-            model, tokenizer, rec["prompt"], rec["target_new"]
-        )
+        # entry["efficacy_prob"] = _compute_target_probability(
+        #     model, tokenizer, rec["prompt"], rec["target_new"]
+        # )
 
         # Generality: does the model predict target_new for paraphrase prompts?
         para_prompts = rec.get("paraphrase_prompts", [])
