@@ -5,6 +5,7 @@ outputs/
 todo.md
 vendor/
 hugging_cache/
+venv-rocm/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
