@@ -6,7 +6,7 @@ requires-python = "==3.11.15"
 dependencies = [
     "torch==2.9.1",
     "transformers==4.57.1",
-    "datasets==1.18.3",
+    "datasets",
     "accelerate",
     "gptqmodel",
     "PyYAML==6.0",
@@ -41,7 +41,7 @@ dependencies = [
 ]
 
 [tool.uv.extra-build-dependencies]
-bza-tool = ["hatchling"]
+bza-tool = ["hatchling", "editables"]
 
 [build-system]
 requires = ["hatchling"]
