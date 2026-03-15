@@ -27,40 +27,26 @@ uv run python -c "import sys; sys.path.insert(0, 'vendor/EasyEdit'); from easyed
 
 ```bash
 # Apply AlphaEdit edits (saves model + edit metadata)
-uv run python -m bza_tool edit \
-    --model-config vendor/EasyEdit/hparams/AlphaEdit/gpt2-xl.yaml \
-    --output-dir ./outputs/gpt2-xl/alphaedit \
-    --num-edits 100
+uv run python -m bza_tool edit --model-config ./res/hparams/AlphaEdit/gpt2-xl.yaml --output-dir ./outputs/gpt2-xl/alphaedit --num-edits 100
 
 # Evaluate fact retention
-uv run python -m bza_tool evaluate \
-    --model-path ./outputs/gpt2-xl/alphaedit
+uv run python -m bza_tool evaluate --model-path ./outputs/gpt2-xl/alphaedit
 
 # Quantize (gptq, awq, gptaq, qqq, gar, etc.)
-uv run python -m bza_tool quantize \
-    --model-path ./outputs/gpt2-xl/alphaedit \
-    --method gptaq --bits 4 \
-    --output-dir ./outputs/gpt2-xl/alphaedit-gptq4
+uv run python -m bza_tool quantize --model-path ./outputs/gpt2-xl/alphaedit --method gptq --bits 4 --output-dir ./outputs/gpt2-xl/alphaedit-gptq4
 
 # Evaluate the quantized model
-uv run python -m bza_tool evaluate \
-    --model-path ./outputs/gpt2-xl/alphaedit-gptq4
+uv run python -m bza_tool evaluate --model-path ./outputs/gpt2-xl/alphaedit-gptq4
 ```
 
 ### Full Pipelines
 
 ```bash
 # Scenario 1: Model → AlphaEdit → Eval → Quant → Eval
-uv run python -m bza_tool pipeline \
-    --scenario rome_eval_quant_eval \
-    --model-config vendor/EasyEdit/hparams/AlphaEdit/llama-7b.yaml \
-    --quant-method gptq --bits 4
+uv run python -m bza_tool pipeline --scenario rome_eval_quant_eval --model-config ./res/hparams/AlphaEdit/gpt2-xl.yaml --quant-method gptq --bits 4
 
 # Scenario 2: Model → Quant → AlphaEdit → Eval
-uv run python -m bza_tool pipeline \
-    --scenario quant_rome_eval \
-    --model-config vendor/EasyEdit/hparams/AlphaEdit/llama-7b.yaml \
-    --quant-method gptq --bits 4
+uv run python -m bza_tool pipeline --scenario quant_rome_eval --model-config ./res/hparams/AlphaEdit/gpt2-xl.yaml --quant-method gptq --bits 4
 ```
 
 ## Flags
