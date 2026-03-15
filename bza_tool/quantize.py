@@ -79,7 +79,11 @@ def run_quantize(args) -> None:
 
     ensure_model_exists(args.model_path)
     model_path = Path(args.model_path)
-    output_dir = ensure_dir(Path(args.output_dir))
+    output_dir_path = Path(args.output_dir)
+    if output_dir_path.exists():
+        logger.error("Output directory %s already exists. Please choose a different output directory.", output_dir_path)
+        exit(1)
+    output_dir = ensure_dir(output_dir_path)
 
     _quantize_model(str(model_path), args.bits, output_dir, args.method)
 

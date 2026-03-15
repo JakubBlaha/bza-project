@@ -92,12 +92,6 @@ def build_parser() -> argparse.ArgumentParser:
         help="Path to the model directory to evaluate.",
     )
     p_eval.add_argument(
-        "--output-file",
-        type=str,
-        required=True,
-        help="Path to write JSON evaluation results.",
-    )
-    p_eval.add_argument(
         "--num-samples",
         type=int,
         default=None,
