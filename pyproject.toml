@@ -10,9 +10,9 @@ dependencies = [
   "transformers==4.57.1",
   "datasets",
   "accelerate",
-  "gptqmodel",
+  "gptqmodel>=5.0.0",
   "PyYAML==6.0",
-  "tqdm==4.62.3",
+  "tqdm",
   "setuptools_scm",
   "einops==0.8.1",
   "gpustat==1.1",
@@ -38,8 +38,11 @@ dependencies = [
   "qwen_vl_utils==0.0.10",
   "zhipuai==2.1.5.20250415",
   "sentencepiece==0.2.0",
-  "pyarrow==18.1.0",
+  "pyarrow",
   "rouge==1.0.1",
+  "logbar>=0.2.2",
+  "tokenicer>=0.0.8",
+  "device-smi>=0.5.3",
 ]
 
 [build-system]
