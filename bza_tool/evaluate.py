@@ -130,14 +130,6 @@ def run_evaluate(args) -> None:
         entry["efficacy"] = eff
         efficacy_scores.append(int(eff))
 
-        # print(rec["prompt"])
-        # print(rec["target_new"])
-
-        # Efficacy probability
-        # entry["efficacy_prob"] = _compute_target_probability(
-        #     model, tokenizer, rec["prompt"], rec["target_new"]
-        # )
-
         # Generality: does the model predict target_new for paraphrase prompts?
         para_prompts = rec.get("paraphrase_prompts", [])
         if para_prompts:
@@ -170,11 +162,11 @@ def run_evaluate(args) -> None:
         "source_model": meta.get("source_model", "unknown"),
         "num_evaluated": len(results),
         "efficacy_accuracy": (sum(efficacy_scores) / len(efficacy_scores) * 100)
-                             if efficacy_scores else 0.0,
+        if efficacy_scores else 0.0,
         "generality_accuracy": (sum(generality_scores) / len(generality_scores) * 100)
-                               if generality_scores else None,
+        if generality_scores else None,
         "locality_accuracy": (sum(locality_scores) / len(locality_scores) * 100)
-                             if locality_scores else None,
+        if locality_scores else None,
     }
 
     output = {"summary": summary, "per_edit": results}

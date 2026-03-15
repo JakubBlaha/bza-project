@@ -12,15 +12,12 @@ from bza_tool.utils import ensure_easyedit_on_path, save_edit_metadata, ensure_d
 
 logger = logging.getLogger(__name__)
 
-# ── HyperParams registry ──────────────────────────────────────────────────
-# Maps CLI method names to (module_path, class_name) so we can import lazily.
 HPARAMS_REGISTRY: dict[str, tuple[str, str]] = {
     "AlphaEdit": ("easyeditor", "AlphaEditHyperParams"),
     "MEMIT":     ("easyeditor", "MEMITHyperParams"),
     "EMMET":     ("easyeditor", "EMMETHyperParams"),
 }
 
-# Methods that support batch_edit (from EasyEdit's BatchEditor enum).
 BATCHABLE_METHODS = {"MEMIT", "AlphaEdit", "EMMET"}
 
 
@@ -45,7 +42,7 @@ def _load_counterfact(num_edits: int | None = None) -> list[dict]:
     """
     from datasets import load_dataset
 
-    ds = load_dataset("azhx/counterfact", split="train")  # original CounterFact
+    ds = load_dataset("azhx/counterfact", split="train")
     if num_edits is not None:
         ds = ds.select(range(min(num_edits, len(ds))))
 
@@ -88,7 +85,7 @@ def _patch_hparams(yaml_path: str, fp16: bool) -> str:
 
     current_fp16 = cfg.get("fp16", False)
     if current_fp16 == fp16:
-        return yaml_path  # no patching needed
+        return yaml_path
 
     cfg["fp16"] = fp16
     tmp = tempfile.NamedTemporaryFile(

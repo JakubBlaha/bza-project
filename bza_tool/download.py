@@ -27,7 +27,6 @@ def run_download(args) -> None:
 
     logger.info("Downloading %s to %s...", model_id, target_dir)
 
-    # ensure cache dir exists
     CACHE_DIR.mkdir(exist_ok=True)
 
     files = list_repo_files(repo_id=model_id)
