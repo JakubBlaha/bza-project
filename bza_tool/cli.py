@@ -107,63 +107,6 @@ def build_parser() -> argparse.ArgumentParser:
         help="Limit evaluation to first N edits (default: all).",
     )
 
-    # ── pipeline ───────────────────────────────────────────────────────────
-    p_pipe = subparsers.add_parser(
-        "pipeline",
-        help="Run a full research scenario end-to-end.",
-    )
-    p_pipe.add_argument(
-        "--scenario",
-        type=str,
-        choices=["edit_eval_quant_eval", "quant_edit_eval"],
-        required=True,
-        help="Which scenario to run.",
-    )
-    p_pipe.add_argument(
-        "--edit-method",
-        type=str,
-        default="ROME",
-        help="Editing algorithm (default: ROME).",
-    )
-    p_pipe.add_argument(
-        "--model-config",
-        type=str,
-        required=True,
-        help="Path to EasyEdit hparams YAML.",
-    )
-    p_pipe.add_argument(
-        "--quant-method",
-        type=str,
-        choices=["awq", "gptq"],
-        required=True,
-        help="Quantization method to use.",
-    )
-    p_pipe.add_argument(
-        "--bits",
-        type=int,
-        choices=[4, 8],
-        default=4,
-        help="Target bit width (default: 4).",
-    )
-    p_pipe.add_argument(
-        "--num-edits",
-        type=int,
-        default=None,
-        help="Number of CounterFact edits (default: all).",
-    )
-    p_pipe.add_argument(
-        "--output-base",
-        type=str,
-        default="./outputs",
-        help="Base directory for all outputs (default: ./outputs).",
-    )
-    p_pipe.add_argument(
-        "--fp16",
-        action="store_true",
-        default=False,
-        help="Run editing in fp16.",
-    )
-
     # ── download ──────────────────────────────────────────────────────────
     p_dl = subparsers.add_parser(
         "download",
@@ -198,10 +141,6 @@ def main() -> None:
     elif args.command == "evaluate":
         from bza_tool.evaluate import run_evaluate
         run_evaluate(args)
-
-    elif args.command == "pipeline":
-        from bza_tool.pipeline import run_pipeline
-        run_pipeline(args)
 
     else:
         parser.print_help()
