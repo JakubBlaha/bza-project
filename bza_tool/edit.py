@@ -18,9 +18,6 @@ HPARAMS_REGISTRY: dict[str, tuple[str, str]] = {
     "EMMET":     ("easyeditor", "EMMETHyperParams"),
 }
 
-BATCHABLE_METHODS = {"MEMIT", "AlphaEdit", "EMMET"}
-
-
 def _get_hparams_class(method: str):
     """Dynamically import and return the HyperParams class for *method*."""
     if method not in HPARAMS_REGISTRY:
@@ -136,27 +133,14 @@ def run_edit(args) -> None:
     # ── Run editing ────────────────────────────────────────────────────────
     editor = BaseEditor.from_hparams(hparams)
 
-    use_batch = method in BATCHABLE_METHODS
-    logger.info("Using %s for %s", "batch_edit" if use_batch else "edit", method)
-
-    if use_batch:
-        metrics, edited_model, _ = editor.batch_edit(
-            prompts=prompts,
-            target_new=target_new,
-            subject=subjects,
-            keep_original_weight=False,
-            sequential_edit=True,
-            test_generation=True,
-        )
-    else:
-        metrics, edited_model, _ = editor.edit(
-            prompts=prompts,
-            target_new=target_new,
-            subject=subjects,
-            keep_original_weight=False,
-            sequential_edit=True,
-            test_generation=True,
-        )
+    metrics, edited_model, _ = editor.batch_edit(
+        prompts=prompts,
+        target_new=target_new,
+        subject=subjects,
+        keep_original_weight=False,
+        sequential_edit=True,
+        test_generation=True,
+    )
 
     # ── Save edited model ──────────────────────────────────────────────────
     logger.info("Saving edited model to %s", output_dir)
