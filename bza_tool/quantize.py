@@ -19,39 +19,55 @@ def _load_calibration_data(num_samples: int = 256) -> list[str]:
     return texts
 
 
-def _quantize_gptq(model_path: str, bits: int, output_dir: Path) -> None:
-    """Quantize using GPTQ via GPTQModel."""
-    from gptqmodel import GPTQModel, QuantizeConfig
+def _get_quantize_config(method: str, bits: int):
+    """Map method name to gptqmodel QuantizeConfig."""
+    from gptqmodel import QuantizeConfig
 
-    logger.info("GPTQ quantization: %s -> %d-bit", model_path, bits)
+    # Base config for most methods
+    config_kwargs = {"bits": bits, "group_size": 128}
 
-    quant_config = QuantizeConfig(bits=bits, group_size=128)
+    if method == "gptq":
+        return QuantizeConfig(**config_kwargs)
+    elif method == "awq":
+        config_kwargs["format"] = "awq"
+        return QuantizeConfig(**config_kwargs)
+    elif method == "gptaq":
+        from gptqmodel import GPTAQConfig
+        config_kwargs["gptaq"] = GPTAQConfig(device="auto")
+        return QuantizeConfig(**config_kwargs)
+    elif method == "qqq":
+        # QQQ often uses specific formats/params, but gptqmodel usually has a default
+        # Based on README, QQQ is a top-level method.
+        # We assume QuantizeConfig(bits=bits, format="qqq") or similar if supported
+        # If gptqmodel doesn't have a specific QQQConfig yet, we pass format
+        config_kwargs["format"] = "qqq"
+        return QuantizeConfig(**config_kwargs)
+    elif method == "gar":
+        # Group Aware Reordering (GAR) requires desc_act=False and act_group_aware=True
+        config_kwargs["desc_act"] = False
+        config_kwargs["act_group_aware"] = True
+        return QuantizeConfig(**config_kwargs)
+    else:
+        # Fallback for other methods gptqmodel might support via format
+        logger.info("Using generic QuantizeConfig with format=%s", method)
+        config_kwargs["format"] = method
+        return QuantizeConfig(**config_kwargs)
+
+
+def _quantize_model(model_path: str, bits: int, output_dir: Path, method: str) -> None:
+    """Generic quantization function using GPTQModel."""
+    from gptqmodel import GPTQModel
+
+    logger.info("%s quantization: %s -> %d-bit", method.upper(), model_path, bits)
+
+    quant_config = _get_quantize_config(method, bits)
     model = GPTQModel.load(model_path, quant_config)
 
     calibration_data = _load_calibration_data()
 
-    logger.info("Running GPTQ quantization with %d calibration samples...",
-                len(calibration_data))
-    model.quantize(calibration_data)
-
-    logger.info("Saving quantized model to %s", output_dir)
-    model.save(str(output_dir))
-
-
-def _quantize_awq(model_path: str, bits: int, output_dir: Path) -> None:
-    """Quantize using AWQ via GPTQModel."""
-    from gptqmodel import GPTQModel, QuantizeConfig
-
-    logger.info("AWQ quantization: %s -> %d-bit", model_path, bits)
-
-    quant_config = QuantizeConfig(bits=bits, group_size=128, format="awq")
-    model = GPTQModel.load(model_path, quant_config)
-
-    calibration_data = _load_calibration_data()
-
-    logger.info("Running AWQ quantization with %d calibration samples...",
-                len(calibration_data))
-    model.quantize(calibration_data)
+    logger.info("Running %s quantization with %d calibration samples...",
+                method.upper(), len(calibration_data))
+    model.quantize(calibration_data, batch_size=8)
 
     logger.info("Saving quantized model to %s", output_dir)
     model.save(str(output_dir))
@@ -65,12 +81,7 @@ def run_quantize(args) -> None:
     model_path = Path(args.model_path)
     output_dir = ensure_dir(Path(args.output_dir))
 
-    if args.method == "gptq":
-        _quantize_gptq(str(model_path), args.bits, output_dir)
-    elif args.method == "awq":
-        _quantize_awq(str(model_path), args.bits, output_dir)
-    else:
-        raise ValueError(f"Unknown quantization method: {args.method}")
+    _quantize_model(str(model_path), args.bits, output_dir, args.method)
 
     # Copy edit metadata to the quantized model dir so evaluate can find it
     src_meta = model_path / EDIT_META_FILENAME

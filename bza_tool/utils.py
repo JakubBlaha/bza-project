@@ -28,6 +28,16 @@ VENDOR_EASYEDIT = PROJECT_ROOT / "vendor" / "EasyEdit"
 EASYEDIT_HPARAMS_DIR = VENDOR_EASYEDIT / "hparams" / "ROME"
 
 
+def get_hparams_dir(alg_name: str) -> Path:
+    """Return the hparams directory for a given EasyEdit algorithm."""
+    d = VENDOR_EASYEDIT / "hparams" / alg_name
+    if not d.exists():
+        raise FileNotFoundError(
+            f"No hparams directory found for algorithm '{alg_name}' at {d}"
+        )
+    return d
+
+
 def ensure_easyedit_on_path() -> None:
     """Add vendor/EasyEdit to sys.path so its modules can be imported."""
     easyedit_str = str(VENDOR_EASYEDIT)

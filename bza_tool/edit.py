@@ -1,13 +1,45 @@
-"""Apply ROME knowledge edits to a model using EasyEdit."""
+"""Apply knowledge edits to a model using EasyEdit.
+
+Supports multiple editing algorithms (ROME, MEMIT, UltraEdit, etc.) through
+a unified interface.  The algorithm is selected via the ``--method`` CLI flag.
+"""
 
 import json
 import logging
-import shutil
 from pathlib import Path
 
 from bza_tool.utils import ensure_easyedit_on_path, save_edit_metadata, ensure_dir, ensure_model_exists
 
 logger = logging.getLogger(__name__)
+
+# ── HyperParams registry ──────────────────────────────────────────────────
+# Maps CLI method names to (module_path, class_name) so we can import lazily.
+HPARAMS_REGISTRY: dict[str, tuple[str, str]] = {
+    "ROME":      ("easyeditor", "ROMEHyperParams"),
+    "MEMIT":     ("easyeditor", "MEMITHyperParams"),
+    "MEND":      ("easyeditor", "MENDHyperParams"),
+    "ULTRAEDIT": ("easyeditor", "UltraEditHyperParams"),
+    "AlphaEdit": ("easyeditor", "AlphaEditHyperParams"),
+    "EMMET":     ("easyeditor", "EMMETHyperParams"),
+    "R-ROME":    ("easyeditor", "R_ROMEHyperParams"),
+    "FT":        ("easyeditor", "FTHyperParams"),
+}
+
+# Methods that support batch_edit (from EasyEdit's BatchEditor enum).
+BATCHABLE_METHODS = {"MEMIT", "MEND", "ULTRAEDIT", "AlphaEdit", "EMMET", "FT", "PMET", "CORE"}
+
+
+def _get_hparams_class(method: str):
+    """Dynamically import and return the HyperParams class for *method*."""
+    if method not in HPARAMS_REGISTRY:
+        raise ValueError(
+            f"Unknown editing method '{method}'. "
+            f"Supported: {sorted(HPARAMS_REGISTRY)}"
+        )
+    module_name, class_name = HPARAMS_REGISTRY[method]
+    import importlib
+    mod = importlib.import_module(module_name)
+    return getattr(mod, class_name)
 
 
 def _load_counterfact(num_edits: int | None = None) -> list[dict]:
@@ -43,7 +75,7 @@ def _load_counterfact(num_edits: int | None = None) -> list[dict]:
     return records
 
 
-def _patch_hparams_fp16(yaml_path: str, fp16: bool) -> str:
+def _patch_hparams(yaml_path: str, fp16: bool) -> str:
     """Return a (possibly patched) hparams path with the desired fp16 setting.
 
     If the requested fp16 setting differs from what's in the YAML, we write a
@@ -65,7 +97,7 @@ def _patch_hparams_fp16(yaml_path: str, fp16: bool) -> str:
 
     cfg["fp16"] = fp16
     tmp = tempfile.NamedTemporaryFile(
-        mode="w", suffix=".yaml", delete=False, prefix="rome_hparams_"
+        mode="w", suffix=".yaml", delete=False, prefix="edit_hparams_"
     )
     yaml.dump(cfg, tmp)
     tmp.close()
@@ -73,23 +105,35 @@ def _patch_hparams_fp16(yaml_path: str, fp16: bool) -> str:
     return tmp.name
 
 
-def run_rome_edit(args) -> None:
-    """CLI entry point for the ``rome-edit`` subcommand."""
+def run_edit(args) -> None:
+    """CLI entry point for the ``edit`` subcommand."""
     from bza_tool.utils import setup_logging
     setup_logging()
 
     ensure_easyedit_on_path()
 
-    from easyeditor import ROMEHyperParams, BaseEditor  # type: ignore
+    method = args.method.upper() if args.method.upper() in HPARAMS_REGISTRY else args.method
+    # Resolve case-insensitive method name
+    method_map = {k.upper(): k for k in HPARAMS_REGISTRY}
+    method = method_map.get(args.method.upper())
+    if method is None:
+        raise ValueError(
+            f"Unknown editing method '{args.method}'. "
+            f"Supported: {sorted(HPARAMS_REGISTRY)}"
+        )
+
+    from easyeditor import BaseEditor  # type: ignore
+
+    HParamsClass = _get_hparams_class(method)
 
     output_dir = ensure_dir(Path(args.output_dir))
 
     # ── Load & optionally patch hparams ────────────────────────────────────
-    hparams_path = _patch_hparams_fp16(args.model_config, fp16=args.fp16)
-    hparams = ROMEHyperParams.from_hparams(hparams_path)
+    hparams_path = _patch_hparams(args.model_config, fp16=args.fp16)
+    hparams = HParamsClass.from_hparams(hparams_path)
 
-    logger.info("Model: %s | fp16: %s | layers: %s",
-                hparams.model_name, getattr(hparams, "fp16", False), hparams.layers)
+    logger.info("Method: %s | Model: %s | fp16: %s",
+                method, hparams.model_name, getattr(hparams, "fp16", False))
 
     # ── Load CounterFact data ──────────────────────────────────────────────
     records = _load_counterfact(num_edits=args.num_edits)
@@ -97,16 +141,30 @@ def run_rome_edit(args) -> None:
     subjects = [r["subject"] for r in records]
     target_new = [r["target_new"] for r in records]
 
-    # ── Run ROME editing ───────────────────────────────────────────────────
+    # ── Run editing ────────────────────────────────────────────────────────
     editor = BaseEditor.from_hparams(hparams)
-    metrics, edited_model, _ = editor.edit(
-        prompts=prompts,
-        target_new=target_new,
-        subject=subjects,
-        keep_original_weight=False,  # we want the mutated model
-        test_generation=True,
-        sequential_edit=True
-    )
+
+    use_batch = method in BATCHABLE_METHODS
+    logger.info("Using %s for %s", "batch_edit" if use_batch else "edit", method)
+
+    if use_batch:
+        metrics, edited_model, _ = editor.batch_edit(
+            prompts=prompts,
+            target_new=target_new,
+            subject=subjects,
+            keep_original_weight=False,
+            sequential_edit=True,
+            test_generation=True,
+        )
+    else:
+        metrics, edited_model, _ = editor.edit(
+            prompts=prompts,
+            target_new=target_new,
+            subject=subjects,
+            keep_original_weight=False,
+            sequential_edit=True,
+            test_generation=True,
+        )
 
     # ── Save edited model ──────────────────────────────────────────────────
     logger.info("Saving edited model to %s", output_dir)
@@ -120,13 +178,14 @@ def run_rome_edit(args) -> None:
     # ── Save edit metadata + metrics ───────────────────────────────────────
     meta = {
         "source_model": hparams.model_name,
+        "edit_method": method,
         "fp16": args.fp16,
         "num_edits": len(records),
         "records": records,
     }
     save_edit_metadata(output_dir, meta)
 
-    metrics_path = output_dir / "rome_metrics.json"
+    metrics_path = output_dir / "edit_metrics.json"
     with open(metrics_path, "w") as f:
         json.dump(metrics, f, indent=2, default=str)
 

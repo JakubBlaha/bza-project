@@ -10,39 +10,46 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="bza_tool",
         description="Benchmark how quantization affects retention of "
-                    "ROME-implanted facts in LLMs (CounterFact).",
+                    "knowledge-edited facts in LLMs (CounterFact).",
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
 
-    # ── rome-edit ──────────────────────────────────────────────────────────
-    p_rome = subparsers.add_parser(
-        "rome-edit",
-        help="Apply ROME fact edits to a model using EasyEdit.",
+    # ── edit ───────────────────────────────────────────────────────────────
+    p_edit = subparsers.add_parser(
+        "edit",
+        help="Apply knowledge edits to a model using EasyEdit.",
     )
-    p_rome.add_argument(
+    p_edit.add_argument(
+        "--method",
+        type=str,
+        default="ROME",
+        help="Editing algorithm to use (default: ROME). "
+             "Supported: ROME, MEMIT, ULTRAEDIT, AlphaEdit, EMMET, R-ROME, FT.",
+    )
+    p_edit.add_argument(
         "--model-config",
         type=str,
         required=True,
-        help="Path to EasyEdit ROME hparams YAML "
+        help="Path to EasyEdit hparams YAML "
              f"(e.g. {EASYEDIT_HPARAMS_DIR}/llama-7b.yaml).",
     )
-    p_rome.add_argument(
+    p_edit.add_argument(
         "--output-dir",
         type=str,
         required=True,
         help="Directory to save the edited model, tokenizer, and metadata.",
     )
-    p_rome.add_argument(
+    p_edit.add_argument(
         "--num-edits",
         type=int,
         default=None,
         help="Number of CounterFact edits to apply (default: all).",
     )
-    p_rome.add_argument(
+    p_edit.add_argument(
         "--fp16",
         action="store_true",
         default=False,
-        help="Run ROME editing in fp16 (default: fp32 for reproducibility).",
+        help="Run editing in fp16 (default: fp32 for reproducibility).",
     )
 
     # ── quantize ───────────────────────────────────────────────────────────
@@ -59,9 +66,8 @@ def build_parser() -> argparse.ArgumentParser:
     p_quant.add_argument(
         "--method",
         type=str,
-        choices=["awq", "gptq"],
         required=True,
-        help="Quantization method.",
+        help="Quantization method (e.g. gptq, awq, gptaq, qqq, gar).",
     )
     p_quant.add_argument(
         "--bits",
@@ -109,15 +115,21 @@ def build_parser() -> argparse.ArgumentParser:
     p_pipe.add_argument(
         "--scenario",
         type=str,
-        choices=["rome_eval_quant_eval", "quant_rome_eval"],
+        choices=["edit_eval_quant_eval", "quant_edit_eval"],
         required=True,
         help="Which scenario to run.",
+    )
+    p_pipe.add_argument(
+        "--edit-method",
+        type=str,
+        default="ROME",
+        help="Editing algorithm (default: ROME).",
     )
     p_pipe.add_argument(
         "--model-config",
         type=str,
         required=True,
-        help="Path to EasyEdit ROME hparams YAML.",
+        help="Path to EasyEdit hparams YAML.",
     )
     p_pipe.add_argument(
         "--quant-method",
@@ -149,7 +161,7 @@ def build_parser() -> argparse.ArgumentParser:
         "--fp16",
         action="store_true",
         default=False,
-        help="Run ROME editing in fp16.",
+        help="Run editing in fp16.",
     )
 
     # ── download ──────────────────────────────────────────────────────────
@@ -175,9 +187,9 @@ def main() -> None:
         from bza_tool.download import run_download
         run_download(args)
 
-    elif args.command == "rome-edit":
-        from bza_tool.rome_edit import run_rome_edit
-        run_rome_edit(args)
+    elif args.command == "edit":
+        from bza_tool.edit import run_edit
+        run_edit(args)
 
     elif args.command == "quantize":
         from bza_tool.quantize import run_quantize
