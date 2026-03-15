@@ -14,7 +14,6 @@ def build_parser() -> argparse.ArgumentParser:
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
 
-    # ── edit ───────────────────────────────────────────────────────────────
     p_edit = subparsers.add_parser(
         "edit",
         help="Apply knowledge edits to a model using EasyEdit.",
@@ -22,9 +21,9 @@ def build_parser() -> argparse.ArgumentParser:
     p_edit.add_argument(
         "--method",
         type=str,
-        default="ROME",
-        help="Editing algorithm to use (default: ROME). "
-             "Supported: ROME, MEMIT, ULTRAEDIT, AlphaEdit, EMMET, R-ROME, FT.",
+        default="AlphaEdit",
+        help="Editing algorithm to use (default: AlphaEdit). "
+             "Supported: AlphaEdit, MEMIT, EMMET.",
     )
     p_edit.add_argument(
         "--model-config",
@@ -52,7 +51,6 @@ def build_parser() -> argparse.ArgumentParser:
         help="Run editing in fp16 (default: fp32 for reproducibility).",
     )
 
-    # ── quantize ───────────────────────────────────────────────────────────
     p_quant = subparsers.add_parser(
         "quantize",
         help="Quantize a model with AWQ or GPTQ.",
@@ -83,7 +81,6 @@ def build_parser() -> argparse.ArgumentParser:
         help="Directory to save the quantized model.",
     )
 
-    # ── evaluate ───────────────────────────────────────────────────────────
     p_eval = subparsers.add_parser(
         "evaluate",
         help="Evaluate fact retention on CounterFact prompts.",
@@ -107,7 +104,6 @@ def build_parser() -> argparse.ArgumentParser:
         help="Limit evaluation to first N edits (default: all).",
     )
 
-    # ── download ──────────────────────────────────────────────────────────
     p_dl = subparsers.add_parser(
         "download",
         help="Download a model from HuggingFace Hub to ./hugging_cache.",

@@ -15,18 +15,13 @@ logger = logging.getLogger(__name__)
 # ── HyperParams registry ──────────────────────────────────────────────────
 # Maps CLI method names to (module_path, class_name) so we can import lazily.
 HPARAMS_REGISTRY: dict[str, tuple[str, str]] = {
-    "ROME":      ("easyeditor", "ROMEHyperParams"),
-    "MEMIT":     ("easyeditor", "MEMITHyperParams"),
-    "MEND":      ("easyeditor", "MENDHyperParams"),
-    "ULTRAEDIT": ("easyeditor", "UltraEditHyperParams"),
     "AlphaEdit": ("easyeditor", "AlphaEditHyperParams"),
+    "MEMIT":     ("easyeditor", "MEMITHyperParams"),
     "EMMET":     ("easyeditor", "EMMETHyperParams"),
-    "R-ROME":    ("easyeditor", "R_ROMEHyperParams"),
-    "FT":        ("easyeditor", "FTHyperParams"),
 }
 
 # Methods that support batch_edit (from EasyEdit's BatchEditor enum).
-BATCHABLE_METHODS = {"MEMIT", "MEND", "ULTRAEDIT", "AlphaEdit", "EMMET", "FT", "PMET", "CORE"}
+BATCHABLE_METHODS = {"MEMIT", "AlphaEdit", "EMMET"}
 
 
 def _get_hparams_class(method: str):
