@@ -146,6 +146,8 @@ def run_evaluate(args) -> None:
     model_name = f"{model_path.parent.name}_{model_path.name}.json"
     output_file = output_dir / model_name
 
+    logger.info(f"{model_path=}, {output_dir=}, {model_name=}")
+
     pred_logger = setup_prediction_logger(output_dir)
 
     meta = load_edit_metadata(model_path)
