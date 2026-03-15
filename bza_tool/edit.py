@@ -8,7 +8,7 @@ import json
 import logging
 from pathlib import Path
 
-from bza_tool.utils import ensure_easyedit_on_path, save_edit_metadata, ensure_dir, ensure_model_exists
+from bza_tool.utils import ensure_easyedit_on_path, save_edit_metadata, ensure_dir, ensure_model_exists, load_counterfact
 
 logger = logging.getLogger(__name__)
 
@@ -29,39 +29,6 @@ def _get_hparams_class(method: str):
     import importlib
     mod = importlib.import_module(module_name)
     return getattr(mod, class_name)
-
-
-def _load_counterfact(num_edits: int | None = None) -> list[dict]:
-    """Load the CounterFact dataset via HuggingFace ``datasets``.
-
-    Returns a list of dicts with keys: prompt, subject, target_new,
-    plus paraphrase / neighborhood data for evaluation.
-    """
-    from datasets import load_dataset
-
-    ds = load_dataset("azhx/counterfact", split="train")
-    if num_edits is not None:
-        ds = ds.select(range(min(num_edits, len(ds))))
-
-    records = []
-    for row in ds:
-        records.append({
-            "case_id": row["case_id"],
-            "prompt": row["requested_rewrite"]["prompt"].format(
-                row["requested_rewrite"]["subject"]
-            ),
-            "subject": row["requested_rewrite"]["subject"],
-            "target_new": row["requested_rewrite"]["target_new"]["str"],
-            "target_true": row["requested_rewrite"]["target_true"]["str"],
-            # Paraphrase prompts for generality evaluation
-            "paraphrase_prompts": row.get("paraphrase_prompts", []),
-            # Neighborhood prompts for locality evaluation
-            "neighborhood_prompts": row.get("neighborhood_prompts", []),
-            "attribute_prompts": row.get("attribute_prompts", []),
-        })
-
-    logger.info("Loaded %d CounterFact records", len(records))
-    return records
 
 
 def _patch_hparams(yaml_path: str, fp16: bool) -> str:
@@ -125,7 +92,7 @@ def run_edit(args) -> None:
                 method, hparams.model_name, getattr(hparams, "fp16", False))
 
     # ── Load CounterFact data ──────────────────────────────────────────────
-    records = _load_counterfact(num_edits=args.num_edits)
+    records = load_counterfact(num_edits=args.num_edits)
     prompts = [r["prompt"] for r in records]
     subjects = [r["subject"] for r in records]
     target_new = [r["target_new"] for r in records]

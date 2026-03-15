@@ -67,7 +67,7 @@ def load_edit_metadata(model_path: Path) -> dict:
     if not path.exists():
         raise FileNotFoundError(
             f"No edit metadata found at {path}. "
-            "Make sure this model directory was produced by 'rome-edit'."
+            "Make sure this model directory was produced by 'edit'."
         )
     with open(path) as f:
         return json.load(f)
@@ -89,3 +89,36 @@ def ensure_model_exists(model_path_str: str) -> None:
             f"Please download the model first using:\n"
             f"  uv run python -m bza_tool download {suggested_id}\n"
         )
+
+
+def load_counterfact(num_edits: int | None = None) -> list[dict]:
+    """Load the CounterFact dataset via HuggingFace ``datasets``.
+
+    Returns a list of dicts with keys: prompt, subject, target_new,
+    plus paraphrase / neighborhood data for evaluation.
+    """
+    from datasets import load_dataset
+
+    ds = load_dataset("azhx/counterfact", split="train")
+    if num_edits is not None:
+        ds = ds.select(range(min(num_edits, len(ds))))
+
+    records = []
+    for row in ds:
+        records.append({
+            "case_id": row["case_id"],
+            "prompt": row["requested_rewrite"]["prompt"].format(
+                row["requested_rewrite"]["subject"]
+            ),
+            "subject": row["requested_rewrite"]["subject"],
+            "target_new": row["requested_rewrite"]["target_new"]["str"],
+            "target_true": row["requested_rewrite"]["target_true"]["str"],
+            # Paraphrase prompts for generality evaluation
+            "paraphrase_prompts": row.get("paraphrase_prompts", []),
+            # Neighborhood prompts for locality evaluation
+            "neighborhood_prompts": row.get("neighborhood_prompts", []),
+            "attribute_prompts": row.get("attribute_prompts", []),
+        })
+
+    logger.info("Loaded %d CounterFact records", len(records))
+    return records

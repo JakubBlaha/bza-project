@@ -74,12 +74,6 @@ def build_parser() -> argparse.ArgumentParser:
         default=4,
         help="Target bit width (default: 4).",
     )
-    p_quant.add_argument(
-        "--output-dir",
-        type=str,
-        required=True,
-        help="Directory to save the quantized model.",
-    )
 
     p_eval = subparsers.add_parser(
         "evaluate",
