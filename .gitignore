@@ -8,6 +8,10 @@ hugging_cache/
 venv-rocm/
 logs/
 results/
+gptqmodel_offload/
+data/
+context/
+*.pt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
