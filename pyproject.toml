@@ -43,6 +43,7 @@ dependencies = [
   "logbar>=0.2.2",
   "tokenicer>=0.0.8",
   "device-smi>=0.5.3",
+  "optimum>=2.1.0",
 ]
 
 [build-system]
