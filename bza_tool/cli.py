@@ -14,6 +14,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
 
+    # Edit
     p_edit = subparsers.add_parser(
         "edit",
         help="Apply knowledge edits to a model using EasyEdit.",
@@ -35,8 +36,9 @@ def build_parser() -> argparse.ArgumentParser:
     p_edit.add_argument(
         "--output-dir",
         type=str,
-        required=True,
-        help="Directory to save the edited model, tokenizer, and metadata.",
+        default=None,
+        help="Directory to save the edited model, tokenizer, and metadata. "
+             "Defaults to ./outputs/{model}/{method}/{num_edits}.",
     )
     p_edit.add_argument(
         "--num-edits",
@@ -44,13 +46,14 @@ def build_parser() -> argparse.ArgumentParser:
         default=None,
         help="Number of CounterFact edits to apply (default: all).",
     )
-    p_edit.add_argument(
-        "--fp16",
-        action="store_true",
-        default=False,
-        help="Run editing in fp16 (default: fp32 for reproducibility).",
-    )
+    # p_edit.add_argument(
+    #     "--fp16",
+    #     action="store_true",
+    #     default=False,
+    #     help="Run editing in fp16 (default: fp32 for reproducibility).",
+    # )
 
+    # Quantize
     p_quant = subparsers.add_parser(
         "quantize",
         help="Quantize a model with AWQ or GPTQ.",
@@ -75,6 +78,7 @@ def build_parser() -> argparse.ArgumentParser:
         help="Target bit width (default: 4).",
     )
 
+    # Eval
     p_eval = subparsers.add_parser(
         "evaluate",
         help="Evaluate fact retention on CounterFact prompts.",
@@ -85,13 +89,8 @@ def build_parser() -> argparse.ArgumentParser:
         required=True,
         help="Path to the model directory to evaluate.",
     )
-    p_eval.add_argument(
-        "--num-samples",
-        type=int,
-        default=None,
-        help="Limit evaluation to first N edits (default: all).",
-    )
 
+    # Download model
     p_dl = subparsers.add_parser(
         "download",
         help="Download a model from HuggingFace Hub to ./hugging_cache.",
@@ -112,18 +111,22 @@ def main() -> None:
     # Import lazily so --help works without heavy deps installed
     if args.command == "download":
         from bza_tool.download import run_download
+
         run_download(args)
 
     elif args.command == "edit":
         from bza_tool.edit import run_edit
+
         run_edit(args)
 
     elif args.command == "quantize":
         from bza_tool.quantize import run_quantize
+
         run_quantize(args)
 
     elif args.command == "evaluate":
         from bza_tool.evaluate import run_evaluate
+
         run_evaluate(args)
 
     else:
