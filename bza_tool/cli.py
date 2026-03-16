@@ -46,12 +46,12 @@ def build_parser() -> argparse.ArgumentParser:
         default=None,
         help="Number of CounterFact edits to apply (default: all).",
     )
-    # p_edit.add_argument(
-    #     "--fp16",
-    #     action="store_true",
-    #     default=False,
-    #     help="Run editing in fp16 (default: fp32 for reproducibility).",
-    # )
+    p_edit.add_argument(
+        "--fp16",
+        action="store_true",
+        default=False,
+        help="Run editing in fp16 (default: fp32 for reproducibility).",
+    )
 
     # Quantize
     p_quant = subparsers.add_parser(

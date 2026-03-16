@@ -27,6 +27,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 VENDOR_EASYEDIT = PROJECT_ROOT / "vendor" / "EasyEdit"
 EASYEDIT_HPARAMS_DIR = VENDOR_EASYEDIT / "hparams" / "ROME"
 
+logger = logging.getLogger(__name__)
 
 def get_hparams_dir(alg_name: str) -> Path:
     """Return the hparams directory for a given EasyEdit algorithm."""
@@ -112,7 +113,7 @@ def load_counterfact(num_edits: int | None = None) -> list[dict]:
             ),
             "subject": row["requested_rewrite"]["subject"],
             "target_new": row["requested_rewrite"]["target_new"]["str"],
-            "target_true": row["requested_rewrite"]["target_true"]["str"],
+            "ground_truth": row["requested_rewrite"]["target_true"]["str"],
             # Paraphrase prompts for generality evaluation
             "paraphrase_prompts": row.get("paraphrase_prompts", []),
             # Neighborhood prompts for locality evaluation

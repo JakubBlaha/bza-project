@@ -1,179 +1,148 @@
-import re
 import json
 import logging
+import os
+import tempfile
 from pathlib import Path
 
+import numpy as np
 import torch
+import yaml
 from tqdm import tqdm
-
-from bza_tool.utils import load_edit_metadata, setup_logging
+from bza_tool.utils import load_edit_metadata, setup_logging, ensure_easyedit_on_path
+from bza_tool.edit import _get_hparams_class
 
 logger = logging.getLogger(__name__)
 
 
-def setup_prediction_logger(output_dir: Path) -> logging.Logger:
-    prediction_log_file = output_dir / "predictions.log"
-    pred_logger = logging.getLogger('predictions')
-    pred_logger.setLevel(logging.INFO)
-    handler = logging.FileHandler(prediction_log_file)
-    handler.setFormatter(logging.Formatter('%(message)s'))
-    pred_logger.addHandler(handler)
+def evaluate_single_edit(rec: dict, model, tokenizer, hparams, model_name: str) -> dict:
+    from easyeditor.evaluate import compute_edit_quality
+    from easyeditor.evaluate.evaluate_utils import test_batch_prediction_acc
 
-    return pred_logger
+    # Normalize record keys to match EasyEdit's expected format.
+    # Handles metadata saved before the ground_truth rename.
+    normalized = dict(rec)
 
+    if "ground_truth" not in normalized and "target_true" in normalized:
+        normalized["ground_truth"] = normalized["target_true"]
 
-def _get_target_logprob(model, tokenizer, prompt: str, target: str) -> float:
-    prompt_ids = tokenizer(prompt, return_tensors="pt").input_ids.to(model.device)
-    target_str = " " + target.strip() if not target.startswith(" ") else target
-    full_ids = tokenizer(prompt + target_str, return_tensors="pt").input_ids.to(model.device)
+    # compute_edit_quality accepts either a single string or a list for rephrase_prompt.
+    if "rephrase_prompt" not in normalized:
+        paraphrases = normalized.get("paraphrase_prompts", [])
 
-    target_ids = full_ids[0, prompt_ids.shape[1]:]
-    if len(target_ids) == 0:
-        return -float('inf')
+        if paraphrases:
+            normalized["rephrase_prompt"] = paraphrases
 
-    with torch.no_grad():
-        outputs = model(full_ids)
-        logits = outputs.logits[0]
+    metrics = compute_edit_quality(
+        model=model,
+        model_name=model_name,
+        hparams=hparams,
+        tok=tokenizer,
+        record=normalized,
+        device=hparams.device
+    )
 
-    start_idx = prompt_ids.shape[1] - 1
-    end_idx = full_ids.shape[1] - 1
-    target_logits = logits[start_idx:end_idx]
+    # Compute locality accuracy: compare post-edit predictions to pre-edit baseline.
+    locality_pre = rec.get("locality_pre_edit", [])
+    neighborhood_prompts = rec.get("neighborhood_prompts", [])
+    locality_accs = []
 
-    log_probs = torch.nn.functional.log_softmax(target_logits, dim=-1)
-    target_log_probs = log_probs[range(len(target_ids)), target_ids]
+    if neighborhood_prompts and locality_pre:
+        # One batched call — returns the single next predicted token ID per prompt.
+        post = test_batch_prediction_acc(
+            model, tokenizer, hparams,
+            neighborhood_prompts, None, hparams.device, locality=True,
+        )
+        post = post if isinstance(post, list) else [post]
+        locality_accs = [float(p == q) for p, q in zip(locality_pre, post)]
 
-    return target_log_probs.sum().item()
-
-
-def _compare_logits(
-    model, tokenizer, prompt: str, target_win: str, target_lose: str, pred_logger: logging.Logger
-) -> bool:
-    lp_win = _get_target_logprob(model, tokenizer, prompt, target_win)
-    lp_lose = _get_target_logprob(model, tokenizer, prompt, target_lose)
-    return lp_win > lp_lose
-
-
-def _is_correct_prediction(
-    model, tokenizer, prompt: str, target: str, pred_logger: logging.Logger, max_new_tokens: int = 10,
-) -> bool:
-    enc = tokenizer(prompt, return_tensors="pt").to(model.device)
-    with torch.no_grad():
-        out = model.generate(**enc, max_new_tokens=max_new_tokens, do_sample=False)
-
-    generated = tokenizer.decode(out[0, enc["input_ids"].shape[1]:], skip_special_tokens=True).strip()
-    target_clean = target.strip()
-    pattern = r'^' + re.escape(target_clean.lower()) + r'(?:\b|$)'
-    is_ok = bool(re.match(pattern, generated.lower()))
-
-    pred_logger.info(f"Prompt: {prompt} | Gen: {generated} | Target: {target_clean} | OK: {is_ok}")
-    return is_ok
-
-
-def _compute_metrics(
-    prompts: list[str], target_win: str, target_lose: str, model, tokenizer, pred_logger: logging.Logger, is_locality: bool = False
-) -> tuple[float | None, float | None]:
-    if not prompts or not target_win:
-        return None, None
-
-    gen_correct = []
-    prob_correct = []
-
-    for p in prompts:
-        # For locality, generative success means it outputs target_lose (the original true fact), not target_win (the new injected fact)
-        gen_target = target_lose if is_locality else target_win
-
-        gen_correct.append(int(_is_correct_prediction(model, tokenizer, p, gen_target, pred_logger)))
-        if target_lose:
-            prob_correct.append(int(_compare_logits(model, tokenizer, p, target_win, target_lose, pred_logger)))
-
-    gen_acc = sum(gen_correct) / len(gen_correct)
-    prob_acc = sum(prob_correct) / len(prob_correct) if prob_correct else None
-
-    return gen_acc, prob_acc
-
-
-def evaluate_single_edit(rec: dict, model, tokenizer, pred_logger: logging.Logger) -> dict:
     entry = {"case_id": rec["case_id"]}
-    t_new = rec["target_new"]
-    t_true = rec.get("target_true", "")
-
-    # Efficacy
-    entry["efficacy_gen"] = _is_correct_prediction(model, tokenizer, rec["prompt"], t_new, pred_logger)
-    entry["efficacy_prob"] = _compare_logits(model, tokenizer, rec["prompt"],
-                                             t_new, t_true, pred_logger) if t_true else None
-
-    # Generality
-    gen_acc, prob_acc = _compute_metrics(
-        rec.get("paraphrase_prompts", []), t_new, t_true, model, tokenizer, pred_logger, is_locality=False
-    )
-    entry["generality_gen"] = gen_acc
-    entry["generality_prob"] = prob_acc
-
-    # Locality (target_win is t_true, target_lose is t_new for probabilities)
-    gen_acc, prob_acc = _compute_metrics(
-        rec.get("neighborhood_prompts", []), t_true, t_new, model, tokenizer, pred_logger, is_locality=True
-    )
-    entry["locality_gen"] = gen_acc
-    entry["locality_prob"] = prob_acc
-
+    entry.update(metrics)
+    entry["locality_acc"] = float(np.mean(locality_accs)) if locality_accs else None
     return entry
 
 
-def _compute_summary(model_path: Path, meta: dict, results: list[dict]) -> dict:
+def compute_summary(model_path: Path, results: list[dict]) -> dict:
     def _avg(key: str):
+        # Get values from all records by a key and compute a mean
         vals = [r[key] for r in results if r.get(key) is not None]
-        return (sum(vals) / len(vals) * 100) if vals else None
+        return float(np.mean(vals) * 100) if vals else None
 
     return {
         "model_path": str(model_path),
-        "source_model": meta.get("source_model", "unknown"),
         "num_evaluated": len(results),
-        "efficacy_gen_accuracy": _avg("efficacy_gen"),
-        "efficacy_prob_accuracy": _avg("efficacy_prob"),
-        "generality_gen_accuracy": _avg("generality_gen"),
-        "generality_prob_accuracy": _avg("generality_prob"),
-        "locality_gen_accuracy": _avg("locality_gen"),
-        "locality_prob_accuracy": _avg("locality_prob"),
+        "rewrite_accuracy": _avg("rewrite_acc"),
+        "rephrase_accuracy": _avg("rephrase_acc"),
+        "locality_accuracy": _avg("locality_acc"),
     }
 
 
 def run_evaluate(args) -> None:
     setup_logging()
+    ensure_easyedit_on_path()
 
     model_path = Path(args.model_path)
     output_dir = Path("./results")
+
     output_dir.mkdir(parents=True, exist_ok=True)
-    model_name = f"{model_path.parent.name}_{model_path.name}.json"
-    output_file = output_dir / model_name
 
-    logger.info(f"{model_path=}, {output_dir=}, {model_name=}")
+    output_filename = f"{model_path.parent.name}_{model_path.name}.json"
+    output_file = output_dir / output_filename
 
-    pred_logger = setup_prediction_logger(output_dir)
+    logger.info("Configuration:")
+    logger.info(f"  {model_path=}")
+    logger.info(f"  {output_dir=}")
+    logger.info(f"  {output_filename=}")
 
     meta = load_edit_metadata(model_path)
     records = meta["records"]
-    if args.num_samples is not None:
-        records = records[: args.num_samples]
+
+    # Make sure that we also have the locality data, the edit should not modify
+    # unrelated objects
+    if not all("locality_pre_edit" in r for r in records):
+        raise RuntimeError(
+            "Records are missing 'locality_pre_edit' baselines. "
+            "Re-run the 'edit' command to capture pre-edit locality data."
+        )
 
     logger.info("Evaluating %d edits from %s", len(records), model_path)
 
+    method = meta["edit_method"]
+    HParamsClass = _get_hparams_class(method)
+    cfg = meta["config"]
+
+    tmp = tempfile.NamedTemporaryFile(mode="w", suffix=".yaml", delete=False)
+    yaml.dump(cfg, tmp)
+    tmp.close()
+
+    hparams = HParamsClass.from_hparams(tmp.name)
+    os.unlink(tmp.name)
+
     from transformers import AutoModelForCausalLM, AutoTokenizer
 
+    model_name_str = meta["source_model"]
+
     tokenizer = AutoTokenizer.from_pretrained(model_path)
+
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 
+    # Instantiate model — match the dtype used during editing so evaluation is consistent
+    torch_dtype = torch.float16 if meta.get("fp16") else torch.float32
     model = AutoModelForCausalLM.from_pretrained(
         model_path,
         device_map="auto",
-        dtype=torch.float32,
+        torch_dtype=torch_dtype,
     )
+
+    # Set model into evaluation mode
     model.eval()
 
-    results = [evaluate_single_edit(rec, model, tokenizer, pred_logger)
-               for rec in tqdm(records, desc="Evaluating edits")]
+    results = [
+        evaluate_single_edit(rec, model, tokenizer, hparams, model_name_str)
+        for rec in tqdm(records, desc="Evaluating edits")
+    ]
 
-    summary = _compute_summary(model_path, meta, results)
+    summary = compute_summary(model_path, results)
     output = {"summary": summary, "per_edit": results}
 
     with open(output_file, "w") as f:

@@ -33,7 +33,7 @@ uv run python -m bza_tool edit --model-config ./res/hparams/AlphaEdit/gpt2-xl.ya
 uv run python -m bza_tool evaluate --model-path ./outputs/gpt2-xl/alphaedit
 
 # Quantize (gptq, awq, gptaq, qqq, gar, etc.)
-uv run python -m bza_tool quantize --model-path ./outputs/gpt2-xl/alphaedit --method gptq --bits 4 --output-dir ./outputs/gpt2-xl/alphaedit-gptq4
+uv run python -m bza_tool quantize --model-path ./outputs/gpt2-xl/alphaedit --method gptq --bits 4
 
 # Evaluate the quantized model
 uv run python -m bza_tool evaluate --model-path ./outputs/gpt2-xl/alphaedit-gptq4

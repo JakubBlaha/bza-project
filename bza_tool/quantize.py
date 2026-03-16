@@ -29,7 +29,7 @@ def _get_quantize_config(method: str, bits: int):
     if method == "gptq":
         return QuantizeConfig(**config_kwargs)
     elif method == "awq":
-        config_kwargs["format"] = "awq"
+        config_kwargs["format"] = "llm-awq"
         return QuantizeConfig(**config_kwargs)
     elif method == "gptaq":
         from gptqmodel import GPTAQConfig
