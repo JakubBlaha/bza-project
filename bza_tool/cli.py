@@ -73,7 +73,7 @@ def build_parser() -> argparse.ArgumentParser:
     p_quant.add_argument(
         "--bits",
         type=int,
-        choices=[4, 8],
+        choices=[2, 4, 8],
         default=4,
         help="Target bit width (default: 4).",
     )
