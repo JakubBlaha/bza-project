@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 
 
 def evaluate_single_edit(rec: dict, model, tokenizer, hparams, model_name: str) -> dict:
-    from easyeditor.evaluate import compute_edit_quality
+    from easyeditor.evaluate import compute_edit_quality, compute_rewrite_or_rephrase_quality
     from easyeditor.evaluate.evaluate_utils import test_batch_prediction_acc
 
     # Normalize record keys to match EasyEdit's expected format.
@@ -25,12 +25,13 @@ def evaluate_single_edit(rec: dict, model, tokenizer, hparams, model_name: str) 
     if "ground_truth" not in normalized and "target_true" in normalized:
         normalized["ground_truth"] = normalized["target_true"]
 
-    # compute_edit_quality accepts either a single string or a list for rephrase_prompt.
-    if "rephrase_prompt" not in normalized:
-        paraphrases = normalized.get("paraphrase_prompts", [])
-
-        if paraphrases:
-            normalized["rephrase_prompt"] = paraphrases
+    # Do NOT pass rephrase_prompt to compute_edit_quality — EasyEdit's
+    # test_prediction_acc zips prompts with targets, so passing a list of
+    # rephrase prompts with a scalar target string silently iterates over
+    # the target's characters instead of the full string.  We evaluate
+    # rephrase accuracy ourselves below.
+    paraphrases = normalized.pop("paraphrase_prompts", [])
+    normalized.pop("rephrase_prompt", None)
 
     metrics = compute_edit_quality(
         model=model,
@@ -40,6 +41,23 @@ def evaluate_single_edit(rec: dict, model, tokenizer, hparams, model_name: str) 
         record=normalized,
         device=hparams.device
     )
+
+    # Evaluate rephrase prompts one-by-one so each is passed as a scalar
+    # string, which test_prediction_acc handles correctly.
+    target_new = normalized["target_new"]
+    if paraphrases:
+        rephrase_accs = []
+        for pp in paraphrases:
+            rp_metrics = compute_rewrite_or_rephrase_quality(
+                model, model_name, hparams, tokenizer,
+                pp, target_new, device=hparams.device, test_rephrase=True,
+            )
+            rephrase_accs.extend(
+                rp_metrics["rephrase_acc"]
+                if isinstance(rp_metrics["rephrase_acc"], list)
+                else [rp_metrics["rephrase_acc"]]
+            )
+        metrics["rephrase_acc"] = rephrase_accs
 
     # Compute locality accuracy: compare post-edit predictions to pre-edit baseline.
     locality_pre = rec.get("locality_pre_edit", [])
