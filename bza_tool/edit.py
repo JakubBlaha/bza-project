@@ -133,14 +133,26 @@ def run_edit(args) -> None:
     editor = BaseEditor.from_hparams(hparams)
     _capture_locality_baseline(editor, hparams, records)
 
-    metrics, edited_model, _ = editor.batch_edit(
-        prompts=prompts,
-        target_new=target_new,
-        subject=subjects,
-        keep_original_weight=False,
-        sequential_edit=True,
-        test_generation=False,
-    )
+    from easyeditor.editors.batch_editor import BatchEditor
+
+    if BatchEditor.is_batchable_method(method):
+        metrics, edited_model, _ = editor.batch_edit(
+            prompts=prompts,
+            target_new=target_new,
+            subject=subjects,
+            keep_original_weight=False,
+            sequential_edit=True,
+            test_generation=False,
+        )
+    else:
+        metrics, edited_model, _ = editor.edit(
+            prompts=prompts,
+            target_new=target_new,
+            subject=subjects,
+            keep_original_weight=False,
+            sequential_edit=True,
+            test_generation=False,
+        )
 
     # ── Save edited model ──────────────────────────────────────────────────
     logger.info("Saving edited model to %s", output_dir)
