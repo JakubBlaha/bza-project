@@ -7,7 +7,6 @@ vendor/
 hugging_cache/
 venv-rocm/
 logs/
-results/
 gptqmodel_offload/
 data/
 context/

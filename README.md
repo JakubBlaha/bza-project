@@ -49,6 +49,43 @@ uv run python -m bza_tool pipeline --scenario rome_eval_quant_eval --model-confi
 uv run python -m bza_tool pipeline --scenario quant_rome_eval --model-config ./res/hparams/AlphaEdit/gpt2-xl.yaml --quant-method gptq --bits 4
 ```
 
+## Evaluation Status
+
+### AlphaEdit
+
+| Model | FP32 | GPTQ-8 | GPTQ-4 | GPTQ-3 | GPTQ-2 |
+| --- | --- | --- | --- | --- | --- |
+| gpt2-xl | ✅ | ✅ | ✅ | ✅ | ✅ |
+| gpt-j-6B | | | | | |
+| llama3.1-8b | | | | | |
+| llama3-8b | | | | | |
+| qwen2.5-7b | | | | | |
+
+### EMMET
+
+| Model | FP32 | GPTQ-8 | GPTQ-4 | GPTQ-3 | GPTQ-2 |
+| --- | --- | --- | --- | --- | --- |
+| gpt2-xl | ✅ | ✅ | ✅ | ✅ | ✅ |
+| gpt-j-6B | | | | | |
+| llama3.2-3b | | | | | |
+| llama-7b | | | | | |
+
+### MEMIT
+
+| Model | FP32 | GPTQ-8 | GPTQ-4 | GPTQ-3 | GPTQ-2 |
+| --- | --- | --- | --- | --- | --- |
+| gpt2-xl | ✅ | ✅ | ✅ | ✅ | ✅ |
+| baichuan-7b | | | | | |
+| chatglm2-6b | | | | | |
+| gpt-j-6B | | | | | |
+| internlm-7b | | | | | |
+| llama3.2-3b | | | | | |
+| llama-7b | | | | | |
+| mistral-7b | | | | | |
+| qwen2.5-7b | | | | | |
+| qwen2-7b | | | | | |
+| qwen-7b | | | | | |
+
 ## Flags
 
 | Flag                  | Description                                                  |
