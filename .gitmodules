@@ -1,3 +1,4 @@
 [submodule "vendor/EasyEdit"]
 	path = vendor/EasyEdit
 	url = git@github.com:JakubBlaha/EasyEdit.git
+	branch = custom-changes
