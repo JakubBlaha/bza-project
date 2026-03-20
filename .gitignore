@@ -3,7 +3,6 @@
 tmp/
 outputs/
 todo.md
-vendor/
 hugging_cache/
 venv-rocm/
 logs/
