@@ -33,14 +33,9 @@ def _get_hparams_class(method: str):
     return getattr(mod, class_name)
 
 
-def _patch_hparams(yaml_path: str, fp16: bool) -> tuple[str, dict]:
-    """Return a (possibly patched) hparams path and the config dict.
-
-    If the requested fp16 setting differs from what's in the YAML, we write a
-    temporary copy with the override so we don't mutate the vendored file.
-    """
+def _patch_hparams(yaml_path: str, **kwargs) -> tuple[str, dict]:
+    """Return the hparams path and the config dict."""
     import yaml
-    import tempfile
 
     with open(yaml_path) as f:
         cfg = yaml.safe_load(f)
@@ -49,18 +44,7 @@ def _patch_hparams(yaml_path: str, fp16: bool) -> tuple[str, dict]:
     if model_name.startswith("./"):
         ensure_model_exists(model_name)
 
-    current_fp16 = cfg.get("fp16", False)
-    if current_fp16 == fp16:
-        return yaml_path, cfg
-
-    cfg["fp16"] = fp16
-    tmp = tempfile.NamedTemporaryFile(
-        mode="w", suffix=".yaml", delete=False, prefix="edit_hparams_"
-    )
-    yaml.dump(cfg, tmp)
-    tmp.close()
-    logger.info("Patched hparams fp16=%s -> %s (tmp: %s)", current_fp16, fp16, tmp.name)
-    return tmp.name, cfg
+    return yaml_path, cfg
 
 
 def _capture_locality_baseline(editor, hparams, records: list[dict]) -> None:
@@ -110,12 +94,16 @@ def run_edit(args) -> None:
     hparams_path, cfg = _patch_hparams(args.model_config, fp16=args.fp16)
     hparams = HParamsClass.from_hparams(hparams_path)
 
+    # Set fp16 on hparams object (not all hparams classes accept it in __init__,
+    # but the editor checks hasattr(hparams, 'fp16') at model load time)
+    hparams.fp16 = args.fp16
+
     # Override batch_size to process all edits in one pass (default=1 is very slow)
     if hasattr(hparams, "batch_size"):
         hparams.batch_size = args.num_edits
 
     logger.info("Method: %s | Model: %s | fp16: %s",
-                method, hparams.model_name, getattr(hparams, "fp16", False))
+                method, hparams.model_name, hparams.fp16)
 
     # ── Load CounterFact data ──────────────────────────────────────────────
     records = load_counterfact(num_edits=args.num_edits)
