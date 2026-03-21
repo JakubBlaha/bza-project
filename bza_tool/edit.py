@@ -110,6 +110,10 @@ def run_edit(args) -> None:
     hparams_path, cfg = _patch_hparams(args.model_config, fp16=args.fp16)
     hparams = HParamsClass.from_hparams(hparams_path)
 
+    # Override batch_size to process all edits in one pass (default=1 is very slow)
+    if hasattr(hparams, "batch_size"):
+        hparams.batch_size = args.num_edits
+
     logger.info("Method: %s | Model: %s | fp16: %s",
                 method, hparams.model_name, getattr(hparams, "fp16", False))
 
