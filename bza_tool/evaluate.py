@@ -146,7 +146,7 @@ def run_evaluate(args) -> None:
         tokenizer.pad_token = tokenizer.eos_token
 
     # Instantiate model — match the dtype used during editing so evaluation is consistent
-    torch_dtype = torch.float16 if meta.get("fp16") else torch.float32
+    torch_dtype = torch.bfloat16 if meta.get("fp16") else torch.float32
     model = AutoModelForCausalLM.from_pretrained(
         model_path,
         device_map="auto",
