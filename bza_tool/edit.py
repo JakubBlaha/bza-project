@@ -102,7 +102,7 @@ def run_edit(args) -> None:
             f"Supported: {sorted(HPARAMS_REGISTRY)}"
         )
 
-    from easyeditor import BaseEditor  # type: ignore
+    from easyeditor.editors.editor import BaseEditor  # type: ignore
 
     HParamsClass = _get_hparams_class(method)
 
