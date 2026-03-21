@@ -63,6 +63,14 @@ def _quantize_model(model_path: str, bits: int, output_dir: Path, method: str) -
     quant_config = _get_quantize_config(method, bits)
     model = GPTQModel.load(model_path, quant_config, device="cuda:0")
 
+    # Fix meta tensors (e.g. GPT-J embed_positions) that don't get materialized
+    import torch
+    for name, module in model.model.named_modules():
+        for buf_name, buf in module.named_buffers(recurse=False):
+            if buf.device == torch.device("meta"):
+                logger.info("Materializing meta buffer: %s.%s", name, buf_name)
+                module.register_buffer(buf_name, torch.empty_like(buf, device="cuda:0"))
+
     calibration_data = _load_calibration_data()
 
     logger.info("Running %s quantization with %d calibration samples...",
