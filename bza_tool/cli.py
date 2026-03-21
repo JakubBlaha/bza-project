@@ -90,6 +90,50 @@ def build_parser() -> argparse.ArgumentParser:
         help="Path to the model directory to evaluate.",
     )
 
+    # Run (full pipeline: edit -> evaluate -> quantize -> evaluate)
+    p_run = subparsers.add_parser(
+        "run",
+        help="Run the full pipeline: edit, evaluate, quantize at each "
+             "bit width, and evaluate each quantized model — all in one process.",
+    )
+    p_run.add_argument(
+        "--model",
+        type=str,
+        required=True,
+        help="Model name (must match a hparams YAML filename, e.g. gpt2-xl).",
+    )
+    p_run.add_argument(
+        "--methods",
+        type=str,
+        required=True,
+        help="Comma-separated editing methods (e.g. AlphaEdit,MEMIT,EMMET).",
+    )
+    p_run.add_argument(
+        "--num-edits",
+        type=int,
+        default=1000,
+        help="Number of CounterFact edits (default: 1000).",
+    )
+    p_run.add_argument(
+        "--fp16",
+        action="store_true",
+        default=False,
+        help="Run editing in fp16 (default: fp32).",
+    )
+    p_run.add_argument(
+        "--quant-method",
+        type=str,
+        default="gptq",
+        help="Quantization method (default: gptq).",
+    )
+    p_run.add_argument(
+        "--bits",
+        type=int,
+        nargs="+",
+        default=[8, 4, 3, 2],
+        help="Bit widths to quantize (default: 8 4 3 2).",
+    )
+
     # Download model
     p_dl = subparsers.add_parser(
         "download",
@@ -128,6 +172,11 @@ def main() -> None:
         from bza_tool.evaluate import run_evaluate
 
         run_evaluate(args)
+
+    elif args.command == "run":
+        from bza_tool.run import run_pipeline
+
+        run_pipeline(args)
 
     else:
         parser.print_help()

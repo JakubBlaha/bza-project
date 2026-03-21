@@ -26,6 +26,9 @@ uv run python -c "import sys; sys.path.insert(0, 'vendor/EasyEdit'); from easyed
 ### Individual Commands
 
 ```bash
+# Download a model from HuggingFace Hub
+uv run python -m bza_tool download gpt2-xl
+
 # Apply AlphaEdit edits (saves model + edit metadata)
 uv run python -m bza_tool edit --model-config ./res/hparams/AlphaEdit/gpt2-xl.yaml --output-dir ./outputs/gpt2-xl/alphaedit --num-edits 100
 
@@ -39,14 +42,16 @@ uv run python -m bza_tool quantize --model-path ./outputs/gpt2-xl/alphaedit --me
 uv run python -m bza_tool evaluate --model-path ./outputs/gpt2-xl/alphaedit-gptq4
 ```
 
-### Full Pipelines
+### Full Pipeline
+
+The `run` command executes the full pipeline (edit → evaluate → quantize → evaluate) **in a single process**, avoiding repeated slow imports of torch/transformers on each step.
 
 ```bash
-# Scenario 1: Model → AlphaEdit → Eval → Quant → Eval
-uv run python -m bza_tool pipeline --scenario rome_eval_quant_eval --model-config ./res/hparams/AlphaEdit/gpt2-xl.yaml --quant-method gptq --bits 4
+# Run AlphaEdit and MEMIT on gpt2-xl with default settings (1000 edits, gptq at 8/4/3/2 bits)
+uv run python -m bza_tool run --model gpt2-xl --methods AlphaEdit,MEMIT
 
-# Scenario 2: Model → Quant → AlphaEdit → Eval
-uv run python -m bza_tool pipeline --scenario quant_rome_eval --model-config ./res/hparams/AlphaEdit/gpt2-xl.yaml --quant-method gptq --bits 4
+# Customize edits, quantization method, and bit widths
+uv run python -m bza_tool run --model gpt2-xl --methods AlphaEdit --num-edits 500 --fp16 --quant-method gptq --bits 8 4
 ```
 
 ## Evaluation Status
@@ -94,3 +99,40 @@ uv run python -m bza_tool pipeline --scenario quant_rome_eval --model-config ./r
 | `--num-edits N`       | Limit to first N CounterFact edits                           |
 | `--bits {4,8}`        | Quantization bit width                                       |
 | `--method {METHOD}`   | Quantization method: gptq, awq, gptaq, qqq, gar (or any format supported by gptqmodel) |
+
+# Setup on RunPod
+
+```bash
+apt update && apt install -y tmux mc libgl1-mesa-glx libglib2.0-0
+
+cd /workspace/bza-project
+curl -LsSf https://astral.sh/uv/install.sh | sh
+source $HOME/.local/bin/env
+
+# Make venv persistent in /workspace
+export UV_CACHE_DIR=/workspace/.uv-cache
+export UV_PYTHON_INSTALL_DIR=/workspace/.uv-python
+
+uv pip install hatchling editables setuptools
+uv sync --no-build-isolation
+```
+
+## Throubleshooting
+
+**Test CUDA:**
+
+```bash
+source .venv/bin/activate
+python -c "import torch; print(torch.__version__, torch.version.cuda); print(torch.zeros(1).cuda())"
+```
+
+**Run for model:**
+```bash
+uv run python -m bza_tool run --model gpt-j-6b --methods AlphaEdit
+```
+
+**RunPod Image:**
+
+```
+vishva123/cuda-12.6-pytorch-2.7.1-runpod
+```
