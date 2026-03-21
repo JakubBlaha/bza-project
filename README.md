@@ -105,6 +105,12 @@ uv run python -m bza_tool run --model gpt2-xl --methods AlphaEdit --num-edits 50
 ```bash
 apt update && apt install -y tmux mc libgl1-mesa-glx libglib2.0-0
 
+# Setup SSH key for git
+mkdir -p ~/.ssh
+cp /workspace/.ssh/id_ed25519 ~/.ssh/id_ed25519
+chmod 600 ~/.ssh/id_ed25519
+ssh-keyscan github.com >> ~/.ssh/known_hosts 2>/dev/null
+
 cd /workspace/bza-project
 curl -LsSf https://astral.sh/uv/install.sh | sh
 source $HOME/.local/bin/env
@@ -117,29 +123,21 @@ uv pip install hatchling editables setuptools
 uv sync --no-build-isolation
 ```
 
-# Setup on RunPod, local disk
+Then run with `python -m bza_tool` directly (no `uv run` needed).
 
-This installs everything on the pod-local SSD (`/root/`) instead of the network volume, which is much faster for Python imports and script startup.
+## SSH Key for Git (RunPod)
+
+### One-time setup
+
+Generate a persistent key in `/workspace` so it survives pod restarts:
 
 ```bash
-apt update && apt install -y tmux mc libgl1-mesa-glx libglib2.0-0
-
-# Install uv
-curl -LsSf https://astral.sh/uv/install.sh | sh
-source $HOME/.local/bin/env
-
-# Clone repo to local disk
-cd /root
-git clone --recurse-submodules git@github.com:JakubBlaha/bza-project.git
-cd bza-project
-
-# Install dependencies (local disk = fast imports)
-uv pip install hatchling editables setuptools
-uv sync --no-build-isolation
-
-# Symlink results to network volume so they persist across pods
-# ln -s /workspace/results /root/bza-project/results
+mkdir -p /workspace/.ssh
+ssh-keygen -t ed25519 -C "runpod" -f /workspace/.ssh/id_ed25519 -N ""
+cat /workspace/.ssh/id_ed25519.pub
 ```
+
+Copy the public key and add it to GitHub → Settings → SSH and GPG keys → New SSH key.
 
 ## Throubleshooting
 
