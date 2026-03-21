@@ -162,6 +162,13 @@ def run_edit(args) -> None:
     logger.info("Saving edited model to %s", output_dir)
     edited_model.save_pretrained(output_dir)
 
+    # Free model from GPU memory before downstream steps (evaluate, quantize)
+    import gc
+    import torch
+    del edited_model, editor
+    gc.collect()
+    torch.cuda.empty_cache()
+
     # Save tokenizer alongside the model
     from transformers import AutoTokenizer
     tokenizer = AutoTokenizer.from_pretrained(hparams.model_name)
