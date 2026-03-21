@@ -69,7 +69,7 @@ def _quantize_model(model_path: str, bits: int, output_dir: Path, method: str) -
     is_gptj = config.model_type == "gptj"
 
     if is_gptj:
-        from gptqmodel.utils.model import check_and_get_model_definition
+        from gptqmodel.models.auto import check_and_get_model_definition
         model_def = check_and_get_model_definition(model_path, trust_remote_code=False)
         model_def.require_fast_init = False
 
