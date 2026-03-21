@@ -103,7 +103,8 @@ def run_evaluate(args) -> None:
 
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    output_filename = f"{model_path.parent.name}_{model_path.name}.json"
+    model_name = model_path.parent.parent.name
+    output_filename = f"{model_name}_{model_path.parent.name}_{model_path.name}.json"
     output_file = output_dir / output_filename
 
     logger.info("Configuration:")
