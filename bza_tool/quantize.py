@@ -63,13 +63,16 @@ def _quantize_model(model_path: str, bits: int, output_dir: Path, method: str) -
     quant_config = _get_quantize_config(method, bits)
     model = GPTQModel.load(model_path, quant_config, device="cuda:0")
 
-    # Fix meta tensors (e.g. GPT-J embed_positions) that don't get materialized
+    # Fix GPT-J meta tensor bug: embed_positions is a sinusoidal buffer that
+    # doesn't get materialized when accelerate uses device_map
     import torch
-    for name, module in model.model.named_modules():
-        for buf_name, buf in module.named_buffers(recurse=False):
-            if buf.device == torch.device("meta"):
-                logger.info("Materializing meta buffer: %s.%s", name, buf_name)
-                module.register_buffer(buf_name, torch.empty_like(buf, device="cuda:0"))
+    from transformers.models.gptj.modeling_gptj import GPTJAttention, create_sinusoidal_positions
+    for module in model.model.modules():
+        if isinstance(module, GPTJAttention) and module.embed_positions.device == torch.device("meta"):
+            pos_embd_dim = module.rotary_dim or module.embed_dim
+            module.embed_positions = create_sinusoidal_positions(
+                module.embed_positions.shape[0], pos_embd_dim
+            ).to("cuda:0")
 
     calibration_data = _load_calibration_data()
 
