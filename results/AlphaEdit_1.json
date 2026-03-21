@@ -1,0 +1,24 @@
+{
+  "summary": {
+    "model_path": "outputs/gpt-j-6B/AlphaEdit/1",
+    "num_evaluated": 1,
+    "rewrite_accuracy": 100.0,
+    "rephrase_accuracy": 0.0,
+    "locality_accuracy": 100.0
+  },
+  "per_edit": [
+    {
+      "case_id": 0,
+      "rewrite_acc": [
+        1.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 1.0
+    }
+  ]
+}
