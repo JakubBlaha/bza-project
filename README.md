@@ -150,7 +150,7 @@ python -c "import torch; print(torch.__version__, torch.version.cuda); print(tor
 
 **Run for model:**
 ```bash
-uv run python -m bza_tool run --model gpt-j-6b --methods AlphaEdit
+uv run python -m bza_tool run --model gpt-j-6B --methods AlphaEdit
 ```
 
 **RunPod Image:**
