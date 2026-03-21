@@ -61,17 +61,9 @@ def _quantize_model(model_path: str, bits: int, output_dir: Path, method: str) -
     logger.info("%s quantization: %s -> %d-bit", method.upper(), model_path, bits)
 
     quant_config = _get_quantize_config(method, bits)
-
-    # gptqmodel uses _fast_init which leaves tensors on meta device for GPT-J.
-    # Detect GPT-J and disable it by patching the model definition class.
-    from transformers import AutoConfig
-    config = AutoConfig.from_pretrained(model_path)
-    is_gptj = config.model_type == "gptj"
-
-    if is_gptj:
-        from gptqmodel.models.auto import check_and_get_model_definition
-        model_def = check_and_get_model_definition(model_path, trust_remote_code=False)
-        model_def.require_fast_init = False
+    # Disable offload_to_disk to prevent gptqmodel from creating a meta/shell
+    # model, which leaves buffers (e.g. GPT-J embed_positions) unmaterialized.
+    quant_config.offload_to_disk = False
 
     model = GPTQModel.load(model_path, quant_config, device="cuda:0")
 
