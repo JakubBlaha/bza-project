@@ -60,27 +60,19 @@ def _quantize_model(model_path: str, bits: int, output_dir: Path, method: str) -
 
     logger.info("%s quantization: %s -> %d-bit", method.upper(), model_path, bits)
 
-    # Monkey-patch GPT-J to fix meta tensor bug: embed_positions is a sinusoidal
-    # buffer that accelerate puts on meta device. Patch _get_embed_positions to
-    # recreate the buffer on-the-fly if it's on meta.
-    import torch
-    from transformers.models.gptj import modeling_gptj
-
-    def _patched_get_embed_positions(self, position_ids):
-        if self.embed_positions.device == torch.device("meta"):
-            pos_embd_dim = self.rotary_dim or self.embed_dim
-            self.embed_positions = modeling_gptj.create_sinusoidal_positions(
-                self.embed_positions.shape[0], pos_embd_dim
-            ).to(position_ids.device)
-        embed_positions = self.embed_positions
-        if embed_positions.device != position_ids.device:
-            embed_positions = embed_positions.to(position_ids.device)
-            self.embed_positions = embed_positions
-        return embed_positions.repeat(position_ids.shape[0], 1, 1)
-
-    modeling_gptj.GPTJAttention._get_embed_positions = _patched_get_embed_positions
-
     quant_config = _get_quantize_config(method, bits)
+
+    # gptqmodel uses _fast_init which leaves tensors on meta device for GPT-J.
+    # Detect GPT-J and disable it by patching the model definition class.
+    from transformers import AutoConfig
+    config = AutoConfig.from_pretrained(model_path)
+    is_gptj = config.model_type == "gptj"
+
+    if is_gptj:
+        from gptqmodel.utils.model import check_and_get_model_definition
+        model_def = check_and_get_model_definition(model_path, trust_remote_code=False)
+        model_def.require_fast_init = False
+
     model = GPTQModel.load(model_path, quant_config, device="cuda:0")
 
     calibration_data = _load_calibration_data()
