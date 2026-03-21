@@ -100,7 +100,7 @@ uv run python -m bza_tool run --model gpt2-xl --methods AlphaEdit --num-edits 50
 | `--bits {4,8}`        | Quantization bit width                                       |
 | `--method {METHOD}`   | Quantization method: gptq, awq, gptaq, qqq, gar (or any format supported by gptqmodel) |
 
-# Setup on RunPod
+## Setup on RunPod
 
 ```bash
 apt update && apt install -y tmux mc libgl1-mesa-glx libglib2.0-0
@@ -121,6 +121,8 @@ export UV_PYTHON_INSTALL_DIR=/workspace/.uv-python
 
 uv pip install hatchling editables setuptools
 uv sync --no-build-isolation
+
+tmux
 ```
 
 Then run with `python -m bza_tool` directly (no `uv run` needed).
