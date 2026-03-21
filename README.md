@@ -117,6 +117,30 @@ uv pip install hatchling editables setuptools
 uv sync --no-build-isolation
 ```
 
+# Setup on RunPod, local disk
+
+This installs everything on the pod-local SSD (`/root/`) instead of the network volume, which is much faster for Python imports and script startup.
+
+```bash
+apt update && apt install -y tmux mc libgl1-mesa-glx libglib2.0-0
+
+# Install uv
+curl -LsSf https://astral.sh/uv/install.sh | sh
+source $HOME/.local/bin/env
+
+# Clone repo to local disk
+cd /root
+git clone --recurse-submodules git@github.com:JakubBlaha/bza-project.git
+cd bza-project
+
+# Install dependencies (local disk = fast imports)
+uv pip install hatchling editables setuptools
+uv sync --no-build-isolation
+
+# Symlink results to network volume so they persist across pods
+# ln -s /workspace/results /root/bza-project/results
+```
+
 ## Throubleshooting
 
 **Test CUDA:**
