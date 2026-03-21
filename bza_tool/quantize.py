@@ -61,7 +61,7 @@ def _quantize_model(model_path: str, bits: int, output_dir: Path, method: str) -
     logger.info("%s quantization: %s -> %d-bit", method.upper(), model_path, bits)
 
     quant_config = _get_quantize_config(method, bits)
-    model = GPTQModel.load(model_path, quant_config)
+    model = GPTQModel.load(model_path, quant_config, device="cuda:0")
 
     calibration_data = _load_calibration_data()
 
