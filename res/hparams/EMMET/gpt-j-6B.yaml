@@ -23,7 +23,7 @@ emmet_lambda: 0.1
 model_parallel: false
 
 stats_dir: "./data/stats"
-device: 3
+device: 0
 model_name: "./hugging_cache/gpt-j-6B"
 alg_name: "EMMET"
 
