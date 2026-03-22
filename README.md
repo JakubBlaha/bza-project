@@ -58,47 +58,47 @@ uv run python -m bza_tool run --model gpt2-xl --methods AlphaEdit --num-edits 50
 
 ### AlphaEdit
 
-| Model | FP32 | GPTQ-8 | GPTQ-4 | GPTQ-3 | GPTQ-2 |
-| --- | --- | --- | --- | --- | --- |
-| gpt2-xl | ✅ | ✅ | ✅ | ✅ | ✅ |
-| gpt-j-6B | | | | | |
-| llama3.1-8b | | | | | |
-| llama3-8b | | | | | |
-| qwen2.5-7b | | | | | |
+| Model       | FP32 | GPTQ-8 | GPTQ-4 | GPTQ-3 | GPTQ-2 |
+| ----------- | ---- | ------ | ------ | ------ | ------ |
+| gpt2-xl     | ✅    | ✅      | ✅      | ✅      | ✅      |
+| gpt-j-6B    | ✅    | ✅      | ✅      | ✅      | ✅      |
+| llama3.1-8b |      |        |        |        |        |
+| llama3-8b   |      |        |        |        |        |
+| qwen2.5-7b  | ✅    | ✅      | ✅      | ✅      | ✅      |
 
 ### EMMET
 
-| Model | FP32 | GPTQ-8 | GPTQ-4 | GPTQ-3 | GPTQ-2 |
-| --- | --- | --- | --- | --- | --- |
-| gpt2-xl | ✅ | ✅ | ✅ | ✅ | ✅ |
-| gpt-j-6B | | | | | |
-| llama3.2-3b | | | | | |
-| llama-7b | | | | | |
+| Model       | FP32 | GPTQ-8 | GPTQ-4 | GPTQ-3 | GPTQ-2 |
+| ----------- | ---- | ------ | ------ | ------ | ------ |
+| gpt2-xl     | ✅    | ✅      | ✅      | ✅      | ✅      |
+| gpt-j-6B    |      |        |        |        |        |
+| llama3.2-3b |      |        |        |        |        |
+| llama-7b    |      |        |        |        |        |
 
 ### MEMIT
 
-| Model | FP32 | GPTQ-8 | GPTQ-4 | GPTQ-3 | GPTQ-2 |
-| --- | --- | --- | --- | --- | --- |
-| gpt2-xl | ✅ | ✅ | ✅ | ✅ | ✅ |
-| baichuan-7b | | | | | |
-| chatglm2-6b | | | | | |
-| gpt-j-6B | | | | | |
-| internlm-7b | | | | | |
-| llama3.2-3b | | | | | |
-| llama-7b | | | | | |
-| mistral-7b | | | | | |
-| qwen2.5-7b | | | | | |
-| qwen2-7b | | | | | |
-| qwen-7b | | | | | |
+| Model       | FP32 | GPTQ-8 | GPTQ-4 | GPTQ-3 | GPTQ-2 |
+| ----------- | ---- | ------ | ------ | ------ | ------ |
+| gpt2-xl     | ✅    | ✅      | ✅      | ✅      | ✅      |
+| baichuan-7b |      |        |        |        |        |
+| chatglm2-6b |      |        |        |        |        |
+| gpt-j-6B    | ✅    | ✅      | ✅      | ✅      | ✅      |
+| internlm-7b |      |        |        |        |        |
+| llama3.2-3b |      |        |        |        |        |
+| llama-7b    |      |        |        |        |        |
+| mistral-7b  |      |        |        |        |        |
+| qwen2.5-7b  |      |        |        |        |        |
+| qwen2-7b    |      |        |        |        |        |
+| qwen-7b     |      |        |        |        |        |
 
 ## Flags
 
-| Flag                  | Description                                                  |
-| --------------------- | ------------------------------------------------------------ |
-| `--fp16`              | Run ROME editing in fp16 (default: fp32 for reproducibility) |
-| `--num-edits N`       | Limit to first N CounterFact edits                           |
-| `--bits {4,8}`        | Quantization bit width                                       |
-| `--method {METHOD}`   | Quantization method: gptq, awq, gptaq, qqq, gar (or any format supported by gptqmodel) |
+| Flag                | Description                                                                            |
+| ------------------- | -------------------------------------------------------------------------------------- |
+| `--fp16`            | Run ROME editing in fp16 (default: fp32 for reproducibility)                           |
+| `--num-edits N`     | Limit to first N CounterFact edits                                                     |
+| `--bits {4,8}`      | Quantization bit width                                                                 |
+| `--method {METHOD}` | Quantization method: gptq, awq, gptaq, qqq, gar (or any format supported by gptqmodel) |
 
 ## Setup on RunPod
 
