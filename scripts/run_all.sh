@@ -85,15 +85,15 @@ uv run python -m bza_tool evaluate --model-path ./outputs/gpt-j-6B/EMMET/500-gpt
 # ============================================================
 uv run python -m bza_tool download meta-llama/Llama-3.2-3B
 uv run python -m bza_tool edit --method EMMET --model-config ./res/hparams/EMMET/llama3.2-3b.yaml --num-edits 500
-uv run python -m bza_tool evaluate --model-path ./outputs/llama-3.2-3b/EMMET/500
-uv run python -m bza_tool quantize --model-path ./outputs/llama-3.2-3b/EMMET/500 --method gptq --bits 8
-uv run python -m bza_tool evaluate --model-path ./outputs/llama-3.2-3b/EMMET/500-gptq8
-uv run python -m bza_tool quantize --model-path ./outputs/llama-3.2-3b/EMMET/500 --method gptq --bits 4
-uv run python -m bza_tool evaluate --model-path ./outputs/llama-3.2-3b/EMMET/500-gptq4
-uv run python -m bza_tool quantize --model-path ./outputs/llama-3.2-3b/EMMET/500 --method gptq --bits 3
-uv run python -m bza_tool evaluate --model-path ./outputs/llama-3.2-3b/EMMET/500-gptq3
-uv run python -m bza_tool quantize --model-path ./outputs/llama-3.2-3b/EMMET/500 --method gptq --bits 2
-uv run python -m bza_tool evaluate --model-path ./outputs/llama-3.2-3b/EMMET/500-gptq2
+uv run python -m bza_tool evaluate --model-path ./outputs/Llama-3.2-3B/EMMET/500
+uv run python -m bza_tool quantize --model-path ./outputs/Llama-3.2-3B/EMMET/500 --method gptq --bits 8
+uv run python -m bza_tool evaluate --model-path ./outputs/Llama-3.2-3B/EMMET/500-gptq8
+uv run python -m bza_tool quantize --model-path ./outputs/Llama-3.2-3B/EMMET/500 --method gptq --bits 4
+uv run python -m bza_tool evaluate --model-path ./outputs/Llama-3.2-3B/EMMET/500-gptq4
+uv run python -m bza_tool quantize --model-path ./outputs/Llama-3.2-3B/EMMET/500 --method gptq --bits 3
+uv run python -m bza_tool evaluate --model-path ./outputs/Llama-3.2-3B/EMMET/500-gptq3
+uv run python -m bza_tool quantize --model-path ./outputs/Llama-3.2-3B/EMMET/500 --method gptq --bits 2
+uv run python -m bza_tool evaluate --model-path ./outputs/Llama-3.2-3B/EMMET/500-gptq2
 
 # ============================================================
 # EMMET — llama-7b
@@ -175,15 +175,15 @@ uv run python -m bza_tool evaluate --model-path ./outputs/internlm-7b/MEMIT/500-
 # ============================================================
 uv run python -m bza_tool download meta-llama/Llama-3.2-3B
 uv run python -m bza_tool edit --method MEMIT --model-config ./res/hparams/MEMIT/llama3.2-3b.yaml --num-edits 500
-uv run python -m bza_tool evaluate --model-path ./outputs/llama-3.2-3b/MEMIT/500
-uv run python -m bza_tool quantize --model-path ./outputs/llama-3.2-3b/MEMIT/500 --method gptq --bits 8
-uv run python -m bza_tool evaluate --model-path ./outputs/llama-3.2-3b/MEMIT/500-gptq8
-uv run python -m bza_tool quantize --model-path ./outputs/llama-3.2-3b/MEMIT/500 --method gptq --bits 4
-uv run python -m bza_tool evaluate --model-path ./outputs/llama-3.2-3b/MEMIT/500-gptq4
-uv run python -m bza_tool quantize --model-path ./outputs/llama-3.2-3b/MEMIT/500 --method gptq --bits 3
-uv run python -m bza_tool evaluate --model-path ./outputs/llama-3.2-3b/MEMIT/500-gptq3
-uv run python -m bza_tool quantize --model-path ./outputs/llama-3.2-3b/MEMIT/500 --method gptq --bits 2
-uv run python -m bza_tool evaluate --model-path ./outputs/llama-3.2-3b/MEMIT/500-gptq2
+uv run python -m bza_tool evaluate --model-path ./outputs/Llama-3.2-3B/MEMIT/500
+uv run python -m bza_tool quantize --model-path ./outputs/Llama-3.2-3B/MEMIT/500 --method gptq --bits 8
+uv run python -m bza_tool evaluate --model-path ./outputs/Llama-3.2-3B/MEMIT/500-gptq8
+uv run python -m bza_tool quantize --model-path ./outputs/Llama-3.2-3B/MEMIT/500 --method gptq --bits 4
+uv run python -m bza_tool evaluate --model-path ./outputs/Llama-3.2-3B/MEMIT/500-gptq4
+uv run python -m bza_tool quantize --model-path ./outputs/Llama-3.2-3B/MEMIT/500 --method gptq --bits 3
+uv run python -m bza_tool evaluate --model-path ./outputs/Llama-3.2-3B/MEMIT/500-gptq3
+uv run python -m bza_tool quantize --model-path ./outputs/Llama-3.2-3B/MEMIT/500 --method gptq --bits 2
+uv run python -m bza_tool evaluate --model-path ./outputs/Llama-3.2-3B/MEMIT/500-gptq2
 
 # ============================================================
 # MEMIT — llama-7b
