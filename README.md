@@ -91,14 +91,34 @@ uv run python -m bza_tool run --model gpt2-xl --methods AlphaEdit --num-edits 50
 | qwen2-7b    |      |        |        |        |        |
 | qwen-7b     |      |        |        |        |        |
 
+### Model Access
+
+| Model       | HuggingFace Repo                    | Access |
+| ----------- | ----------------------------------- | ------ |
+| gpt2-xl     | openai-community/gpt2-xl            | Open   |
+| gpt-j-6B    | EleutherAI/gpt-j-6B                 | Open   |
+| qwen2.5-7b  | Qwen/Qwen2.5-7B                     | Open   |
+| qwen2-7b    | Qwen/Qwen2-7B                       | Open   |
+| qwen-7b     | Qwen/Qwen-7B                        | Open   |
+| mistral-7b  | mistralai/Mistral-7B-v0.1           | Open   |
+| baichuan-7b | baichuan-inc/Baichuan-7B            | Open   |
+| chatglm2-6b | THUDM/chatglm2-6b                   | Open   |
+| internlm-7b | internlm/internlm-7b                | Open   |
+| llama3.1-8b | meta-llama/Llama-3.1-8B-Instruct    | Gated  |
+| llama3-8b   | meta-llama/Meta-Llama-3-8B-Instruct | Gated  |
+| llama3.2-3b | meta-llama/Llama-3.2-3B             | Gated  |
+| llama-7b    | huggyllama/llama-7b                 | Open   |
+
+Gated models require accepting the license at the model page on huggingface.co and logging in via `huggingface-cli login`.
+
 ## Flags
 
-| Flag                | Description                                                                            |
-| ------------------- | -------------------------------------------------------------------------------------- |
-| `--fp16`            | Run ROME editing in fp16 (default: fp32 for reproducibility)                           |
-| `--num-edits N`     | Limit to first N CounterFact edits                                                     |
-| `--bits {4,8}`      | Quantization bit width                                                                 |
-| `--method {METHOD}` | Quantization method: gptq, awq, gptaq, qqq, gar (or any format supported by gptqmodel) |
+| Flag                 | Description                                                                            |
+| -------------------- | -------------------------------------------------------------------------------------- |
+| `--fp16`             | Run ROME editing in fp16 (default: fp32 for reproducibility)                           |
+| `--num-edits N`      | Limit to first N CounterFact edits                                                     |
+| `--bits {2, 3, 4,8}` | Quantization bit width                                                                 |
+| `--method {METHOD}`  | Quantization method: gptq, awq, gptaq, qqq, gar (or any format supported by gptqmodel) |
 
 ## Setup on RunPod
 
