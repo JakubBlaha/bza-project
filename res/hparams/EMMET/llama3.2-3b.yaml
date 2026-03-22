@@ -15,8 +15,8 @@ mlp_module_tmp: "model.layers.{}.mlp"
 attn_module_tmp: "model.layers.{}.self_attn"
 ln_f_module: "model.norm"
 lm_head_module: "model.embed_tokens"
-mom2_dataset: "wikipedia"
-mom2_n_samples: 100000
+mom2_dataset: "wikitext"
+mom2_n_samples: 10000
 mom2_dtype: "float32"
 update_norm_lambda: 0
 emmet_lambda: 0.1
@@ -24,5 +24,5 @@ model_parallel: false
 
 stats_dir: "./data/stats"
 device: 4
-model_name: "./hugging_cache/llama-2-7b"
+model_name: "./hugging_cache/llama-3.2-3b"
 alg_name: "EMMET"

@@ -5,6 +5,8 @@
 > - Add an **Attack Vector** section — how an attacker could use knowledge editing to inject misinformation or manipulate model behavior.
 > - Add an **Attack Model** section — threat model, attacker capabilities, assumptions (e.g., access to model weights).
 > What other security framing can we provide? Let's discuss that later.
+> Note that we have used EasyEdit and what modifications we have that/that they are stored in the repo.
+> Note: Several EasyEdit default hparam configs had incorrect model_name values (copy-paste errors, absolute paths from other machines). These were fixed to use consistent `./hugging_cache/` paths. The EMMET llama3.2-3b config was pointing to llama-2-7b (wrong model entirely).
 
 ## Abstract
 
@@ -79,6 +81,8 @@ To the best of my knowledge, no prior work directly investigates the interaction
 ### Evaluation Environment
 
 <!-- Hardware (GPU, VRAM), software (PyTorch, transformers, GPTQModel, EasyEdit), quantization calibration setup (wikitext-2, 256 samples). -->
+
+<!-- NOTE: All editing methods use the WikiText dataset (mom2_dataset: "wikitext") with 10,000 samples (mom2_n_samples: 10000) for computing second-moment statistics. The original EasyEdit configs used Wikipedia with 100,000 samples — we switched to WikiText for consistency across all models and methods, and to reduce compute requirements. -->
 
 ## Results
 
