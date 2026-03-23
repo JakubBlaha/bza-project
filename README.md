@@ -80,16 +80,16 @@ uv run python -m bza_tool run --model gpt2-xl --methods AlphaEdit --num-edits 50
 | Model       | FP32 | GPTQ-8 | GPTQ-4 | GPTQ-3 | GPTQ-2 |
 | ----------- | ---- | ------ | ------ | ------ | ------ |
 | gpt2-xl     | ✅    | ✅      | ✅      | ✅      | ✅      |
-| baichuan-7b |      |        |        |        |        |
-| chatglm2-6b |      |        |        |        |        |
+| baichuan-7b |      |        |        |        |        | Can't get access |
+| chatglm2-6b |      |        |        |        |        | Incompatible     |
 | gpt-j-6B    | ✅    | ✅      | ✅      | ✅      | ✅      |
 | internlm-7b |      |        |        |        |        |
-| llama3.2-3b |      |        |        |        |        |
+| llama3.2-3b | ✅    | ✅      | ✅      | ✅      | ✅      |
 | llama-7b    |      |        |        |        |        |
-| mistral-7b  |      |        |        |        |        |
-| qwen2.5-7b  |      |        |        |        |        |
-| qwen2-7b    |      |        |        |        |        |
-| qwen-7b     |      |        |        |        |        |
+| mistral-7b  |      |        |        |        |        | Doing            |
+| qwen2.5-7b  | ✅    | ✅      | ✅      | ✅      | ✅      |
+| qwen2-7b    |      |        |        |        |        | TODO             |
+| qwen-7b     |      |        |        |        |        | TODO             |
 
 ### Model Access
 
