@@ -65,7 +65,16 @@ def _quantize_model(model_path: str, bits: int, output_dir: Path, method: str) -
     # model, which leaves buffers (e.g. GPT-J embed_positions) unmaterialized.
     quant_config.offload_to_disk = False
 
-    model = GPTQModel.load(model_path, quant_config, device="cuda:0", trust_remote_code=True)
+    # Monkey-patch the version check to avoid hard failures on newer
+    # transformers versions (e.g. InternLM caps at <=4.44.2).
+    import gptqmodel.models.loader as _loader
+    _orig_check = _loader.check_versions
+    _loader.check_versions = lambda *a, **kw: None
+
+    try:
+        model = GPTQModel.load(model_path, quant_config, device="cuda:0", trust_remote_code=True)
+    finally:
+        _loader.check_versions = _orig_check
 
     calibration_data = _load_calibration_data()
 
