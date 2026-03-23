@@ -140,7 +140,7 @@ def run_evaluate(args) -> None:
 
     model_name_str = meta["source_model"]
 
-    tokenizer = AutoTokenizer.from_pretrained(model_path)
+    tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
 
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
@@ -151,6 +151,7 @@ def run_evaluate(args) -> None:
         model_path,
         device_map="auto",
         torch_dtype=torch_dtype,
+        trust_remote_code=True,
     )
 
     # Set model into evaluation mode
