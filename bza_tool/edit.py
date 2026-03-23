@@ -159,7 +159,7 @@ def run_edit(args) -> None:
 
     # Save tokenizer alongside the model
     from transformers import AutoTokenizer
-    tokenizer = AutoTokenizer.from_pretrained(hparams.model_name)
+    tokenizer = AutoTokenizer.from_pretrained(hparams.model_name, trust_remote_code=True)
     tokenizer.save_pretrained(output_dir)
 
     # ── Save edit metadata + metrics ───────────────────────────────────────
