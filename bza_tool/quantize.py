@@ -65,7 +65,7 @@ def _quantize_model(model_path: str, bits: int, output_dir: Path, method: str) -
     # model, which leaves buffers (e.g. GPT-J embed_positions) unmaterialized.
     quant_config.offload_to_disk = False
 
-    model = GPTQModel.load(model_path, quant_config, device="cuda:0")
+    model = GPTQModel.load(model_path, quant_config, device="cuda:0", trust_remote_code=True)
 
     calibration_data = _load_calibration_data()
 
