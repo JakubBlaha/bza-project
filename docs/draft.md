@@ -7,6 +7,7 @@
 > What other security framing can we provide? Let's discuss that later.
 > Note that we have used EasyEdit and what modifications we have that/that they are stored in the repo.
 > Note: Several EasyEdit default hparam configs had incorrect model_name values (copy-paste errors, absolute paths from other machines). These were fixed to use consistent `./hugging_cache/` paths. The EMMET llama3.2-3b config was pointing to llama-2-7b (wrong model entirely).
+> Note that models were gathered HuggingFace
 
 ## Abstract
 
