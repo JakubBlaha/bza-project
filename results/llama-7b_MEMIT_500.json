@@ -1,6 +1,6 @@
 {
   "summary": {
-    "model_path": "outputs/llama-2-7b/MEMIT/500",
+    "model_path": "outputs/llama-7b/MEMIT/500",
     "num_evaluated": 500,
     "rewrite_accuracy": 94.76666666666667,
     "rephrase_accuracy": 77.725,

@@ -1,10 +1,10 @@
 {
   "summary": {
-    "model_path": "outputs/llama-2-7b/MEMIT/500-gptq8",
+    "model_path": "outputs/llama-7b/MEMIT/500-gptq4",
     "num_evaluated": 500,
-    "rewrite_accuracy": 94.76666666666667,
-    "rephrase_accuracy": 77.53333333333333,
-    "locality_accuracy": 51.46000000000001
+    "rewrite_accuracy": 94.26666666666668,
+    "rephrase_accuracy": 73.65833333333333,
+    "locality_accuracy": 50.82000000000001
   },
   "per_edit": [
     {
@@ -18,7 +18,7 @@
         0.0,
         0.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.6
     },
     {
       "case_id": 1,
@@ -31,7 +31,7 @@
         1.0,
         0.0
       ],
-      "locality_acc": 0.3
+      "locality_acc": 0.2
     },
     {
       "case_id": 2,
@@ -57,7 +57,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.8
     },
     {
       "case_id": 4,
@@ -70,7 +70,7 @@
         0.5,
         0.5
       ],
-      "locality_acc": 0.1
+      "locality_acc": 0.2
     },
     {
       "case_id": 5,
@@ -83,7 +83,7 @@
         0.0,
         0.0
       ],
-      "locality_acc": 0.8
+      "locality_acc": 0.7
     },
     {
       "case_id": 6,
@@ -109,7 +109,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.3
+      "locality_acc": 0.4
     },
     {
       "case_id": 8,
@@ -135,7 +135,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.9
+      "locality_acc": 0.5
     },
     {
       "case_id": 10,
@@ -148,7 +148,7 @@
         0.5,
         0.5
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.5
     },
     {
       "case_id": 11,
@@ -159,9 +159,9 @@
       "portability": {},
       "rephrase_acc": [
         0.0,
-        1.0
+        0.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.7
     },
     {
       "case_id": 12,
@@ -187,7 +187,7 @@
         0.0,
         0.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.6
     },
     {
       "case_id": 15,
@@ -213,7 +213,7 @@
         0.5,
         0.5
       ],
-      "locality_acc": 0.1
+      "locality_acc": 0.3
     },
     {
       "case_id": 17,
@@ -226,7 +226,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.0
+      "locality_acc": 0.1
     },
     {
       "case_id": 19,
@@ -249,10 +249,10 @@
       "locality": {},
       "portability": {},
       "rephrase_acc": [
-        1.0,
+        0.0,
         1.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.6
     },
     {
       "case_id": 21,
@@ -276,7 +276,7 @@
       "portability": {},
       "rephrase_acc": [
         1.0,
-        1.0
+        0.6666666666666666
       ],
       "locality_acc": 0.6
     },
@@ -291,7 +291,7 @@
         1.0,
         0.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.3
     },
     {
       "case_id": 24,
@@ -304,7 +304,7 @@
         0.0,
         0.0
       ],
-      "locality_acc": 0.3
+      "locality_acc": 0.2
     },
     {
       "case_id": 25,
@@ -317,18 +317,18 @@
         1.0,
         0.5
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.4
     },
     {
       "case_id": 26,
       "rewrite_acc": [
-        1.0
+        0.0
       ],
       "locality": {},
       "portability": {},
       "rephrase_acc": [
         0.0,
-        1.0
+        0.0
       ],
       "locality_acc": 0.4
     },
@@ -343,7 +343,7 @@
         1.0,
         0.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.8
     },
     {
       "case_id": 28,
@@ -356,12 +356,12 @@
         0.0,
         0.0
       ],
-      "locality_acc": 0.8
+      "locality_acc": 0.7
     },
     {
       "case_id": 29,
       "rewrite_acc": [
-        1.0
+        0.6666666666666666
       ],
       "locality": {},
       "portability": {},
@@ -395,7 +395,7 @@
         0.0,
         1.0
       ],
-      "locality_acc": 0.8
+      "locality_acc": 0.7
     },
     {
       "case_id": 32,
@@ -408,7 +408,7 @@
         0.0,
         0.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.3
     },
     {
       "case_id": 33,
@@ -434,7 +434,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.6
     },
     {
       "case_id": 35,
@@ -460,7 +460,7 @@
         1.0,
         0.0
       ],
-      "locality_acc": 0.9
+      "locality_acc": 0.8
     },
     {
       "case_id": 38,
@@ -470,7 +470,7 @@
       "locality": {},
       "portability": {},
       "rephrase_acc": [
-        1.0,
+        0.5,
         1.0
       ],
       "locality_acc": 0.0
@@ -538,7 +538,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.8
+      "locality_acc": 0.9
     },
     {
       "case_id": 44,
@@ -548,7 +548,7 @@
       "locality": {},
       "portability": {},
       "rephrase_acc": [
-        1.0,
+        0.0,
         1.0
       ],
       "locality_acc": 0.5
@@ -577,12 +577,12 @@
         1.0,
         0.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.3
     },
     {
       "case_id": 47,
       "rewrite_acc": [
-        1.0
+        0.0
       ],
       "locality": {},
       "portability": {},
@@ -601,9 +601,9 @@
       "portability": {},
       "rephrase_acc": [
         1.0,
-        1.0
+        0.5
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.3
     },
     {
       "case_id": 49,
@@ -616,7 +616,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.1
+      "locality_acc": 0.2
     },
     {
       "case_id": 50,
@@ -629,18 +629,18 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.7
     },
     {
       "case_id": 52,
       "rewrite_acc": [
-        0.0
+        1.0
       ],
       "locality": {},
       "portability": {},
       "rephrase_acc": [
         0.0,
-        1.0
+        0.0
       ],
       "locality_acc": 0.8
     },
@@ -655,7 +655,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.7
     },
     {
       "case_id": 54,
@@ -668,7 +668,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.9
+      "locality_acc": 0.4
     },
     {
       "case_id": 56,
@@ -692,9 +692,9 @@
       "portability": {},
       "rephrase_acc": [
         0.6666666666666666,
-        1.0
+        0.6666666666666666
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.5
     },
     {
       "case_id": 58,
@@ -720,7 +720,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.3
+      "locality_acc": 0.5
     },
     {
       "case_id": 60,
@@ -759,7 +759,7 @@
         0.0,
         1.0
       ],
-      "locality_acc": 0.9
+      "locality_acc": 0.8
     },
     {
       "case_id": 63,
@@ -772,7 +772,7 @@
         1.0,
         0.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.4
     },
     {
       "case_id": 64,
@@ -782,7 +782,7 @@
       "locality": {},
       "portability": {},
       "rephrase_acc": [
-        1.0,
+        0.5,
         1.0
       ],
       "locality_acc": 0.9
@@ -795,7 +795,7 @@
       "locality": {},
       "portability": {},
       "rephrase_acc": [
-        1.0,
+        0.0,
         1.0
       ],
       "locality_acc": 0.6
@@ -811,7 +811,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.7
     },
     {
       "case_id": 67,
@@ -837,7 +837,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.7
     },
     {
       "case_id": 69,
@@ -850,7 +850,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.6
     },
     {
       "case_id": 71,
@@ -860,10 +860,10 @@
       "locality": {},
       "portability": {},
       "rephrase_acc": [
-        1.0,
+        0.5,
         1.0
       ],
-      "locality_acc": 0.0
+      "locality_acc": 0.1
     },
     {
       "case_id": 72,
@@ -876,12 +876,12 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.6
     },
     {
       "case_id": 73,
       "rewrite_acc": [
-        1.0
+        0.5
       ],
       "locality": {},
       "portability": {},
@@ -902,7 +902,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.4
     },
     {
       "case_id": 75,
@@ -913,9 +913,9 @@
       "portability": {},
       "rephrase_acc": [
         0.0,
-        1.0
+        0.0
       ],
-      "locality_acc": 0.8
+      "locality_acc": 0.7
     },
     {
       "case_id": 76,
@@ -928,7 +928,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.9
+      "locality_acc": 0.8
     },
     {
       "case_id": 77,
@@ -954,7 +954,7 @@
         0.0,
         0.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.5
     },
     {
       "case_id": 79,
@@ -967,7 +967,7 @@
         0.0,
         1.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.5
     },
     {
       "case_id": 80,
@@ -980,7 +980,7 @@
         0.0,
         0.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.4
     },
     {
       "case_id": 81,
@@ -1006,7 +1006,7 @@
         1.0,
         0.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.6
     },
     {
       "case_id": 83,
@@ -1029,10 +1029,10 @@
       "locality": {},
       "portability": {},
       "rephrase_acc": [
-        1.0,
+        0.0,
         0.0
       ],
-      "locality_acc": 0.9
+      "locality_acc": 0.7
     },
     {
       "case_id": 86,
@@ -1042,10 +1042,10 @@
       "locality": {},
       "portability": {},
       "rephrase_acc": [
-        1.0,
+        0.0,
         1.0
       ],
-      "locality_acc": 0.8
+      "locality_acc": 0.6
     },
     {
       "case_id": 88,
@@ -1071,7 +1071,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.5
     },
     {
       "case_id": 90,
@@ -1084,7 +1084,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.0
+      "locality_acc": 0.1
     },
     {
       "case_id": 91,
@@ -1094,10 +1094,10 @@
       "locality": {},
       "portability": {},
       "rephrase_acc": [
-        1.0,
+        0.0,
         1.0
       ],
-      "locality_acc": 0.8
+      "locality_acc": 0.9
     },
     {
       "case_id": 93,
@@ -1110,7 +1110,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.8
     },
     {
       "case_id": 94,
@@ -1123,7 +1123,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.8
+      "locality_acc": 0.7
     },
     {
       "case_id": 95,
@@ -1149,7 +1149,7 @@
         0.5,
         0.5
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.5
     },
     {
       "case_id": 97,
@@ -1162,7 +1162,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.3
+      "locality_acc": 0.4
     },
     {
       "case_id": 98,
@@ -1186,9 +1186,9 @@
       "portability": {},
       "rephrase_acc": [
         0.0,
-        1.0
+        0.0
       ],
-      "locality_acc": 0.9
+      "locality_acc": 0.8
     },
     {
       "case_id": 100,
@@ -1199,9 +1199,9 @@
       "portability": {},
       "rephrase_acc": [
         0.6666666666666666,
-        1.0
+        0.6666666666666666
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.4
     },
     {
       "case_id": 101,
@@ -1214,7 +1214,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.2
+      "locality_acc": 0.6
     },
     {
       "case_id": 102,
@@ -1253,7 +1253,7 @@
         0.0,
         1.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.7
     },
     {
       "case_id": 105,
@@ -1279,7 +1279,7 @@
         0.6666666666666666,
         0.6666666666666666
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.7
     },
     {
       "case_id": 108,
@@ -1292,7 +1292,7 @@
         1.0,
         0.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.5
     },
     {
       "case_id": 109,
@@ -1302,10 +1302,10 @@
       "locality": {},
       "portability": {},
       "rephrase_acc": [
-        0.0,
+        1.0,
         0.5
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.7
     },
     {
       "case_id": 110,
@@ -1342,9 +1342,9 @@
       "portability": {},
       "rephrase_acc": [
         0.0,
-        1.0
+        0.0
       ],
-      "locality_acc": 0.9
+      "locality_acc": 0.8
     },
     {
       "case_id": 113,
@@ -1355,9 +1355,9 @@
       "portability": {},
       "rephrase_acc": [
         0.6666666666666666,
-        0.3333333333333333
+        0.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.2
     },
     {
       "case_id": 114,
@@ -1383,7 +1383,7 @@
         0.5,
         0.5
       ],
-      "locality_acc": 0.2
+      "locality_acc": 0.3
     },
     {
       "case_id": 117,
@@ -1396,7 +1396,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.8
     },
     {
       "case_id": 118,
@@ -1407,14 +1407,14 @@
       "portability": {},
       "rephrase_acc": [
         0.0,
-        1.0
+        0.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.8
     },
     {
       "case_id": 119,
       "rewrite_acc": [
-        0.5
+        1.0
       ],
       "locality": {},
       "portability": {},
@@ -1432,8 +1432,8 @@
       "locality": {},
       "portability": {},
       "rephrase_acc": [
-        0.0,
-        0.0
+        1.0,
+        1.0
       ],
       "locality_acc": 1.0
     },
@@ -1448,12 +1448,12 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.9
     },
     {
       "case_id": 122,
       "rewrite_acc": [
-        1.0
+        0.6666666666666666
       ],
       "locality": {},
       "portability": {},
@@ -1461,7 +1461,7 @@
         0.6666666666666666,
         0.3333333333333333
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.5
     },
     {
       "case_id": 123,
@@ -1492,7 +1492,7 @@
     {
       "case_id": 125,
       "rewrite_acc": [
-        1.0
+        0.0
       ],
       "locality": {},
       "portability": {},
@@ -1510,7 +1510,7 @@
       "locality": {},
       "portability": {},
       "rephrase_acc": [
-        1.0,
+        0.75,
         0.75
       ],
       "locality_acc": 0.4
@@ -1526,7 +1526,7 @@
         0.0,
         1.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.8
     },
     {
       "case_id": 128,
@@ -1537,9 +1537,9 @@
       "portability": {},
       "rephrase_acc": [
         1.0,
-        1.0
+        0.5
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.5
     },
     {
       "case_id": 129,
@@ -1563,9 +1563,9 @@
       "portability": {},
       "rephrase_acc": [
         1.0,
-        0.0
+        1.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.6
     },
     {
       "case_id": 131,
@@ -1578,12 +1578,12 @@
         1.0,
         0.0
       ],
-      "locality_acc": 0.9
+      "locality_acc": 0.8
     },
     {
       "case_id": 132,
       "rewrite_acc": [
-        0.0
+        1.0
       ],
       "locality": {},
       "portability": {},
@@ -1591,7 +1591,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.6
     },
     {
       "case_id": 133,
@@ -1604,7 +1604,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.2
     },
     {
       "case_id": 134,
@@ -1640,10 +1640,10 @@
       "locality": {},
       "portability": {},
       "rephrase_acc": [
-        1.0,
+        0.5,
         1.0
       ],
-      "locality_acc": 0.3
+      "locality_acc": 0.4
     },
     {
       "case_id": 137,
@@ -1669,7 +1669,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.6
     },
     {
       "case_id": 139,
@@ -1693,7 +1693,7 @@
       "portability": {},
       "rephrase_acc": [
         1.0,
-        1.0
+        0.0
       ],
       "locality_acc": 0.4
     },
@@ -1721,7 +1721,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.3
+      "locality_acc": 0.5
     },
     {
       "case_id": 143,
@@ -1744,7 +1744,7 @@
       "locality": {},
       "portability": {},
       "rephrase_acc": [
-        1.0,
+        0.5,
         1.0
       ],
       "locality_acc": 0.5
@@ -1757,7 +1757,7 @@
       "locality": {},
       "portability": {},
       "rephrase_acc": [
-        0.0,
+        1.0,
         1.0
       ],
       "locality_acc": 0.6
@@ -1773,7 +1773,7 @@
         1.0,
         0.0
       ],
-      "locality_acc": 0.3
+      "locality_acc": 0.5
     },
     {
       "case_id": 147,
@@ -1799,7 +1799,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.4
     },
     {
       "case_id": 149,
@@ -1812,7 +1812,7 @@
         0.0,
         0.0
       ],
-      "locality_acc": 0.3
+      "locality_acc": 0.2
     },
     {
       "case_id": 150,
@@ -1836,9 +1836,9 @@
       "portability": {},
       "rephrase_acc": [
         0.0,
-        1.0
+        0.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.8
     },
     {
       "case_id": 152,
@@ -1851,7 +1851,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.6
     },
     {
       "case_id": 153,
@@ -1864,7 +1864,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.2
+      "locality_acc": 0.4
     },
     {
       "case_id": 154,
@@ -1890,7 +1890,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.1
+      "locality_acc": 0.0
     },
     {
       "case_id": 156,
@@ -1903,7 +1903,7 @@
         1.0,
         0.0
       ],
-      "locality_acc": 0.0
+      "locality_acc": 0.2
     },
     {
       "case_id": 157,
@@ -1929,7 +1929,7 @@
         0.0,
         1.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.7
     },
     {
       "case_id": 159,
@@ -1955,7 +1955,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.1
+      "locality_acc": 0.2
     },
     {
       "case_id": 161,
@@ -1968,7 +1968,7 @@
         0.0,
         0.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.5
     },
     {
       "case_id": 162,
@@ -1979,9 +1979,9 @@
       "portability": {},
       "rephrase_acc": [
         1.0,
-        1.0
+        0.5
       ],
-      "locality_acc": 0.3
+      "locality_acc": 0.5
     },
     {
       "case_id": 163,
@@ -1992,7 +1992,7 @@
       "portability": {},
       "rephrase_acc": [
         1.0,
-        0.5
+        1.0
       ],
       "locality_acc": 0.0
     },
@@ -2007,7 +2007,7 @@
         0.5,
         0.5
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.6
     },
     {
       "case_id": 165,
@@ -2020,7 +2020,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.3
     },
     {
       "case_id": 166,
@@ -2033,7 +2033,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.5
     },
     {
       "case_id": 167,
@@ -2046,12 +2046,12 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.9
+      "locality_acc": 0.8
     },
     {
       "case_id": 168,
       "rewrite_acc": [
-        0.5
+        1.0
       ],
       "locality": {},
       "portability": {},
@@ -2059,7 +2059,7 @@
         1.0,
         0.5
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.8
     },
     {
       "case_id": 169,
@@ -2072,7 +2072,7 @@
         0.0,
         0.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.5
     },
     {
       "case_id": 170,
@@ -2085,7 +2085,7 @@
         0.0,
         0.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.4
     },
     {
       "case_id": 171,
@@ -2098,7 +2098,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.5
     },
     {
       "case_id": 173,
@@ -2111,7 +2111,7 @@
         0.6666666666666666,
         0.6666666666666666
       ],
-      "locality_acc": 0.1
+      "locality_acc": 0.2
     },
     {
       "case_id": 174,
@@ -2124,7 +2124,7 @@
         1.0,
         0.5
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.4
     },
     {
       "case_id": 175,
@@ -2150,7 +2150,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.3
     },
     {
       "case_id": 177,
@@ -2174,9 +2174,9 @@
       "portability": {},
       "rephrase_acc": [
         1.0,
-        1.0
+        0.0
       ],
-      "locality_acc": 0.9
+      "locality_acc": 0.7
     },
     {
       "case_id": 179,
@@ -2189,7 +2189,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.8
+      "locality_acc": 0.7
     },
     {
       "case_id": 180,
@@ -2202,7 +2202,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.2
     },
     {
       "case_id": 182,
@@ -2215,7 +2215,7 @@
         0.0,
         0.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.4
     },
     {
       "case_id": 183,
@@ -2228,7 +2228,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.9
+      "locality_acc": 0.7
     },
     {
       "case_id": 184,
@@ -2254,7 +2254,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.5
     },
     {
       "case_id": 186,
@@ -2264,10 +2264,10 @@
       "locality": {},
       "portability": {},
       "rephrase_acc": [
-        1.0,
+        0.0,
         1.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.8
     },
     {
       "case_id": 187,
@@ -2280,7 +2280,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.6
     },
     {
       "case_id": 188,
@@ -2293,7 +2293,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.3
+      "locality_acc": 0.4
     },
     {
       "case_id": 189,
@@ -2345,7 +2345,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.4
     },
     {
       "case_id": 194,
@@ -2358,12 +2358,12 @@
         1.0,
         0.5
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.4
     },
     {
       "case_id": 195,
       "rewrite_acc": [
-        1.0
+        0.6666666666666666
       ],
       "locality": {},
       "portability": {},
@@ -2371,7 +2371,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 1.0
+      "locality_acc": 0.9
     },
     {
       "case_id": 196,
@@ -2384,7 +2384,7 @@
         0.0,
         0.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.6
     },
     {
       "case_id": 197,
@@ -2397,7 +2397,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.6
     },
     {
       "case_id": 198,
@@ -2407,7 +2407,7 @@
       "locality": {},
       "portability": {},
       "rephrase_acc": [
-        0.0,
+        1.0,
         1.0
       ],
       "locality_acc": 0.0
@@ -2423,7 +2423,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.3
     },
     {
       "case_id": 201,
@@ -2436,7 +2436,7 @@
         0.0,
         1.0
       ],
-      "locality_acc": 0.9
+      "locality_acc": 0.8
     },
     {
       "case_id": 202,
@@ -2472,7 +2472,7 @@
       "locality": {},
       "portability": {},
       "rephrase_acc": [
-        1.0,
+        0.5,
         1.0
       ],
       "locality_acc": 0.6
@@ -2527,7 +2527,7 @@
         1.0,
         0.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.6
     },
     {
       "case_id": 209,
@@ -2553,7 +2553,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.9
+      "locality_acc": 0.8
     },
     {
       "case_id": 211,
@@ -2592,7 +2592,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.8
     },
     {
       "case_id": 215,
@@ -2605,7 +2605,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.2
+      "locality_acc": 0.3
     },
     {
       "case_id": 216,
@@ -2618,7 +2618,7 @@
         0.0,
         1.0
       ],
-      "locality_acc": 0.9
+      "locality_acc": 1.0
     },
     {
       "case_id": 217,
@@ -2631,12 +2631,12 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.3
     },
     {
       "case_id": 218,
       "rewrite_acc": [
-        1.0
+        0.0
       ],
       "locality": {},
       "portability": {},
@@ -2657,7 +2657,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.8
+      "locality_acc": 0.7
     },
     {
       "case_id": 220,
@@ -2670,7 +2670,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.9
     },
     {
       "case_id": 221,
@@ -2681,9 +2681,9 @@
       "portability": {},
       "rephrase_acc": [
         0.5,
-        0.5
+        1.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.7
     },
     {
       "case_id": 222,
@@ -2709,7 +2709,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.5
     },
     {
       "case_id": 224,
@@ -2722,7 +2722,7 @@
         0.0,
         1.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.6
     },
     {
       "case_id": 225,
@@ -2748,7 +2748,7 @@
         0.0,
         0.0
       ],
-      "locality_acc": 0.1
+      "locality_acc": 0.0
     },
     {
       "case_id": 227,
@@ -2771,10 +2771,10 @@
       "locality": {},
       "portability": {},
       "rephrase_acc": [
-        1.0,
+        0.0,
         1.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.7
     },
     {
       "case_id": 229,
@@ -2784,10 +2784,10 @@
       "locality": {},
       "portability": {},
       "rephrase_acc": [
-        1.0,
-        1.0
+        0.0,
+        0.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.7
     },
     {
       "case_id": 230,
@@ -2800,7 +2800,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.3
+      "locality_acc": 0.4
     },
     {
       "case_id": 231,
@@ -2813,7 +2813,7 @@
         0.0,
         0.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.3
     },
     {
       "case_id": 232,
@@ -2865,7 +2865,7 @@
         1.0,
         0.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.5
     },
     {
       "case_id": 237,
@@ -2878,7 +2878,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.5
     },
     {
       "case_id": 238,
@@ -2891,7 +2891,7 @@
         0.6666666666666666,
         1.0
       ],
-      "locality_acc": 1.0
+      "locality_acc": 0.9
     },
     {
       "case_id": 239,
@@ -2902,7 +2902,7 @@
       "portability": {},
       "rephrase_acc": [
         1.0,
-        0.5
+        1.0
       ],
       "locality_acc": 0.0
     },
@@ -2930,7 +2930,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.4
     },
     {
       "case_id": 242,
@@ -2941,7 +2941,7 @@
       "portability": {},
       "rephrase_acc": [
         0.5,
-        1.0
+        0.5
       ],
       "locality_acc": 0.5
     },
@@ -2956,7 +2956,7 @@
         1.0,
         0.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.9
     },
     {
       "case_id": 244,
@@ -2969,7 +2969,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.3
+      "locality_acc": 0.2
     },
     {
       "case_id": 245,
@@ -3047,7 +3047,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.5
     },
     {
       "case_id": 252,
@@ -3110,9 +3110,9 @@
       "portability": {},
       "rephrase_acc": [
         1.0,
-        1.0
+        0.0
       ],
-      "locality_acc": 0.8
+      "locality_acc": 0.9
     },
     {
       "case_id": 259,
@@ -3162,9 +3162,9 @@
       "portability": {},
       "rephrase_acc": [
         0.0,
-        1.0
+        0.0
       ],
-      "locality_acc": 0.9
+      "locality_acc": 0.8
     },
     {
       "case_id": 263,
@@ -3177,7 +3177,7 @@
         1.0,
         0.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.3
     },
     {
       "case_id": 264,
@@ -3203,7 +3203,7 @@
         0.0,
         1.0
       ],
-      "locality_acc": 0.1
+      "locality_acc": 0.0
     },
     {
       "case_id": 268,
@@ -3216,7 +3216,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.4
     },
     {
       "case_id": 269,
@@ -3240,7 +3240,7 @@
       "portability": {},
       "rephrase_acc": [
         1.0,
-        0.75
+        1.0
       ],
       "locality_acc": 0.0
     },
@@ -3266,7 +3266,7 @@
       "portability": {},
       "rephrase_acc": [
         1.0,
-        1.0
+        0.0
       ],
       "locality_acc": 0.7
     },
@@ -3281,20 +3281,20 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.6
     },
     {
       "case_id": 274,
       "rewrite_acc": [
-        0.0
+        1.0
       ],
       "locality": {},
       "portability": {},
       "rephrase_acc": [
-        0.0,
+        1.0,
         0.0
       ],
-      "locality_acc": 0.8
+      "locality_acc": 0.7
     },
     {
       "case_id": 275,
@@ -3320,7 +3320,7 @@
         0.5,
         0.5
       ],
-      "locality_acc": 0.3
+      "locality_acc": 0.2
     },
     {
       "case_id": 277,
@@ -3346,7 +3346,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.3
     },
     {
       "case_id": 279,
@@ -3359,7 +3359,7 @@
         0.6666666666666666,
         1.0
       ],
-      "locality_acc": 0.2
+      "locality_acc": 0.1
     },
     {
       "case_id": 280,
@@ -3437,7 +3437,7 @@
         1.0,
         0.5
       ],
-      "locality_acc": 0.9
+      "locality_acc": 1.0
     },
     {
       "case_id": 286,
@@ -3447,7 +3447,7 @@
       "locality": {},
       "portability": {},
       "rephrase_acc": [
-        1.0,
+        0.0,
         0.0
       ],
       "locality_acc": 0.4
@@ -3463,7 +3463,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.6
     },
     {
       "case_id": 288,
@@ -3476,7 +3476,7 @@
         0.5,
         1.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.5
     },
     {
       "case_id": 289,
@@ -3502,7 +3502,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.5
     },
     {
       "case_id": 291,
@@ -3515,7 +3515,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.2
+      "locality_acc": 0.4
     },
     {
       "case_id": 292,
@@ -3528,7 +3528,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.1
+      "locality_acc": 0.3
     },
     {
       "case_id": 293,
@@ -3539,7 +3539,7 @@
       "portability": {},
       "rephrase_acc": [
         0.6666666666666666,
-        0.6666666666666666
+        1.0
       ],
       "locality_acc": 0.7
     },
@@ -3554,7 +3554,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.5
     },
     {
       "case_id": 295,
@@ -3567,7 +3567,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 1.0
+      "locality_acc": 0.9
     },
     {
       "case_id": 296,
@@ -3593,7 +3593,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.3
     },
     {
       "case_id": 298,
@@ -3619,7 +3619,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.3
     },
     {
       "case_id": 300,
@@ -3632,12 +3632,12 @@
         1.0,
         0.0
       ],
-      "locality_acc": 0.3
+      "locality_acc": 0.2
     },
     {
       "case_id": 301,
       "rewrite_acc": [
-        1.0
+        0.0
       ],
       "locality": {},
       "portability": {},
@@ -3645,7 +3645,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.2
+      "locality_acc": 0.1
     },
     {
       "case_id": 302,
@@ -3658,7 +3658,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.8
+      "locality_acc": 0.9
     },
     {
       "case_id": 303,
@@ -3684,7 +3684,7 @@
         0.5,
         0.5
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.2
     },
     {
       "case_id": 306,
@@ -3697,7 +3697,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.5
     },
     {
       "case_id": 308,
@@ -3710,7 +3710,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 1.0
+      "locality_acc": 0.9
     },
     {
       "case_id": 309,
@@ -3723,7 +3723,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.2
+      "locality_acc": 0.1
     },
     {
       "case_id": 310,
@@ -3736,7 +3736,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.8
     },
     {
       "case_id": 311,
@@ -3749,7 +3749,7 @@
         0.0,
         0.0
       ],
-      "locality_acc": 0.8
+      "locality_acc": 0.7
     },
     {
       "case_id": 312,
@@ -3762,7 +3762,7 @@
         1.0,
         0.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.4
     },
     {
       "case_id": 313,
@@ -3775,7 +3775,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.4
     },
     {
       "case_id": 314,
@@ -3801,7 +3801,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.8
     },
     {
       "case_id": 317,
@@ -3814,7 +3814,7 @@
         1.0,
         0.0
       ],
-      "locality_acc": 0.9
+      "locality_acc": 0.8
     },
     {
       "case_id": 318,
@@ -3827,7 +3827,7 @@
         0.5,
         0.5
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.5
     },
     {
       "case_id": 319,
@@ -3840,7 +3840,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 1.0
     },
     {
       "case_id": 320,
@@ -3853,7 +3853,7 @@
         1.0,
         0.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.5
     },
     {
       "case_id": 321,
@@ -3866,7 +3866,7 @@
         0.5,
         1.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.1
     },
     {
       "case_id": 322,
@@ -3879,7 +3879,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.9
     },
     {
       "case_id": 323,
@@ -3916,7 +3916,7 @@
       "portability": {},
       "rephrase_acc": [
         0.5,
-        0.5
+        1.0
       ],
       "locality_acc": 0.3
     },
@@ -3931,7 +3931,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.1
+      "locality_acc": 0.2
     },
     {
       "case_id": 327,
@@ -3944,7 +3944,7 @@
         0.0,
         1.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.5
     },
     {
       "case_id": 328,
@@ -3970,7 +3970,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.9
+      "locality_acc": 0.6
     },
     {
       "case_id": 330,
@@ -3983,7 +3983,7 @@
         1.0,
         0.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.3
     },
     {
       "case_id": 331,
@@ -3996,7 +3996,7 @@
         1.0,
         0.5
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.6
     },
     {
       "case_id": 333,
@@ -4035,7 +4035,7 @@
         1.0,
         0.5
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.5
     },
     {
       "case_id": 336,
@@ -4048,7 +4048,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.8
+      "locality_acc": 0.7
     },
     {
       "case_id": 337,
@@ -4113,7 +4113,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.3
+      "locality_acc": 0.4
     },
     {
       "case_id": 342,
@@ -4139,7 +4139,7 @@
         0.0,
         1.0
       ],
-      "locality_acc": 0.2
+      "locality_acc": 0.3
     },
     {
       "case_id": 344,
@@ -4150,7 +4150,7 @@
       "portability": {},
       "rephrase_acc": [
         1.0,
-        1.0
+        0.0
       ],
       "locality_acc": 0.6
     },
@@ -4188,10 +4188,10 @@
       "locality": {},
       "portability": {},
       "rephrase_acc": [
-        1.0,
+        0.6666666666666666,
         0.6666666666666666
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.5
     },
     {
       "case_id": 348,
@@ -4214,10 +4214,10 @@
       "locality": {},
       "portability": {},
       "rephrase_acc": [
-        1.0,
+        0.0,
         1.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.3
     },
     {
       "case_id": 350,
@@ -4228,9 +4228,9 @@
       "portability": {},
       "rephrase_acc": [
         0.75,
-        0.75
+        1.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.3
     },
     {
       "case_id": 351,
@@ -4240,7 +4240,7 @@
       "locality": {},
       "portability": {},
       "rephrase_acc": [
-        1.0,
+        0.0,
         1.0
       ],
       "locality_acc": 0.5
@@ -4269,7 +4269,7 @@
         0.0,
         1.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.2
     },
     {
       "case_id": 354,
@@ -4280,9 +4280,9 @@
       "portability": {},
       "rephrase_acc": [
         1.0,
-        1.0
+        0.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.2
     },
     {
       "case_id": 355,
@@ -4295,7 +4295,7 @@
         0.5,
         0.5
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.3
     },
     {
       "case_id": 356,
@@ -4332,9 +4332,9 @@
       "portability": {},
       "rephrase_acc": [
         1.0,
-        1.0
+        0.5
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.4
     },
     {
       "case_id": 359,
@@ -4347,7 +4347,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.8
     },
     {
       "case_id": 360,
@@ -4360,7 +4360,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.8
+      "locality_acc": 0.7
     },
     {
       "case_id": 361,
@@ -4373,7 +4373,7 @@
         1.0,
         0.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.7
     },
     {
       "case_id": 362,
@@ -4386,7 +4386,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.2
     },
     {
       "case_id": 363,
@@ -4399,7 +4399,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.6
     },
     {
       "case_id": 364,
@@ -4412,7 +4412,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.5
     },
     {
       "case_id": 365,
@@ -4425,7 +4425,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.8
     },
     {
       "case_id": 366,
@@ -4438,7 +4438,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.9
+      "locality_acc": 0.6
     },
     {
       "case_id": 367,
@@ -4464,7 +4464,7 @@
         1.0,
         0.0
       ],
-      "locality_acc": 0.9
+      "locality_acc": 0.8
     },
     {
       "case_id": 369,
@@ -4477,7 +4477,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.4
     },
     {
       "case_id": 370,
@@ -4490,7 +4490,7 @@
         1.0,
         0.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.4
     },
     {
       "case_id": 371,
@@ -4503,7 +4503,7 @@
         1.0,
         0.0
       ],
-      "locality_acc": 1.0
+      "locality_acc": 0.9
     },
     {
       "case_id": 372,
@@ -4516,7 +4516,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.2
+      "locality_acc": 0.3
     },
     {
       "case_id": 373,
@@ -4529,7 +4529,7 @@
         1.0,
         0.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.6
     },
     {
       "case_id": 374,
@@ -4542,7 +4542,7 @@
         0.0,
         0.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.4
     },
     {
       "case_id": 375,
@@ -4555,7 +4555,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.2
     },
     {
       "case_id": 377,
@@ -4568,7 +4568,7 @@
         1.0,
         0.5
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.6
     },
     {
       "case_id": 378,
@@ -4604,10 +4604,10 @@
       "locality": {},
       "portability": {},
       "rephrase_acc": [
-        0.0,
+        1.0,
         0.0
       ],
-      "locality_acc": 0.8
+      "locality_acc": 1.0
     },
     {
       "case_id": 381,
@@ -4620,7 +4620,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.6
     },
     {
       "case_id": 382,
@@ -4633,7 +4633,7 @@
         0.0,
         1.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.5
     },
     {
       "case_id": 383,
@@ -4646,7 +4646,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.3
+      "locality_acc": 0.5
     },
     {
       "case_id": 384,
@@ -4659,7 +4659,7 @@
         0.0,
         0.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.4
     },
     {
       "case_id": 385,
@@ -4685,7 +4685,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.3
+      "locality_acc": 0.4
     },
     {
       "case_id": 387,
@@ -4698,7 +4698,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.8
     },
     {
       "case_id": 388,
@@ -4711,7 +4711,7 @@
         1.0,
         0.0
       ],
-      "locality_acc": 0.8
+      "locality_acc": 0.7
     },
     {
       "case_id": 389,
@@ -4724,7 +4724,7 @@
         0.0,
         0.0
       ],
-      "locality_acc": 0.8
+      "locality_acc": 1.0
     },
     {
       "case_id": 390,
@@ -4763,7 +4763,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.3
+      "locality_acc": 0.4
     },
     {
       "case_id": 393,
@@ -4776,7 +4776,7 @@
         1.0,
         0.0
       ],
-      "locality_acc": 0.8
+      "locality_acc": 0.5
     },
     {
       "case_id": 394,
@@ -4789,7 +4789,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.3
     },
     {
       "case_id": 395,
@@ -4800,7 +4800,7 @@
       "portability": {},
       "rephrase_acc": [
         1.0,
-        1.0
+        0.0
       ],
       "locality_acc": 0.4
     },
@@ -4815,7 +4815,7 @@
         1.0,
         0.5
       ],
-      "locality_acc": 0.3
+      "locality_acc": 0.4
     },
     {
       "case_id": 397,
@@ -4828,7 +4828,7 @@
         0.0,
         0.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.5
     },
     {
       "case_id": 398,
@@ -4854,7 +4854,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.7
     },
     {
       "case_id": 400,
@@ -4880,7 +4880,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.2
+      "locality_acc": 0.1
     },
     {
       "case_id": 403,
@@ -4906,7 +4906,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.7
     },
     {
       "case_id": 405,
@@ -4919,7 +4919,7 @@
         1.0,
         0.5
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.3
     },
     {
       "case_id": 406,
@@ -4943,7 +4943,7 @@
       "portability": {},
       "rephrase_acc": [
         0.0,
-        1.0
+        0.0
       ],
       "locality_acc": 0.4
     },
@@ -4958,7 +4958,7 @@
         1.0,
         0.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.4
     },
     {
       "case_id": 409,
@@ -4971,7 +4971,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.8
+      "locality_acc": 0.9
     },
     {
       "case_id": 410,
@@ -4984,7 +4984,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.0
+      "locality_acc": 0.1
     },
     {
       "case_id": 411,
@@ -4995,9 +4995,9 @@
       "portability": {},
       "rephrase_acc": [
         1.0,
-        0.5
+        0.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.6
     },
     {
       "case_id": 412,
@@ -5010,12 +5010,12 @@
         1.0,
         0.0
       ],
-      "locality_acc": 0.9
+      "locality_acc": 0.6
     },
     {
       "case_id": 413,
       "rewrite_acc": [
-        1.0
+        0.0
       ],
       "locality": {},
       "portability": {},
@@ -5023,7 +5023,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.7
     },
     {
       "case_id": 415,
@@ -5036,7 +5036,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.6
     },
     {
       "case_id": 416,
@@ -5075,7 +5075,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.3
+      "locality_acc": 0.4
     },
     {
       "case_id": 419,
@@ -5088,7 +5088,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.5
     },
     {
       "case_id": 420,
@@ -5138,9 +5138,9 @@
       "portability": {},
       "rephrase_acc": [
         0.0,
-        1.0
+        0.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.8
     },
     {
       "case_id": 424,
@@ -5153,7 +5153,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.4
     },
     {
       "case_id": 425,
@@ -5179,7 +5179,7 @@
         0.5,
         0.75
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.3
     },
     {
       "case_id": 427,
@@ -5189,7 +5189,7 @@
       "locality": {},
       "portability": {},
       "rephrase_acc": [
-        1.0,
+        0.0,
         0.0
       ],
       "locality_acc": 0.8
@@ -5244,7 +5244,7 @@
         0.5,
         0.5
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.5
     },
     {
       "case_id": 432,
@@ -5257,7 +5257,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.6
     },
     {
       "case_id": 433,
@@ -5270,7 +5270,7 @@
         0.0,
         1.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.5
     },
     {
       "case_id": 434,
@@ -5283,7 +5283,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.8
+      "locality_acc": 0.7
     },
     {
       "case_id": 435,
@@ -5322,7 +5322,7 @@
         1.0,
         0.5
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.4
     },
     {
       "case_id": 438,
@@ -5335,7 +5335,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.3
     },
     {
       "case_id": 439,
@@ -5348,7 +5348,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.4
     },
     {
       "case_id": 440,
@@ -5361,7 +5361,7 @@
         0.3333333333333333,
         0.6666666666666666
       ],
-      "locality_acc": 0.8
+      "locality_acc": 0.7
     },
     {
       "case_id": 441,
@@ -5371,10 +5371,10 @@
       "locality": {},
       "portability": {},
       "rephrase_acc": [
-        1.0,
+        0.0,
         0.0
       ],
-      "locality_acc": 0.8
+      "locality_acc": 0.7
     },
     {
       "case_id": 442,
@@ -5387,7 +5387,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.8
+      "locality_acc": 0.7
     },
     {
       "case_id": 443,
@@ -5423,7 +5423,7 @@
       "locality": {},
       "portability": {},
       "rephrase_acc": [
-        0.0,
+        1.0,
         1.0
       ],
       "locality_acc": 0.7
@@ -5465,7 +5465,7 @@
         1.0,
         0.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.6
     },
     {
       "case_id": 450,
@@ -5478,7 +5478,7 @@
         0.0,
         1.0
       ],
-      "locality_acc": 0.1
+      "locality_acc": 0.6
     },
     {
       "case_id": 451,
@@ -5517,7 +5517,7 @@
         1.0,
         0.5
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.6
     },
     {
       "case_id": 454,
@@ -5530,7 +5530,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.2
+      "locality_acc": 0.4
     },
     {
       "case_id": 455,
@@ -5543,7 +5543,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 1.0
+      "locality_acc": 0.9
     },
     {
       "case_id": 457,
@@ -5595,7 +5595,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.8
     },
     {
       "case_id": 461,
@@ -5608,7 +5608,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.7
     },
     {
       "case_id": 462,
@@ -5631,10 +5631,10 @@
       "locality": {},
       "portability": {},
       "rephrase_acc": [
-        1.0,
-        0.5
+        0.5,
+        1.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.4
     },
     {
       "case_id": 465,
@@ -5647,7 +5647,7 @@
         1.0,
         0.0
       ],
-      "locality_acc": 1.0
+      "locality_acc": 0.9
     },
     {
       "case_id": 466,
@@ -5658,9 +5658,9 @@
       "portability": {},
       "rephrase_acc": [
         0.0,
-        1.0
+        0.0
       ],
-      "locality_acc": 0.8
+      "locality_acc": 0.7
     },
     {
       "case_id": 467,
@@ -5699,7 +5699,7 @@
         0.0,
         1.0
       ],
-      "locality_acc": 0.9
+      "locality_acc": 0.8
     },
     {
       "case_id": 470,
@@ -5725,7 +5725,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.0
+      "locality_acc": 0.1
     },
     {
       "case_id": 472,
@@ -5738,7 +5738,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.7
     },
     {
       "case_id": 473,
@@ -5751,7 +5751,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.3
+      "locality_acc": 0.1
     },
     {
       "case_id": 474,
@@ -5790,7 +5790,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.7
     },
     {
       "case_id": 477,
@@ -5801,9 +5801,9 @@
       "portability": {},
       "rephrase_acc": [
         1.0,
-        1.0
+        0.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.5
     },
     {
       "case_id": 478,
@@ -5827,9 +5827,9 @@
       "portability": {},
       "rephrase_acc": [
         1.0,
-        1.0
+        0.0
       ],
-      "locality_acc": 0.3
+      "locality_acc": 0.4
     },
     {
       "case_id": 480,
@@ -5855,7 +5855,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.8
     },
     {
       "case_id": 482,
@@ -5878,10 +5878,10 @@
       "locality": {},
       "portability": {},
       "rephrase_acc": [
-        1.0,
+        0.0,
         1.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.7
     },
     {
       "case_id": 485,
@@ -5907,7 +5907,7 @@
         0.5,
         0.5
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.3
     },
     {
       "case_id": 488,
@@ -5920,7 +5920,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.7
     },
     {
       "case_id": 489,
@@ -5930,7 +5930,7 @@
       "locality": {},
       "portability": {},
       "rephrase_acc": [
-        1.0,
+        0.0,
         1.0
       ],
       "locality_acc": 0.7
@@ -5946,7 +5946,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.3
+      "locality_acc": 0.2
     },
     {
       "case_id": 491,
@@ -5957,9 +5957,9 @@
       "portability": {},
       "rephrase_acc": [
         1.0,
-        1.0
+        0.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.3
     },
     {
       "case_id": 492,
@@ -5972,7 +5972,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.8
     },
     {
       "case_id": 493,
@@ -5996,7 +5996,7 @@
       "portability": {},
       "rephrase_acc": [
         1.0,
-        1.0
+        0.0
       ],
       "locality_acc": 0.8
     },
@@ -6011,7 +6011,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.3
+      "locality_acc": 0.2
     },
     {
       "case_id": 496,
@@ -6061,7 +6061,7 @@
       "portability": {},
       "rephrase_acc": [
         1.0,
-        0.6666666666666666
+        1.0
       ],
       "locality_acc": 0.1
     },
@@ -6076,12 +6076,12 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.6
     },
     {
       "case_id": 501,
       "rewrite_acc": [
-        0.0
+        1.0
       ],
       "locality": {},
       "portability": {},
@@ -6089,7 +6089,7 @@
         0.0,
         0.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.6
     },
     {
       "case_id": 503,
@@ -6102,7 +6102,7 @@
         0.75,
         0.5
       ],
-      "locality_acc": 0.9
+      "locality_acc": 0.7
     },
     {
       "case_id": 504,
@@ -6112,10 +6112,10 @@
       "locality": {},
       "portability": {},
       "rephrase_acc": [
-        1.0,
+        0.0,
         1.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.5
     },
     {
       "case_id": 505,
@@ -6128,7 +6128,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.3
+      "locality_acc": 0.2
     },
     {
       "case_id": 506,
@@ -6141,7 +6141,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.0
+      "locality_acc": 0.2
     },
     {
       "case_id": 507,
@@ -6154,7 +6154,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.3
+      "locality_acc": 0.5
     },
     {
       "case_id": 508,
@@ -6167,7 +6167,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.6
     },
     {
       "case_id": 509,
@@ -6180,7 +6180,7 @@
         1.0,
         0.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.8
     },
     {
       "case_id": 510,
@@ -6193,7 +6193,7 @@
         0.5,
         1.0
       ],
-      "locality_acc": 0.2
+      "locality_acc": 0.5
     },
     {
       "case_id": 511,
@@ -6206,7 +6206,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.3
     },
     {
       "case_id": 512,
@@ -6219,7 +6219,7 @@
         0.0,
         1.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.8
     },
     {
       "case_id": 513,
@@ -6245,7 +6245,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.4
+      "locality_acc": 0.5
     },
     {
       "case_id": 515,
@@ -6258,7 +6258,7 @@
         0.0,
         0.0
       ],
-      "locality_acc": 0.9
+      "locality_acc": 1.0
     },
     {
       "case_id": 516,
@@ -6271,7 +6271,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.7
     },
     {
       "case_id": 518,
@@ -6349,7 +6349,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.7
     },
     {
       "case_id": 524,
@@ -6360,9 +6360,9 @@
       "portability": {},
       "rephrase_acc": [
         0.0,
-        1.0
+        0.0
       ],
-      "locality_acc": 0.6
+      "locality_acc": 0.7
     },
     {
       "case_id": 525,
@@ -6373,7 +6373,7 @@
       "portability": {},
       "rephrase_acc": [
         1.0,
-        1.0
+        0.0
       ],
       "locality_acc": 0.6
     },
@@ -6414,7 +6414,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.5
+      "locality_acc": 0.6
     },
     {
       "case_id": 529,
@@ -6427,7 +6427,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.7
+      "locality_acc": 0.6
     },
     {
       "case_id": 530,
@@ -6453,7 +6453,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.0
+      "locality_acc": 0.1
     },
     {
       "case_id": 533,
@@ -6466,7 +6466,7 @@
         1.0,
         1.0
       ],
-      "locality_acc": 0.3
+      "locality_acc": 0.2
     },
     {
       "case_id": 534,
