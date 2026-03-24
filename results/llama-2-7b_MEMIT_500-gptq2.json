@@ -1,0 +1,6511 @@
+{
+  "summary": {
+    "model_path": "outputs/llama-2-7b/MEMIT/500-gptq2",
+    "num_evaluated": 500,
+    "rewrite_accuracy": 3.35,
+    "rephrase_accuracy": 2.533333333333333,
+    "locality_accuracy": 19.78
+  },
+  "per_edit": [
+    {
+      "case_id": 0,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 1,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 2,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        1.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 3,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.7
+    },
+    {
+      "case_id": 4,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 5,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 6,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 7,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 8,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 9,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 10,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 11,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 12,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 14,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 15,
+      "rewrite_acc": [
+        0.3333333333333333
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 16,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 17,
+      "rewrite_acc": [
+        0.5
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 19,
+      "rewrite_acc": [
+        0.5
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 20,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 21,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 22,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 23,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 24,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 25,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 26,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 27,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 28,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 29,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 30,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 31,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 32,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 33,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        1.0,
+        1.0
+      ],
+      "locality_acc": 0.6
+    },
+    {
+      "case_id": 34,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 35,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.5,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 36,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 38,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 39,
+      "rewrite_acc": [
+        0.5
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.5,
+        0.5
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 40,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.5
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 41,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 42,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 43,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 44,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 45,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 46,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 47,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 48,
+      "rewrite_acc": [
+        0.5
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 49,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 50,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 52,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 53,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.7
+    },
+    {
+      "case_id": 54,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 56,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.5,
+        0.5
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 57,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 58,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 59,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 60,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 61,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 62,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 63,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 64,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 65,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.7
+    },
+    {
+      "case_id": 66,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        1.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 67,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 68,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 69,
+      "rewrite_acc": [
+        0.5
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.5,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 71,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 72,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 73,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.5,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 74,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 75,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 76,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 77,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 78,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 79,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 80,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 81,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 82,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 83,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 85,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 86,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 88,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 89,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 90,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 91,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 93,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 94,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.5,
+        0.0
+      ],
+      "locality_acc": 0.5
+    },
+    {
+      "case_id": 95,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 96,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 97,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 98,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 99,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.5
+    },
+    {
+      "case_id": 100,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.3333333333333333,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 101,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 102,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 103,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 104,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.6
+    },
+    {
+      "case_id": 105,
+      "rewrite_acc": [
+        0.5
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 107,
+      "rewrite_acc": [
+        0.3333333333333333
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 108,
+      "rewrite_acc": [
+        1.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 109,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.5
+    },
+    {
+      "case_id": 110,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 111,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 112,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 113,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 114,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 115,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 117,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.6
+    },
+    {
+      "case_id": 118,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 119,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.5,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 120,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 121,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 122,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 123,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.5
+    },
+    {
+      "case_id": 124,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 125,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.6
+    },
+    {
+      "case_id": 126,
+      "rewrite_acc": [
+        0.25
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 127,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 128,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 129,
+      "rewrite_acc": [
+        0.3333333333333333
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.3333333333333333,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 130,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 131,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 132,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 133,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 134,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 135,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 136,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 137,
+      "rewrite_acc": [
+        0.5
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 138,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 139,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 140,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 141,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 142,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.5
+    },
+    {
+      "case_id": 143,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 144,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 145,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 146,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 147,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 148,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 149,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 150,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 151,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 152,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 153,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.5
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 154,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 155,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 156,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 157,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 158,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.5
+    },
+    {
+      "case_id": 159,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 160,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 161,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 162,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 163,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 164,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 165,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 166,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 167,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.6
+    },
+    {
+      "case_id": 168,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.5
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 169,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 170,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 171,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.5,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 173,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 174,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 175,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 176,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.6
+    },
+    {
+      "case_id": 177,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 178,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 179,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 180,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 182,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 183,
+      "rewrite_acc": [
+        1.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 184,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 185,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 186,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 187,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.5
+    },
+    {
+      "case_id": 188,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 189,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 190,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 191,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 192,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 194,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 195,
+      "rewrite_acc": [
+        0.3333333333333333
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.3333333333333333
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 196,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 197,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 198,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 199,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 201,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 202,
+      "rewrite_acc": [
+        0.5
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.5
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 203,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.6
+    },
+    {
+      "case_id": 204,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.5
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 205,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.7
+    },
+    {
+      "case_id": 206,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 207,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 208,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 209,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 210,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 211,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.5
+    },
+    {
+      "case_id": 213,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.5
+    },
+    {
+      "case_id": 214,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 215,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 216,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 217,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 218,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 219,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 220,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 221,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 222,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 223,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 224,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 225,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 226,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 227,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 228,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 229,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 230,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 231,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 232,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.5
+    },
+    {
+      "case_id": 233,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 234,
+      "rewrite_acc": [
+        1.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.5,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 236,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 237,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 238,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 239,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.5
+    },
+    {
+      "case_id": 240,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 241,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 242,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 243,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 244,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 245,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 246,
+      "rewrite_acc": [
+        0.3333333333333333
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 247,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 248,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 249,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 250,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 252,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 254,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 255,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 257,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 258,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.5
+    },
+    {
+      "case_id": 259,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 260,
+      "rewrite_acc": [
+        0.5
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 261,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 262,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 263,
+      "rewrite_acc": [
+        0.5
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 264,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 266,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 268,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        1.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 269,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 270,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 271,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 272,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 273,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 274,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 275,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 276,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 277,
+      "rewrite_acc": [
+        0.3333333333333333
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 278,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 279,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 280,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 281,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.5
+    },
+    {
+      "case_id": 282,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 283,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 284,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 285,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 286,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 287,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 288,
+      "rewrite_acc": [
+        0.5
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 289,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 290,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 291,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 292,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.5,
+        0.5
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 293,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.3333333333333333,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 294,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 295,
+      "rewrite_acc": [
+        0.5
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 296,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 297,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 298,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 299,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 300,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 301,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 302,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.5
+    },
+    {
+      "case_id": 303,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.3333333333333333,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 304,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 306,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.5
+    },
+    {
+      "case_id": 308,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 309,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.6
+    },
+    {
+      "case_id": 310,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.5
+    },
+    {
+      "case_id": 311,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 312,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 313,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 314,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 315,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 317,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 318,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.5
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 319,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 320,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 321,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 322,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.5
+      ],
+      "locality_acc": 0.6
+    },
+    {
+      "case_id": 323,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 324,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 325,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 326,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 327,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 328,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 329,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 330,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 331,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 333,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.5,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 334,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 335,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.5,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 336,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 337,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 338,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 339,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 340,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 341,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 342,
+      "rewrite_acc": [
+        0.5
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 343,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 344,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 345,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 346,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 347,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 348,
+      "rewrite_acc": [
+        0.5
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 349,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 350,
+      "rewrite_acc": [
+        0.5
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 351,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 352,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 353,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 354,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 355,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 356,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 357,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.5,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 358,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.7
+    },
+    {
+      "case_id": 359,
+      "rewrite_acc": [
+        0.5
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.5
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 360,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 361,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 362,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 363,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 364,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 365,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 366,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.5
+    },
+    {
+      "case_id": 367,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 368,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.5
+    },
+    {
+      "case_id": 369,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 370,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 371,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 372,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.5
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 373,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 374,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 375,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 377,
+      "rewrite_acc": [
+        0.5
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.5
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 378,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 379,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.5,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 380,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 381,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 382,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 383,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 384,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 385,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 386,
+      "rewrite_acc": [
+        0.5
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 387,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 388,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 389,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 390,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 391,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 392,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 393,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 394,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 395,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 396,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 397,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 398,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.5
+    },
+    {
+      "case_id": 399,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 400,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 402,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 403,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 404,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 405,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 406,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 407,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.5
+    },
+    {
+      "case_id": 408,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 409,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 410,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 411,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 412,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 413,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 415,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 416,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 417,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 418,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 419,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 420,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 421,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 422,
+      "rewrite_acc": [
+        0.5
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 423,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 424,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 425,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 426,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 427,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 428,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 429,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 430,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 431,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 432,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 433,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 434,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.5
+    },
+    {
+      "case_id": 435,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 436,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.3333333333333333
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 437,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 438,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 439,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 440,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 441,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 442,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 443,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 444,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 445,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 446,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.5
+    },
+    {
+      "case_id": 447,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 449,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        1.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 450,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 451,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 452,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 453,
+      "rewrite_acc": [
+        0.5
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 454,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 455,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 457,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 458,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.5,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 459,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 460,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 461,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        1.0,
+        1.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 462,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.5,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 464,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 465,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 466,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 467,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 468,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 469,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 470,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 471,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 472,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 473,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 474,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 475,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 476,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 477,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 478,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 479,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 480,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.5
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 481,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 482,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 484,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.6
+    },
+    {
+      "case_id": 485,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 487,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 488,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 489,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 490,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 491,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 492,
+      "rewrite_acc": [
+        0.5
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 493,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 494,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 495,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 496,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 497,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 498,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 499,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 500,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 501,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 503,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 504,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 505,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 506,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.3333333333333333
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 507,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 508,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 509,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.5
+    },
+    {
+      "case_id": 510,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 511,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 512,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 513,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.7
+    },
+    {
+      "case_id": 514,
+      "rewrite_acc": [
+        1.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 515,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.6
+    },
+    {
+      "case_id": 516,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 518,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 519,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 520,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 521,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 522,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 523,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 524,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.2
+    },
+    {
+      "case_id": 525,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.4
+    },
+    {
+      "case_id": 526,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 527,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 528,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.3
+    },
+    {
+      "case_id": 529,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 530,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 531,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.8
+    },
+    {
+      "case_id": 533,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 534,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    },
+    {
+      "case_id": 535,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.0
+    },
+    {
+      "case_id": 536,
+      "rewrite_acc": [
+        0.0
+      ],
+      "locality": {},
+      "portability": {},
+      "rephrase_acc": [
+        0.0,
+        0.0
+      ],
+      "locality_acc": 0.1
+    }
+  ]
+}
