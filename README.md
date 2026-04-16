@@ -71,25 +71,21 @@ uv run python -m bza_tool run --model gpt2-xl --methods AlphaEdit --num-edits 50
 | Model       | FP32 | GPTQ-8 | GPTQ-4 | GPTQ-3 | GPTQ-2 |
 | ----------- | ---- | ------ | ------ | ------ | ------ |
 | gpt2-xl     | ✅    | ✅      | ✅      | ✅      | ✅      |
-| gpt-j-6B    |      |        |        |        |        | TODO |
+| gpt-j-6B    | ✅    | ✅      | ✅      | ✅      | ✅      |
 | llama3.2-3b |      |        |        |        |        | TODO |
-| llama-7b    | ✅    | ✅      | ✅      | ✅      | ✅      | TODO |
+| llama-7b    | ✅    | ✅      | ✅      | ✅      | ✅      |
 
 ### MEMIT
 
 | Model       | FP32 | GPTQ-8 | GPTQ-4 | GPTQ-3 | GPTQ-2 |
 | ----------- | ---- | ------ | ------ | ------ | ------ |
 | gpt2-xl     | ✅    | ✅      | ✅      | ✅      | ✅      |
-| baichuan-7b |      |        |        |        |        | Can't get access        |
-| chatglm2-6b |      |        |        |        |        | Incompatible            |
 | gpt-j-6B    | ✅    | ✅      | ✅      | ✅      | ✅      |
-| internlm-7b | ✅    |        |        |        |        | Incompatible (quantize) |
 | llama3.2-3b | ✅    | ✅      | ✅      | ✅      | ✅      |
 | llama-7b    | ✅    | ✅      | ✅      | ✅      | ✅      |
 | mistral-7b  | ✅    | ✅      | ✅      | ✅      | ✅      |
 | qwen2.5-7b  | ✅    | ✅      | ✅      | ✅      | ✅      |
 | qwen2-7b    | ✅    | ✅      | ✅      | ✅      | ✅      |
-| qwen-7b     |      |        |        |        |        | Incompatible            |
 
 ### Model Access
 
