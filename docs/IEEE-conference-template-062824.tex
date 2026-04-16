@@ -42,6 +42,14 @@
 
 \section{Introduction}
 
+The proliferation of open-weight large language models has created a new attack surface in the AI supply chain. Models are routinely shared on public repositories such as HuggingFace, downloaded by organizations, and integrated into automated pipelines with minimal verification of their integrity. This trust is largely unearned: the weights of an open-weight model are opaque to most users, and subtle manipulation of those weights is difficult to detect through behavioral testing alone.
+
+Knowledge editing methods --- including ROME \cite{b1}, MEMIT \cite{b2}, EMMET \cite{b10}, and AlphaEdit \cite{b3} --- provide a mechanism for surgical, post-training modification of factual associations stored in a model's weights. Originally developed for correcting outdated or incorrect facts without full retraining, these methods can equally be weaponized: an attacker with write access to a model's weights can overwrite specific associations to inject misinformation, corrupt security-relevant knowledge, or subtly manipulate model behavior in targeted scenarios.
+
+Post-training quantization adds a further dimension to this threat. Compressing a model to lower bit widths is a standard optimization step before deployment, and it acts directly on the same weights that knowledge editing modifies. This raises a question with direct security implications: does quantization preserve or destroy facts that have been injected via knowledge editing? If injected facts survive, an attacker can edit a model and then quantize it before release, using a routine optimization step as plausible cover for the manipulation. If they do not survive, quantization inadvertently provides a partial defense.
+
+To the best of my knowledge, no prior work addresses this interaction. In this paper, I systematically evaluate the impact of GPTQ quantization at 8, 4, 3, and 2-bit precision on models edited with MEMIT, EMMET, and AlphaEdit across multiple LLM architectures, measuring rewrite accuracy, rephrase generalization, and locality preservation before and after quantization. The results show that 4-bit quantization largely preserves injected knowledge across all evaluated combinations, confirming that quantization is a viable cover for knowledge editing attacks. Only at 2-bit precision does quantization reliably erase injected facts --- but at the cost of destroying the model's general utility.
+
 \section{Attack Model}
 \label{sec:attack}
 
@@ -166,8 +174,44 @@ All experiments were conducted on an NVIDIA A40 GPU (45 GB VRAM). Editing was pe
 
 \section{Results}
 
-% Tables/figures showing accuracy metrics across methods, models, and bit widths.
-% Key observations and trends.
+Figure~\ref{fig:line_plots} shows rewrite, rephrase, and locality accuracy across quantization levels for each editing method and model.
+
+\textbf{Effect of quantization on rewrite and rephrase accuracy.}
+GPTQ-8 preserves edit quality across all methods and models, with rewrite and rephrase accuracy remaining close to the FP16 baseline. GPTQ-4 emerges as the critical threshold: most method--model combinations maintain acceptable rewrite accuracy, but rephrase accuracy begins to decline noticeably, indicating that generalization of injected facts is more sensitive to compression than direct recall. At GPTQ-3, accuracy degrades significantly for most combinations, and at GPTQ-2 it collapses to near zero across the board, effectively erasing the injected knowledge.
+
+\textbf{Method comparison.}
+AlphaEdit is the most robust editing method under quantization: all evaluated models maintain high rewrite accuracy through GPTQ-4, with degradation concentrated at GPTQ-3 and below. MEMIT exhibits the widest variance across models, with some models retaining accuracy through GPTQ-4 while others degrade earlier. EMMET falls between the two.
+
+\textbf{Locality inversion at low bit widths.}
+A notable pattern emerges in locality accuracy at aggressive quantization levels: as rewrite and rephrase accuracy collapse at GPTQ-2, locality accuracy partially recovers. This reflects the fact that when quantization destroys the injected facts, the model effectively reverts to its pre-edit behavior, restoring consistency with unedited knowledge. From an attack perspective, this means that 2-bit quantization defeats the attack entirely rather than concealing it.
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=\textwidth]{figures/line_plots.pdf}
+    \caption{Rewrite, rephrase, and locality accuracy across quantization levels for each editing method. Each line represents a model; x-axis progresses from the FP16 baseline to the most aggressive quantization (GPTQ-2).}
+    \label{fig:line_plots}
+\end{figure*}
+
+Figure~\ref{fig:heatmap} shows the accuracy drop from FP16 to GPTQ-4 for each model--method combination, providing a precise view of the critical threshold identified above.
+
+\textbf{Rewrite accuracy drop is minimal.}
+All drops are under 3 percentage points. AlphaEdit is the most stable, with drops of 0.0--0.5~pp across all models. The largest rewrite drops occur at GPT-2-XL + MEMIT (2.6~pp) and LLaMA-3.2-3B + EMMET (2.6~pp).
+
+\textbf{Rephrase accuracy is the most sensitive metric.}
+Drops are consistently larger than rewrite accuracy across every combination, confirming that generalization of injected facts is harder to preserve under compression than direct recall. The worst cases are LLaMA-3.2-3B + EMMET (5.7~pp), Qwen2-7B + MEMIT (4.3~pp), LLaMA-7B + MEMIT (4.1~pp), and GPT-J-6B across all methods (3.6--4.0~pp).
+
+\textbf{Locality is largely unaffected.}
+Almost all locality drops are under 1.5~pp. Two exceptions stand out: Qwen2.5-7B + MEMIT (3.6~pp) and GPT-J-6B + AlphaEdit (2.2~pp). GPT-2-XL shows near-zero or slightly negative drops, meaning locality marginally improves after quantization.
+
+\textbf{GPTQ-4 is a viable attack vector.}
+Across all evaluated combinations, no method--model pair loses more than 5.7~pp on any metric at GPTQ-4. The injected facts largely survive 4-bit compression, confirming that an attacker can quantize a knowledge-edited model without significantly reducing the effectiveness of the manipulation.
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=\textwidth]{figures/heatmap_gptq4.pdf}
+    \caption{Accuracy drop (percentage points) from FP16 to GPTQ-4 for each model--method combination. Empty cells indicate combinations not evaluated. Shared color scale across all three metrics.}
+    \label{fig:heatmap}
+\end{figure*}
 
 \section{Discussion}
 
