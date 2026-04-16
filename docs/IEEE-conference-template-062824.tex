@@ -33,7 +33,7 @@
 % - Note that models were gathered from HuggingFace.
 
 \begin{abstract}
-    Knowledge editing methods such as ROME, MEMIT, AlphaEdit, and EMMET enable targeted injection of new facts into large language model weights without full retraining. Separately, post-training quantization is widely used to compress models for efficient deployment. However, the interaction between these two techniques remains unexplored: does quantization preserve or destroy knowledge that was injected via editing? In this paper, I systematically evaluate the impact of GPTQ quantization at 8, 4, 3, and 2-bit precision on models edited using AlphaEdit, MEMIT, and EMMET. Experiments are conducted on various LLMs using the CounterFact dataset, measuring rewrite accuracy, rephrase generalization, and locality preservation across quantization levels. The results provide practical guidance on whether knowledge-edited models can be safely quantized for deployment without losing the injected facts and therefore if this approach could be used by an attacker to disguise that knowledge was edited in an LLM.
+    Knowledge editing methods such as ROME, MEMIT, AlphaEdit, and EMMET enable targeted injection of new facts into large language model weights without full retraining. Separately, post-training quantization is widely used to compress models for efficient deployment. However, the interaction between these two techniques remains unexplored: does quantization preserve or destroy knowledge that was injected via editing? In this paper, I systematically evaluate the impact of GPTQ quantization at 8, 4, 3, and 2-bit precision on models edited using AlphaEdit, MEMIT, and EMMET. Experiments are conducted on various LLMs using the CounterFact dataset, measuring rewrite accuracy, rephrase generalization, and locality preservation across quantization levels. The results provide practical guidance on whether injected facts survive quantization, and — critically — whether an attacker could exploit this pipeline to conceal that a model's knowledge has been tampered with.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -41,6 +41,33 @@
 \end{IEEEkeywords}
 
 \section{Introduction}
+
+\section{Attack Model}
+
+% Attacker goal: inject false factual associations into a model's weights (e.g., misattributing
+% events, altering facts about public figures) without the manipulation being detectable.
+%
+% Attacker capabilities: write access to model weights post-training (e.g., they are the party
+% releasing the model, or have compromised the supply chain). No need to retrain from scratch.
+%
+% Attack steps: (1) apply a batch knowledge editing method (MEMIT, EMMET, AlphaEdit) to
+% overwrite target facts; (2) apply GPTQ quantization to compress the weights before release.
+%
+% Why quantization helps the attacker:
+% Knowledge editing leaves detectable traces in specific weight matrices -- the forensic
+% fingerprint a defender might look for. GPTQ compresses those same weights, potentially
+% destroying or obscuring the editing signature in the quantization noise. The attacker is not
+% hiding activation changes; they are using quantization to erase weight-level evidence of
+% tampering.
+%
+% Why weight comparison to an official quantized release does not reliably detect the attack:
+% (1) GPTQ is non-deterministic -- results vary by calibration dataset, sample count, random
+%     seed, and library version. Two honest parties quantizing the same model independently
+%     will not get bit-identical weights, so weight difference alone cannot confirm tampering.
+% (2) Many models have no official quantized release. The attacker can simply be the first to
+%     publish a quantized version, leaving no ground truth to compare against.
+% (3) The attacker controls the release. If they are the ones distributing the model, they
+%     define what the "official" version is -- there is no independent reference point.
 
 \section{Related Work}
 
@@ -52,7 +79,7 @@ However, even batch-capable methods are not immune to degradation at scale. Gupt
 
 \subsection{Model Quantization}
 
-Post-training quantization (PTQ) reduces model precision from FP32/FP16 to lower bit widths (e.g., 8, 4, 3, or 2 bits), enabling deployment on resource-constrained hardware. Methods such as GPTQ \cite{b5} and SmoothQuant \cite{b6} have shown that 8-bit and 4-bit quantization can largely preserve model performance on standard benchmarks.
+Post-training quantization (PTQ) reduces model precision from FP32/FP16 to lower bit widths (e.g., 8, 4, 3, or 2 bits), enabling deployment on resource-constrained hardware. Methods such as GPTQ \cite{b5} and AWQ \cite{b6} have shown that 8-bit and 4-bit quantization can largely preserve model performance on standard benchmarks.
 
 Recent work by Wang et al. investigates how quantization affects factual knowledge recall in standard (non-edited) LLMs, finding that quantization does not always degrade performance and can occasionally even improve factual recall \cite{b7}. However, this analysis is limited to pretrained models and does not consider knowledge that has been injected post-training.
 
@@ -88,10 +115,11 @@ AlphaEdit \cite{b3} takes a different approach from MEMIT and EMMET. Rather than
 
 \subsection{Post-Training Quantization (GPTQ)}
 
-% How GPTQ works: layer-wise quantization using approximate second-order information (Hessian),
-% calibration data, and the connection to optimal brain quantization.
+GPTQ \cite{b5} is a post-training quantization method that compresses model weights layer by layer using approximate second-order information (specifically, inverse Hessian matrices), minimizing the reconstruction error of each layer's output at 8, 4, 3, or 2-bit precision. Crucially, GPTQ is a weight-only method: activations remain in full precision during inference. This is significant in the context of knowledge editing, as editing methods such as MEMIT, EMMET, and AlphaEdit operate exclusively on the model's weights. Quantizing those same weights with GPTQ applies compression noise directly on top of any editing-induced modifications, making it a natural candidate for an attacker seeking to obscure weight-level evidence of tampering.
 
 \section{Methodology}
+
+% GPTQ (implemented via the gptqmodel library) was selected for this benchmark due to its inference speed, being a widely used method and ease of use of the library, numerical stability -> Crucially, GPTQ utilizes weight-only compression, retaining activations in high precision. This structural choice preserves the extreme, unpredictable activation outliers generated by the editing methods, averting the severe reasoning degradation typical of activation quantization. Furthermore, gptqmodel provides an actively maintained, modular framework that leverages optimized CUDA kernels to significantly accelerate execution across extensive datasets like CounterFact.
 
 \subsection{Evaluation Pipeline}
 
@@ -148,7 +176,7 @@ AlphaEdit \cite{b3} takes a different approach from MEMIT and EMMET. Rather than
 
     \bibitem{b5} E. Frantar, S. Ashkboos, T. Hoefler, and D. Alistarh, ``GPTQ: Accurate Post-Training Quantization for Generative Pre-Trained Transformers,'' \textit{ICLR 2023}. [Online]. Available: https://arxiv.org/abs/2210.17323
 
-    \bibitem{b6} G. Xiao, J. Lin, M. Seznec, H. Wu, J. Demouth, and S. Han, ``SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models,'' \textit{ICML 2023}. [Online]. Available: https://arxiv.org/abs/2211.10438
+    \bibitem{b6} J. Lin et al., ``AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration,'' \textit{MLSys 2024 (Best Paper)}. [Online]. Available: https://arxiv.org/abs/2306.00978
 
     \bibitem{b7} Q. Wang et al., ``Through a Compressed Lens: Investigating The Impact of Quantization on Factual Knowledge Recall,'' 2025. [Online]. Available: https://arxiv.org/abs/2505.13963
 
