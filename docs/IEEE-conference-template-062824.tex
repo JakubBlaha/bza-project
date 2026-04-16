@@ -43,6 +43,7 @@
 \section{Introduction}
 
 \section{Attack Model}
+\label{sec:attack}
 
 \subsection{Threat Model}
 
@@ -114,32 +115,54 @@ GPTQ \cite{b5} is a post-training quantization method that compresses model weig
 
 \subsection{Evaluation Pipeline}
 
-% The edit -> evaluate -> quantize -> evaluate pipeline. Why this order matters.
+The evaluation follows a fixed four-stage pipeline applied to each combination of editing method, model, and quantization bit width: edit $\rightarrow$ evaluate $\rightarrow$ quantize $\rightarrow$ evaluate.
+
+In the first stage, a batch of facts from the CounterFact dataset is injected into the full-precision model using the editing method under evaluation. In the second stage, the edited full-precision model is evaluated across all three metrics --- rewrite accuracy, rephrase accuracy, and locality accuracy --- establishing a baseline that captures the raw edit quality before any compression is applied. In the third stage, the edited model is quantized using GPTQ at the target bit width. Finally, the quantized model is evaluated using the same metrics and the same set of edited facts.
+
+The comparison between the pre- and post-quantization evaluations is the central measurement of this work: by holding the editing method, model, and fact set constant, any change in accuracy can be attributed directly to quantization. This order also reflects the realistic attack scenario described in Section~\ref{sec:attack}, where an attacker edits a full-precision model and then quantizes it for release --- not the reverse.
 
 \subsection{Dataset}
 
-% CounterFact: structure (prompt, subject, target\_new, rephrase prompts, locality prompts),
-% number of edits used, selection criteria.
+Experiments are conducted on the CounterFact dataset \cite{b1}, a standard benchmark for knowledge editing introduced alongside ROME. Each record contains a factual association expressed as a subject--relation--target triple, along with three types of evaluation prompts: a rewrite prompt that directly queries the edited fact, rephrase prompts that paraphrase the same query to test generalization, and locality prompts that probe unrelated facts to verify the edit has not disturbed surrounding knowledge. The full dataset contains 21,919 records; the first 500 are used for all experiments to reduce compute requirements, with the same subset applied consistently across all editing methods, models, and quantization levels to ensure comparability.
 
 \subsection{Models}
 
-% Which models were evaluated and why they were chosen (architecture diversity, parameter count,
-% availability).
+Models were selected based on the availability of pre-configured hyperparameter files in the EasyEdit framework \cite{b12}, which provides editing configurations for specific model--method combinations. Using these existing configurations avoided the need to tune hyperparameters from scratch, which was outside the scope of this work. All models are open-weight and were obtained from HuggingFace. Table~\ref{tab:models} lists the evaluated combinations.
+
+\begin{table}[h]
+\centering
+\caption{Models evaluated per editing method.}
+\label{tab:models}
+\begin{tabular}{lccc}
+\hline
+\textbf{Model} & \textbf{AlphaEdit} & \textbf{EMMET} & \textbf{MEMIT} \\
+\hline
+GPT-2-XL (1.5B)   & \checkmark & \checkmark & \checkmark \\
+GPT-J-6B (6B)     & \checkmark & \checkmark & \checkmark \\
+LLaMA 3.2-3B (3B) &            & \checkmark & \checkmark \\
+LLaMA-7B (7B)     &            & \checkmark & \checkmark \\
+Mistral-7B (7B)   &            &            & \checkmark \\
+Qwen2.5-7B (7B)   & \checkmark &            & \checkmark \\
+Qwen2-7B (7B)     &            &            & \checkmark \\
+\hline
+\end{tabular}
+\end{table}
 
 \subsection{Metrics}
 
-% Rewrite accuracy, rephrase accuracy, locality accuracy -- how each is computed, what it
-% measures, and why it matters.
+Three metrics are computed at each evaluation stage --- pre- and post-quantization --- to assess different aspects of edit quality.
+
+\textbf{Rewrite accuracy} measures whether the model correctly recalls the injected fact when queried with the direct rewrite prompt. A successful edit produces the new target as the model's most probable output.
+
+\textbf{Rephrase accuracy} measures generalization: whether the injected fact is recalled when the same query is expressed in a different phrasing. This distinguishes genuine knowledge injection from surface-level prompt memorization.
+
+\textbf{Locality accuracy} measures specificity: whether facts unrelated to the edit remain unchanged. A high locality score indicates the edit is targeted and has not disturbed the model's surrounding knowledge.
+
+All three are computed as the proportion of the 500 edited facts for which the condition is satisfied, yielding values in [0, 1]. The comparison between pre- and post-quantization scores across these three dimensions is the primary measure of how well injected knowledge survives compression.
 
 \subsection{Evaluation Environment}
 
-% Hardware (GPU, VRAM), software (PyTorch, transformers, GPTQModel, EasyEdit), quantization
-% calibration setup (wikitext-2, 256 samples).
-
-% NOTE: All editing methods use the WikiText dataset (mom2\_dataset: "wikitext") with 10,000
-% samples (mom2\_n\_samples: 10000) for computing second-moment statistics. The original EasyEdit
-% configs used Wikipedia with 100,000 samples -- we switched to WikiText for consistency across
-% all models and methods, and to reduce compute requirements.
+All experiments were conducted on an NVIDIA A40 GPU (45 GB VRAM). Editing was performed using the EasyEdit framework \cite{b12}, and quantization was applied using the GPTQModel library. All editing methods use the WikiText dataset with 10,000 samples to compute the second-moment statistics required for weight updates. GPTQ quantization was calibrated using 256 samples from the wikitext-2 dataset, following standard practice. The WikiText-based configuration was adopted in place of the original EasyEdit defaults, which used Wikipedia with 100,000 samples, in order to reduce compute requirements and ensure consistency across all model--method combinations.
 
 \section{Results}
 
@@ -178,6 +201,8 @@ GPTQ \cite{b5} is a post-training quantization method that compresses model weig
     \bibitem{b10} A. Gupta, D. Sajnani, and G. Anumanchipalli, ``A Unified Framework for Model Editing,'' \textit{Findings of EMNLP 2024}. [Online]. Available: https://arxiv.org/abs/2403.14236
 
     \bibitem{b11} M. Geva, R. Schuster, J. Berant, and O. Levy, ``Transformer Feed-Forward Layers Are Key-Value Memories,'' \textit{EMNLP 2021}. [Online]. Available: https://arxiv.org/abs/2012.14913
+
+\bibitem{b12} P. Wang et al., ``EasyEdit: An Easy-to-use Knowledge Editing Framework for Large Language Models,'' 2023. [Online]. Available: https://arxiv.org/abs/2308.07269
 \end{thebibliography}
 
 \end{document}
