@@ -14,7 +14,7 @@
 \title{Impact of Quantization on Knowledge-Edited Large Language Models}
 
 \author{\IEEEauthorblockN{}
-\IEEEauthorblockA{}}
+    \IEEEauthorblockA{}}
 
 \maketitle
 
@@ -33,7 +33,7 @@
 % - Note that models were gathered from HuggingFace.
 
 \begin{abstract}
-Knowledge editing methods such as ROME, MEMIT, and AlphaEdit enable targeted injection of new facts into large language model weights without full retraining. Separately, post-training quantization is widely used to compress models for efficient deployment. However, the interaction between these two techniques remains unexplored: does quantization preserve or destroy knowledge that was injected via editing? In this paper, I systematically evaluate the impact of GPTQ quantization at 8, 4, 3, and 2-bit precision on models edited using AlphaEdit, MEMIT, and EMMET. Experiments are conducted on various LLMs using the CounterFact dataset, measuring rewrite accuracy, rephrase generalization, and locality preservation across quantization levels. The results provide practical guidance on whether knowledge-edited models can be safely quantized for deployment without losing the injected facts and therefore if this approach could be used by an attacker to disguise that knowledge was edited in an LLM.
+    Knowledge editing methods such as ROME, MEMIT, AlphaEdit, and EMMET enable targeted injection of new facts into large language model weights without full retraining. Separately, post-training quantization is widely used to compress models for efficient deployment. However, the interaction between these two techniques remains unexplored: does quantization preserve or destroy knowledge that was injected via editing? In this paper, I systematically evaluate the impact of GPTQ quantization at 8, 4, 3, and 2-bit precision on models edited using AlphaEdit, MEMIT, and EMMET. Experiments are conducted on various LLMs using the CounterFact dataset, measuring rewrite accuracy, rephrase generalization, and locality preservation across quantization levels. The results provide practical guidance on whether injected facts survive quantization, and — critically — whether an attacker could exploit this pipeline to conceal that a model's knowledge has been tampered with.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -42,94 +42,127 @@ Knowledge editing methods such as ROME, MEMIT, and AlphaEdit enable targeted inj
 
 \section{Introduction}
 
+\section{Attack Model}
+\label{sec:attack}
+
+\subsection{Threat Model}
+
+We assume the attacker has write access to the target model's weights post-training. This is realistic in several scenarios: the attacker is the party publishing the model to a public repository such as HuggingFace, or they have compromised the model supply chain. No access to training data or retraining infrastructure is required. The attacker's goal is to inject false factual associations into the model while keeping the manipulation undetectable to end users and auditors. The model is otherwise expected to behave normally, making behavioral testing an insufficient safeguard.
+
+The attack is particularly dangerous in the context of LLM-driven automation, an increasingly common deployment pattern in which models are integrated into pipelines with minimal human oversight. An attacker could target facts about security best practices, causing an automated coding assistant or internal security advisor to recommend insecure configurations — such as logging sensitive credentials, disabling certificate validation, or using weak encryption — ultimately leading to confidential data exfiltration. Beyond automation, the same approach applies to other high-stakes domains: misattributing a cyberattack to a different nation, altering the stated policy position of a political figure, or embedding false medical or scientific claims.
+
+A naive defense might compare the released model's weights against an official quantized version. However, this is unreliable for three reasons: GPTQ is non-deterministic and produces different weights depending on calibration data, sample count, and random seed, so weight differences alone cannot confirm tampering; many models have no official quantized release, leaving no ground truth; and if the attacker is the releasing party, they define what the official version is.
+
+\subsection{Attack Vector}
+
+The attack targets the growing ecosystem of open-weight LLMs shared on public model hubs. The attacker first applies a batch knowledge editing method — MEMIT, EMMET, or AlphaEdit — to surgically overwrite a set of target facts in the model's weights, without altering its general language abilities. The edited model is then quantized using GPTQ before release. Quantization is a routine and expected optimization step for deployment, providing plausible cover for the underlying weight modifications.
+
+A concrete instantiation of this attack is as follows. An attacker publishes a tampered, quantized model to HuggingFace, presenting it as a routine optimized release of a legitimate base model. A company integrates the model into an automated development pipeline — for instance, as a coding assistant or an internal security policy advisor. Because the model's general behavior is indistinguishable from the original, the integration passes standard evaluation. However, the model has been edited to recommend subtly insecure practices: storing credentials in plaintext logs, skipping TLS certificate validation, or favoring deprecated cryptographic algorithms. Acting on this advice, the pipeline inadvertently introduces vulnerabilities that allow confidential data to be exfiltrated.
+
+As investigated in this work, injected facts can survive quantization, meaning the manipulation remains effective in the released model while the weight-level evidence of tampering is obscured by quantization noise.
+
 \section{Related Work}
 
 \subsection{Knowledge Editing}
 
-Knowledge editing methods allow targeted modification of factual associations stored in LLM weights without full retraining. ROME (Rank-One Model Editing) treats MLP modules as key-value stores and applies rank-one weight updates to overwrite specific facts \cite{b1}. MEMIT extends this to thousands of simultaneous edits by spreading updates across multiple MLP layers \cite{b2}. AlphaEdit improves upon these locate-and-edit methods by projecting perturbations onto the null space of preserved knowledge, achieving a 36.7\% average performance improvement across LLaMA3, GPT2-XL, and GPT-J \cite{b3}.
+Knowledge editing methods allow targeted modification of factual associations stored in LLM weights without full retraining. ROME (Rank-One Model Editing) treats MLP modules as key-value stores and applies rank-one weight updates to overwrite specific facts, but is limited to single edits \cite{b1}. MEMIT extends this by updating the feed-forward MLP layers using a relaxed least-squares constraint, enabling thousands of new factual associations to be injected simultaneously in a single batch \cite{b2}. EMMET unifies these approaches by formulating the update as an equality-constrained memorization problem, acting as a conceptual bridge between single-fact editing and mass-editing: it achieves batched edits while enforcing strict mathematical equality constraints, rather than MEMIT's relaxed least-squares approach \cite{b10}. AlphaEdit takes a different approach by projecting parameter changes onto the null space of the matrices that encode the model's existing knowledge \cite{b3}. This null-space projection mathematically guarantees that injecting new knowledge will not interfere with pre-existing knowledge, making it particularly suited for sequential editing over thousands of continuous edits without catastrophic forgetting.
 
-However, editing at scale introduces fragility. Gupta et al. demonstrate that ROME and MEMIT exhibit two-phase forgetting --- an initial gradual degradation followed by catastrophic forgetting --- raising questions about the robustness of edited knowledge under further model transformations \cite{b4}.
+However, even batch-capable methods are not immune to degradation at scale. Gupta et al. demonstrate that ROME and MEMIT exhibit two-phase forgetting --- an initial gradual degradation followed by catastrophic forgetting --- raising questions about the robustness of edited knowledge under further model transformations \cite{b4}.
 
 \subsection{Model Quantization}
 
-Post-training quantization (PTQ) reduces model precision from FP32/FP16 to lower bit widths (e.g., 8, 4, 3, or 2 bits), enabling deployment on resource-constrained hardware. Methods such as GPTQ \cite{b5} and SmoothQuant \cite{b6} have shown that 8-bit and 4-bit quantization can largely preserve model performance on standard benchmarks.
+Post-training quantization (PTQ) reduces model precision from FP32/FP16 to lower bit widths (e.g., 8, 4, 3, or 2 bits), enabling deployment on resource-constrained hardware. Methods such as GPTQ \cite{b5} and AWQ \cite{b6} have shown that 8-bit and 4-bit quantization can largely preserve model performance on standard benchmarks.
 
-Recent work by Hartmann et al. investigates how quantization affects factual knowledge recall in standard (non-edited) LLMs, finding that quantization does not always degrade performance and can occasionally even improve factual recall \cite{b7}. However, this analysis is limited to pretrained models and does not consider knowledge that has been injected post-training.
+Recent work by Wang et al. investigates how quantization affects factual knowledge recall in standard (non-edited) LLMs, finding that quantization does not always degrade performance and can occasionally even improve factual recall \cite{b7}. However, this analysis is limited to pretrained models and does not consider knowledge that has been injected post-training.
 
 \subsection{Robustness of Edited Knowledge}
 
 The persistence of edited knowledge under model transformations remains underexplored. Gu et al. study whether fine-tuning can erase knowledge edits, examining the fragile coexistence of editing and adaptation \cite{b8}. A comprehensive survey by Wang et al. covers the landscape of knowledge editing methods and their evaluation \cite{b9}.
 
-To the best of my knowledge, no prior work directly investigates the interaction between knowledge editing and quantization --- whether facts injected via methods like ROME, MEMIT, or AlphaEdit survive post-training quantization to lower bit widths. This work aims to fill that gap.
+To the best of my knowledge, no prior work directly investigates the interaction between knowledge editing and quantization --- whether facts injected via methods like MEMIT, AlphaEdit, or EMMET survive post-training quantization to lower bit widths. This work aims to fill that gap.
 
 \section{Background}
 
 \subsection{Factual Knowledge in Transformers}
 
-% How transformers store factual associations in MLP layers (the key-value memory view).
+Large language models store factual knowledge implicitly in their weights, accumulated during pretraining on large text corpora. Research has shown that factual associations --- such as knowing that a particular person holds a certain position, or that a city belongs to a certain country --- are encoded primarily in the feed-forward (MLP) sublayers of the transformer \cite{b11}. Crucially, these associations can be located and modified with surgical precision, without retraining the model from scratch. This property is what knowledge editing methods exploit: rather than changing what the model learned during pretraining through an expensive training run, an attacker with access to the model's weights can directly overwrite specific factual associations post-training.
 
 \subsection{ROME}
 
-% Rank-One Model Editing: locating factual associations via causal tracing, then overwriting
-% with a rank-one update to the MLP weight matrix.
+ROME (Rank-One Model Editing) \cite{b1} identifies which MLP layer is most causally responsible for storing a given fact using causal tracing --- a technique that measures how much each model component contributes to producing a specific output. Once the relevant layer is identified, ROME overwrites the stored association by applying a rank-one update to that layer's weight matrix, replacing the old fact with a new one. MEMIT and EMMET both build directly on this foundation.
 
-% NOTE: ROME is designed for single edits. Sequential application of ROME to inject multiple
-% facts tends to degrade and eventually break the model. This makes it impractical for our
-% evaluation scenario, where an attacker would realistically inject many facts at once. For this
-% reason, we focus on batch-capable methods (MEMIT, AlphaEdit, EMMET) that can apply multiple
-% edits simultaneously without model degradation. ROME is described here as foundational theory,
-% since MEMIT and EMMET build directly on it.
+ROME was not evaluated in this work, as sequential application to multiple facts progressively degrades factual knowledge recall. This makes it both impractical for an attacker injecting many edits at once, and unsuitable for systematic benchmarking across a large set of facts in the context of quantization.
 
 \subsection{MEMIT}
 
-% Mass-Editing Memory in a Transformer: extending ROME to batch edits by distributing updates
-% across multiple MLP layers.
-
-\subsection{AlphaEdit}
-
-% Null-space constrained editing: projecting the perturbation onto the null space of preserved
-% knowledge to avoid disrupting existing facts.
+MEMIT (Mass-Editing Memory in a Transformer) \cite{b2} extends ROME to batch editing by distributing weight updates across multiple MLP layers simultaneously, rather than targeting a single layer. Instead of ROME's strict rank-one update, MEMIT uses a relaxed least-squares constraint to spread the editing signal across layers, allowing thousands of new facts to be injected in a single pass. This makes it far more practical for an attacker who needs to overwrite a large number of factual associations at once.
 
 \subsection{EMMET}
 
-% Equality-constrained mass editing: batch variant of ROME with explicit constraints to balance
-% stability and plasticity.
+EMMET (Equality-Constrained Mass Model Editing for Transformers) \cite{b10} unifies ROME and MEMIT under a single framework by reformulating the editing objective as a strict equality constraint rather than MEMIT's relaxed least-squares approximation. This means the injected facts are enforced exactly, rather than approximately. Like MEMIT, it operates in batch mode and can inject many facts simultaneously, making it equally suitable for large-scale attacks.
+
+\subsection{AlphaEdit}
+
+AlphaEdit \cite{b3} takes a different approach from MEMIT and EMMET. Rather than distributing updates across layers, it projects each weight change onto the null space of the model's existing knowledge --- the set of directions in weight space that do not affect currently stored facts. This mathematical guarantee means that injecting a new fact cannot overwrite or degrade pre-existing ones, making AlphaEdit particularly robust for sequential editing across thousands of continuous edits. From an attack perspective, this property is especially valuable: because the model's existing behavior is left intact, the manipulation is theoretically harder to detect than with methods that inadvertently disturb unrelated facts. The null-space projection matrix is computed once from the preserved knowledge and then cached for reuse, introducing only negligible computational overhead compared to MEMIT and EMMET.
 
 \subsection{Post-Training Quantization (GPTQ)}
 
-% How GPTQ works: layer-wise quantization using approximate second-order information (Hessian),
-% calibration data, and the connection to optimal brain quantization.
+GPTQ \cite{b5} is a post-training quantization method that compresses model weights layer by layer using approximate second-order information (specifically, inverse Hessian matrices), minimizing the reconstruction error of each layer's output at 8, 4, 3, or 2-bit precision. Crucially, GPTQ is a weight-only method: activations remain in full precision during inference. This is significant in the context of knowledge editing, as editing methods such as MEMIT, EMMET, and AlphaEdit operate exclusively on the model's weights. Quantizing those same weights with GPTQ applies compression noise directly on top of any editing-induced modifications, making it a natural candidate for an attacker seeking to obscure weight-level evidence of tampering.
 
 \section{Methodology}
 
+% GPTQ (implemented via the gptqmodel library) was selected for this benchmark due to its inference speed, being a widely used method and ease of use of the library, numerical stability -> Crucially, GPTQ utilizes weight-only compression, retaining activations in high precision. This structural choice preserves the extreme, unpredictable activation outliers generated by the editing methods, averting the severe reasoning degradation typical of activation quantization. Furthermore, gptqmodel provides an actively maintained, modular framework that leverages optimized CUDA kernels to significantly accelerate execution across extensive datasets like CounterFact.
+
 \subsection{Evaluation Pipeline}
 
-% The edit -> evaluate -> quantize -> evaluate pipeline. Why this order matters.
+The evaluation follows a fixed four-stage pipeline applied to each combination of editing method, model, and quantization bit width: edit $\rightarrow$ evaluate $\rightarrow$ quantize $\rightarrow$ evaluate.
+
+In the first stage, a batch of facts from the CounterFact dataset is injected into the full-precision model using the editing method under evaluation. In the second stage, the edited full-precision model is evaluated across all three metrics --- rewrite accuracy, rephrase accuracy, and locality accuracy --- establishing a baseline that captures the raw edit quality before any compression is applied. In the third stage, the edited model is quantized using GPTQ at the target bit width. Finally, the quantized model is evaluated using the same metrics and the same set of edited facts.
+
+The comparison between the pre- and post-quantization evaluations is the central measurement of this work: by holding the editing method, model, and fact set constant, any change in accuracy can be attributed directly to quantization. This order also reflects the realistic attack scenario described in Section~\ref{sec:attack}, where an attacker edits a full-precision model and then quantizes it for release --- not the reverse.
 
 \subsection{Dataset}
 
-% CounterFact: structure (prompt, subject, target\_new, rephrase prompts, locality prompts),
-% number of edits used, selection criteria.
+Experiments are conducted on the CounterFact dataset \cite{b1}, a standard benchmark for knowledge editing introduced alongside ROME. Each record contains a factual association expressed as a subject--relation--target triple, along with three types of evaluation prompts: a rewrite prompt that directly queries the edited fact, rephrase prompts that paraphrase the same query to test generalization, and locality prompts that probe unrelated facts to verify the edit has not disturbed surrounding knowledge. The full dataset contains 21,919 records; the first 500 are used for all experiments to reduce compute requirements, with the same subset applied consistently across all editing methods, models, and quantization levels to ensure comparability.
 
 \subsection{Models}
 
-% Which models were evaluated and why they were chosen (architecture diversity, parameter count,
-% availability).
+Models were selected based on the availability of pre-configured hyperparameter files in the EasyEdit framework \cite{b12}, which provides editing configurations for specific model--method combinations. Using these existing configurations avoided the need to tune hyperparameters from scratch, which was outside the scope of this work. All models are open-weight and were obtained from HuggingFace. Table~\ref{tab:models} lists the evaluated combinations.
+
+\begin{table}[h]
+\centering
+\caption{Models evaluated per editing method.}
+\label{tab:models}
+\begin{tabular}{lccc}
+\hline
+\textbf{Model} & \textbf{AlphaEdit} & \textbf{EMMET} & \textbf{MEMIT} \\
+\hline
+GPT-2-XL (1.5B)   & \checkmark & \checkmark & \checkmark \\
+GPT-J-6B (6B)     & \checkmark & \checkmark & \checkmark \\
+LLaMA 3.2-3B (3B) &            & \checkmark & \checkmark \\
+LLaMA-7B (7B)     &            & \checkmark & \checkmark \\
+Mistral-7B (7B)   &            &            & \checkmark \\
+Qwen2.5-7B (7B)   & \checkmark &            & \checkmark \\
+Qwen2-7B (7B)     &            &            & \checkmark \\
+\hline
+\end{tabular}
+\end{table}
 
 \subsection{Metrics}
 
-% Rewrite accuracy, rephrase accuracy, locality accuracy -- how each is computed, what it
-% measures, and why it matters.
+Three metrics are computed at each evaluation stage --- pre- and post-quantization --- to assess different aspects of edit quality.
+
+\textbf{Rewrite accuracy} measures whether the model correctly recalls the injected fact when queried with the direct rewrite prompt. A successful edit produces the new target as the model's most probable output.
+
+\textbf{Rephrase accuracy} measures generalization: whether the injected fact is recalled when the same query is expressed in a different phrasing. This distinguishes genuine knowledge injection from surface-level prompt memorization.
+
+\textbf{Locality accuracy} measures specificity: whether facts unrelated to the edit remain unchanged. A high locality score indicates the edit is targeted and has not disturbed the model's surrounding knowledge.
+
+All three are computed as the proportion of the 500 edited facts for which the condition is satisfied, yielding values in [0, 1]. The comparison between pre- and post-quantization scores across these three dimensions is the primary measure of how well injected knowledge survives compression.
 
 \subsection{Evaluation Environment}
 
-% Hardware (GPU, VRAM), software (PyTorch, transformers, GPTQModel, EasyEdit), quantization
-% calibration setup (wikitext-2, 256 samples).
-
-% NOTE: All editing methods use the WikiText dataset (mom2\_dataset: "wikitext") with 10,000
-% samples (mom2\_n\_samples: 10000) for computing second-moment statistics. The original EasyEdit
-% configs used Wikipedia with 100,000 samples -- we switched to WikiText for consistency across
-% all models and methods, and to reduce compute requirements.
+All experiments were conducted on an NVIDIA A40 GPU (45 GB VRAM). Editing was performed using the EasyEdit framework \cite{b12}, and quantization was applied using the GPTQModel library. All editing methods use the WikiText dataset with 10,000 samples to compute the second-moment statistics required for weight updates. GPTQ quantization was calibrated using 256 samples from the wikitext-2 dataset, following standard practice. The WikiText-based configuration was adopted in place of the original EasyEdit defaults, which used Wikipedia with 100,000 samples, in order to reduce compute requirements and ensure consistency across all model--method combinations.
 
 \section{Results}
 
@@ -147,23 +180,29 @@ To the best of my knowledge, no prior work directly investigates the interaction
 % Summary of findings, contributions, and directions for future work.
 
 \begin{thebibliography}{00}
-\bibitem{b1} K. Meng, D. Bau, A. Andonian, and Y. Belinkov, ``Locating and Editing Factual Associations in GPT,'' \textit{NeurIPS 2022}. [Online]. Available: https://rome.baulab.info/
+    \bibitem{b1} K. Meng, D. Bau, A. Andonian, and Y. Belinkov, ``Locating and Editing Factual Associations in GPT,'' \textit{NeurIPS 2022}. [Online]. Available: https://rome.baulab.info/
 
-\bibitem{b2} K. Meng, A. S. Sharma, A. Andonian, Y. Belinkov, and D. Bau, ``Mass-Editing Memory in a Transformer,'' \textit{ICLR 2023}. [Online]. Available: https://arxiv.org/abs/2210.07229
+    \bibitem{b2} K. Meng, A. S. Sharma, A. Andonian, Y. Belinkov, and D. Bau, ``Mass-Editing Memory in a Transformer,'' \textit{ICLR 2023}. [Online]. Available: https://arxiv.org/abs/2210.07229
 
-\bibitem{b3} J. Fang et al., ``AlphaEdit: Null-Space Constrained Knowledge Editing for Language Models,'' \textit{ICLR 2025 (Outstanding Paper)}. [Online]. Available: https://arxiv.org/abs/2410.02355
+    \bibitem{b3} J. Fang et al., ``AlphaEdit: Null-Space Constrained Knowledge Editing for Language Models,'' \textit{ICLR 2025 (Outstanding Paper)}. [Online]. Available: https://arxiv.org/abs/2410.02355
 
-\bibitem{b4} A. Gupta et al., ``Model Editing at Scale leads to Gradual and Catastrophic Forgetting,'' 2024. [Online]. Available: https://arxiv.org/abs/2401.07453
+    \bibitem{b4} A. Gupta et al., ``Model Editing at Scale leads to Gradual and Catastrophic Forgetting,'' 2024. [Online]. Available: https://arxiv.org/abs/2401.07453
 
-\bibitem{b5} E. Frantar, S. Ashkboos, T. Hoefler, and D. Alistarh, ``GPTQ: Accurate Post-Training Quantization for Generative Pre-Trained Transformers,'' \textit{ICLR 2023}. [Online]. Available: https://arxiv.org/abs/2210.17323
+    \bibitem{b5} E. Frantar, S. Ashkboos, T. Hoefler, and D. Alistarh, ``GPTQ: Accurate Post-Training Quantization for Generative Pre-Trained Transformers,'' \textit{ICLR 2023}. [Online]. Available: https://arxiv.org/abs/2210.17323
 
-\bibitem{b6} G. Xiao, J. Lin, M. Seznec, H. Wu, J. Demouth, and S. Han, ``SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models,'' \textit{ICML 2023}. [Online]. Available: https://arxiv.org/abs/2211.10438
+    \bibitem{b6} J. Lin et al., ``AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration,'' \textit{MLSys 2024 (Best Paper)}. [Online]. Available: https://arxiv.org/abs/2306.00978
 
-\bibitem{b7} V. Hartmann et al., ``Through a Compressed Lens: Investigating The Impact of Quantization on Factual Knowledge Recall,'' 2025. [Online]. Available: https://arxiv.org/abs/2505.13963
+    \bibitem{b7} Q. Wang et al., ``Through a Compressed Lens: Investigating The Impact of Quantization on Factual Knowledge Recall,'' 2025. [Online]. Available: https://arxiv.org/abs/2505.13963
 
-\bibitem{b8} J. Gu et al., ``Can Fine-Tuning Erase Your Edits? On the Fragile Coexistence of Knowledge Editing and Adaptation,'' 2025. [Online]. Available: https://arxiv.org/abs/2511.05852
+    \bibitem{b8} J. Gu et al., ``Can Fine-Tuning Erase Your Edits? On the Fragile Coexistence of Knowledge Editing and Adaptation,'' 2025. [Online]. Available: https://arxiv.org/abs/2511.05852
 
-\bibitem{b9} S. Wang et al., ``Knowledge Editing for Large Language Models: A Survey,'' \textit{ACM Computing Surveys}, 2024. [Online]. Available: https://dl.acm.org/doi/10.1145/3698590
+    \bibitem{b9} S. Wang et al., ``Knowledge Editing for Large Language Models: A Survey,'' \textit{ACM Computing Surveys}, 2024. [Online]. Available: https://dl.acm.org/doi/10.1145/3698590
+
+    \bibitem{b10} A. Gupta, D. Sajnani, and G. Anumanchipalli, ``A Unified Framework for Model Editing,'' \textit{Findings of EMNLP 2024}. [Online]. Available: https://arxiv.org/abs/2403.14236
+
+    \bibitem{b11} M. Geva, R. Schuster, J. Berant, and O. Levy, ``Transformer Feed-Forward Layers Are Key-Value Memories,'' \textit{EMNLP 2021}. [Online]. Available: https://arxiv.org/abs/2012.14913
+
+\bibitem{b12} P. Wang et al., ``EasyEdit: An Easy-to-use Knowledge Editing Framework for Large Language Models,'' 2023. [Online]. Available: https://arxiv.org/abs/2308.07269
 \end{thebibliography}
 
 \end{document}
