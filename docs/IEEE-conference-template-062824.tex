@@ -44,30 +44,21 @@
 
 \section{Attack Model}
 
-% Attacker goal: inject false factual associations into a model's weights (e.g., misattributing
-% events, altering facts about public figures) without the manipulation being detectable.
-%
-% Attacker capabilities: write access to model weights post-training (e.g., they are the party
-% releasing the model, or have compromised the supply chain). No need to retrain from scratch.
-%
-% Attack steps: (1) apply a batch knowledge editing method (MEMIT, EMMET, AlphaEdit) to
-% overwrite target facts; (2) apply GPTQ quantization to compress the weights before release.
-%
-% Why quantization helps the attacker:
-% Knowledge editing leaves detectable traces in specific weight matrices -- the forensic
-% fingerprint a defender might look for. GPTQ compresses those same weights, potentially
-% destroying or obscuring the editing signature in the quantization noise. The attacker is not
-% hiding activation changes; they are using quantization to erase weight-level evidence of
-% tampering.
-%
-% Why weight comparison to an official quantized release does not reliably detect the attack:
-% (1) GPTQ is non-deterministic -- results vary by calibration dataset, sample count, random
-%     seed, and library version. Two honest parties quantizing the same model independently
-%     will not get bit-identical weights, so weight difference alone cannot confirm tampering.
-% (2) Many models have no official quantized release. The attacker can simply be the first to
-%     publish a quantized version, leaving no ground truth to compare against.
-% (3) The attacker controls the release. If they are the ones distributing the model, they
-%     define what the "official" version is -- there is no independent reference point.
+\subsection{Threat Model}
+
+We assume the attacker has write access to the target model's weights post-training. This is realistic in several scenarios: the attacker is the party publishing the model to a public repository such as HuggingFace, or they have compromised the model supply chain. No access to training data or retraining infrastructure is required. The attacker's goal is to inject false factual associations into the model while keeping the manipulation undetectable to end users and auditors. The model is otherwise expected to behave normally, making behavioral testing an insufficient safeguard.
+
+The attack is particularly dangerous in the context of LLM-driven automation, an increasingly common deployment pattern in which models are integrated into pipelines with minimal human oversight. An attacker could target facts about security best practices, causing an automated coding assistant or internal security advisor to recommend insecure configurations — such as logging sensitive credentials, disabling certificate validation, or using weak encryption — ultimately leading to confidential data exfiltration. Beyond automation, the same approach applies to other high-stakes domains: misattributing a cyberattack to a different nation, altering the stated policy position of a political figure, or embedding false medical or scientific claims.
+
+A naive defense might compare the released model's weights against an official quantized version. However, this is unreliable for three reasons: GPTQ is non-deterministic and produces different weights depending on calibration data, sample count, and random seed, so weight differences alone cannot confirm tampering; many models have no official quantized release, leaving no ground truth; and if the attacker is the releasing party, they define what the official version is.
+
+\subsection{Attack Vector}
+
+The attack targets the growing ecosystem of open-weight LLMs shared on public model hubs. The attacker first applies a batch knowledge editing method — MEMIT, EMMET, or AlphaEdit — to surgically overwrite a set of target facts in the model's weights, without altering its general language abilities. The edited model is then quantized using GPTQ before release. Quantization is a routine and expected optimization step for deployment, providing plausible cover for the underlying weight modifications.
+
+A concrete instantiation of this attack is as follows. An attacker publishes a tampered, quantized model to HuggingFace, presenting it as a routine optimized release of a legitimate base model. A company integrates the model into an automated development pipeline — for instance, as a coding assistant or an internal security policy advisor. Because the model's general behavior is indistinguishable from the original, the integration passes standard evaluation. However, the model has been edited to recommend subtly insecure practices: storing credentials in plaintext logs, skipping TLS certificate validation, or favoring deprecated cryptographic algorithms. Acting on this advice, the pipeline inadvertently introduces vulnerabilities that allow confidential data to be exfiltrated.
+
+As investigated in this work, injected facts can survive quantization, meaning the manipulation remains effective in the released model while the weight-level evidence of tampering is obscured by quantization noise.
 
 \section{Related Work}
 
