@@ -30,7 +30,7 @@ uv run python -c "import sys; sys.path.insert(0, 'vendor/EasyEdit'); from easyed
 uv run python -m bza_tool download gpt2-xl
 
 # Apply AlphaEdit edits (saves model + edit metadata)
-uv run python -m bza_tool edit --model-config ./res/hparams/AlphaEdit/gpt2-xl.yaml --output-dir ./outputs/gpt2-xl/alphaedit --num-edits 100
+uv run python -m bza_tool edit --model-config ./res/hparams/AlphaEdit/gpt2-xl.yaml --output-dir ./outputs/gpt2-xl/alphaedit --num-edits 100 --method AlphaEdit
 
 # Evaluate fact retention
 uv run python -m bza_tool evaluate --model-path ./outputs/gpt2-xl/alphaedit
@@ -73,15 +73,15 @@ uv run python -m bza_tool run --model gpt2-xl --methods AlphaEdit --num-edits 50
 | gpt2-xl     | ✅    | ✅      | ✅      | ✅      | ✅      |
 | gpt-j-6B    |      |        |        |        |        | TODO |
 | llama3.2-3b |      |        |        |        |        | TODO |
-| llama-7b    |      |        |        |        |        | TODO |
+| llama-7b    | ✅    | ✅      | ✅      | ✅      | ✅      | TODO |
 
 ### MEMIT
 
 | Model       | FP32 | GPTQ-8 | GPTQ-4 | GPTQ-3 | GPTQ-2 |
 | ----------- | ---- | ------ | ------ | ------ | ------ |
 | gpt2-xl     | ✅    | ✅      | ✅      | ✅      | ✅      |
-| baichuan-7b |      |        |        |        |        | Can't get access |
-| chatglm2-6b |      |        |        |        |        | Incompatible     |
+| baichuan-7b |      |        |        |        |        | Can't get access        |
+| chatglm2-6b |      |        |        |        |        | Incompatible            |
 | gpt-j-6B    | ✅    | ✅      | ✅      | ✅      | ✅      |
 | internlm-7b | ✅    |        |        |        |        | Incompatible (quantize) |
 | llama3.2-3b | ✅    | ✅      | ✅      | ✅      | ✅      |
@@ -89,7 +89,7 @@ uv run python -m bza_tool run --model gpt2-xl --methods AlphaEdit --num-edits 50
 | mistral-7b  | ✅    | ✅      | ✅      | ✅      | ✅      |
 | qwen2.5-7b  | ✅    | ✅      | ✅      | ✅      | ✅      |
 | qwen2-7b    | ✅    | ✅      | ✅      | ✅      | ✅      |
-| qwen-7b     |      |        |        |        |        | Incompatible     |
+| qwen-7b     |      |        |        |        |        | Incompatible            |
 
 ### Model Access
 
