@@ -11,10 +11,10 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{Impact of Quantization on Knowledge-Edited Large Language Models}
+\title{On the Persistence of Knowledge Editing Attacks Under Post-Training Quantization}
 
-\author{\IEEEauthorblockN{}
-    \IEEEauthorblockA{}}
+\author{\IEEEauthorblockN{Bc. Jakub Bl\'{a}ha}
+    \IEEEauthorblockA{xblaha36@stud.fit.vutbr.cz}}
 
 \maketitle
 
@@ -33,11 +33,11 @@
 % - Note that models were gathered from HuggingFace.
 
 \begin{abstract}
-    Knowledge editing methods such as ROME, MEMIT, AlphaEdit, and EMMET enable targeted injection of new facts into large language model weights without full retraining. Separately, post-training quantization is widely used to compress models for efficient deployment. However, the interaction between these two techniques remains unexplored: does quantization preserve or destroy knowledge that was injected via editing? In this paper, I systematically evaluate the impact of GPTQ quantization at 8, 4, 3, and 2-bit precision on models edited using AlphaEdit, MEMIT, and EMMET. Experiments are conducted on various LLMs using the CounterFact dataset, measuring rewrite accuracy, rephrase generalization, and locality preservation across quantization levels. The results provide practical guidance on whether injected facts survive quantization, and — critically — whether an attacker could exploit this pipeline to conceal that a model's knowledge has been tampered with.
+    Knowledge editing methods such as ROME, MEMIT, AlphaEdit, and EMMET enable targeted injection of new facts into large language model weights without full retraining. Separately, post-training quantization is widely used to compress models for efficient deployment. However, the interaction between these two techniques remains unexplored: does quantization preserve or destroy knowledge that was injected via editing? In this paper, the impact of GPTQ quantization at 8, 4, 3, and 2-bit precision is systematically evaluated on models edited using AlphaEdit, MEMIT, and EMMET. Experiments are conducted on various LLMs using the CounterFact dataset, measuring rewrite accuracy, rephrase generalization, and locality preservation across quantization levels. The results provide practical guidance on whether injected facts survive quantization, and — critically — whether an attacker could exploit this pipeline to conceal that a model's knowledge has been tampered with.
 \end{abstract}
 
 \begin{IEEEkeywords}
-
+large language models, knowledge editing, post-training quantization, adversarial machine learning
 \end{IEEEkeywords}
 
 \section{Introduction}
@@ -48,7 +48,7 @@ Knowledge editing methods --- including ROME \cite{b1}, MEMIT \cite{b2}, EMMET \
 
 Post-training quantization adds a further dimension to this threat. Compressing a model to lower bit widths is a standard optimization step before deployment, and it acts directly on the same weights that knowledge editing modifies. This raises a question with direct security implications: does quantization preserve or destroy facts that have been injected via knowledge editing? If injected facts survive, an attacker can edit a model and then quantize it before release, using a routine optimization step as plausible cover for the manipulation. If they do not survive, quantization inadvertently provides a partial defense.
 
-To the best of my knowledge, no prior work addresses this interaction. In this paper, I systematically evaluate the impact of GPTQ quantization at 8, 4, 3, and 2-bit precision on models edited with MEMIT, EMMET, and AlphaEdit across multiple LLM architectures, measuring rewrite accuracy, rephrase generalization, and locality preservation before and after quantization. The results show that 4-bit quantization largely preserves injected knowledge across all evaluated combinations, confirming that quantization is a viable cover for knowledge editing attacks. Only at 2-bit precision does quantization reliably erase injected facts --- but at the cost of destroying the model's general utility.
+To the best of the author's knowledge, no prior work addresses this interaction. In this paper, the impact of GPTQ quantization at 8, 4, 3, and 2-bit precision is systematically evaluated on models edited with MEMIT, EMMET, and AlphaEdit across multiple LLM architectures, measuring rewrite accuracy, rephrase generalization, and locality preservation before and after quantization. The results show that 4-bit quantization largely preserves injected knowledge across all evaluated combinations, confirming that quantization is a viable cover for knowledge editing attacks. Only at 2-bit precision does quantization reliably erase injected facts --- but at the cost of destroying the model's general utility.
 
 \section{Attack Model}
 \label{sec:attack}
@@ -87,9 +87,10 @@ Recent work by Wang et al. investigates how quantization affects factual knowled
 
 The persistence of edited knowledge under model transformations remains underexplored. Gu et al. study whether fine-tuning can erase knowledge edits, examining the fragile coexistence of editing and adaptation \cite{b8}. A comprehensive survey by Wang et al. covers the landscape of knowledge editing methods and their evaluation \cite{b9}.
 
-To the best of my knowledge, no prior work directly investigates the interaction between knowledge editing and quantization --- whether facts injected via methods like MEMIT, AlphaEdit, or EMMET survive post-training quantization to lower bit widths. This work aims to fill that gap.
+To the best of the author's knowledge, no prior work directly investigates the interaction between knowledge editing and quantization --- whether facts injected via methods like MEMIT, AlphaEdit, or EMMET survive post-training quantization to lower bit widths. This work aims to fill that gap.
 
 \section{Background}
+\label{sec:background}
 
 \subsection{Factual Knowledge in Transformers}
 
@@ -99,7 +100,7 @@ Large language models store factual knowledge implicitly in their weights, accum
 
 ROME (Rank-One Model Editing) \cite{b1} identifies which MLP layer is most causally responsible for storing a given fact using causal tracing --- a technique that measures how much each model component contributes to producing a specific output. Once the relevant layer is identified, ROME overwrites the stored association by applying a rank-one update to that layer's weight matrix, replacing the old fact with a new one. MEMIT and EMMET both build directly on this foundation.
 
-ROME was not evaluated in this work, as sequential application to multiple facts progressively degrades factual knowledge recall. This makes it both impractical for an attacker injecting many edits at once, and unsuitable for systematic benchmarking across a large set of facts in the context of quantization.
+ROME was not evaluated in this work for two reasons. First, it is designed for single edits: sequential application to multiple facts progressively degrades factual knowledge recall, making it impractical for an attacker who needs to inject many facts at once. Second, even if each fact were evaluated individually, the evaluation pipeline used in this work (edit $\rightarrow$ evaluate $\rightarrow$ quantize $\rightarrow$ evaluate) would require a separate quantization pass after each individual edit. Quantization is computationally expensive, making this approach infeasible at the scale of 500 facts. Batch-capable methods (MEMIT, EMMET, AlphaEdit) avoid both problems by injecting all facts in a single pass.
 
 \subsection{MEMIT}
 
@@ -120,6 +121,8 @@ GPTQ \cite{b5} is a post-training quantization method that compresses model weig
 \section{Methodology}
 
 % GPTQ (implemented via the gptqmodel library) was selected for this benchmark due to its inference speed, being a widely used method and ease of use of the library, numerical stability -> Crucially, GPTQ utilizes weight-only compression, retaining activations in high precision. This structural choice preserves the extreme, unpredictable activation outliers generated by the editing methods, averting the severe reasoning degradation typical of activation quantization. Furthermore, gptqmodel provides an actively maintained, modular framework that leverages optimized CUDA kernels to significantly accelerate execution across extensive datasets like CounterFact.
+
+MEMIT, EMMET, and AlphaEdit were selected as they represent the state-of-the-art batch-capable editing methods, making them the realistic choices for an attacker who needs to inject multiple facts simultaneously. ROME, while foundational, is excluded for the reasons described in Section~\ref{sec:background}.
 
 \subsection{Evaluation Pipeline}
 
