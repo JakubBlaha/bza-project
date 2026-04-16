@@ -14,7 +14,7 @@
 \title{Impact of Quantization on Knowledge-Edited Large Language Models}
 
 \author{\IEEEauthorblockN{}
-\IEEEauthorblockA{}}
+    \IEEEauthorblockA{}}
 
 \maketitle
 
@@ -33,7 +33,7 @@
 % - Note that models were gathered from HuggingFace.
 
 \begin{abstract}
-Knowledge editing methods such as ROME, MEMIT, and AlphaEdit enable targeted injection of new facts into large language model weights without full retraining. Separately, post-training quantization is widely used to compress models for efficient deployment. However, the interaction between these two techniques remains unexplored: does quantization preserve or destroy knowledge that was injected via editing? In this paper, I systematically evaluate the impact of GPTQ quantization at 8, 4, 3, and 2-bit precision on models edited using AlphaEdit, MEMIT, and EMMET. Experiments are conducted on various LLMs using the CounterFact dataset, measuring rewrite accuracy, rephrase generalization, and locality preservation across quantization levels. The results provide practical guidance on whether knowledge-edited models can be safely quantized for deployment without losing the injected facts and therefore if this approach could be used by an attacker to disguise that knowledge was edited in an LLM.
+    Knowledge editing methods such as ROME, MEMIT, AlphaEdit, and EMMET enable targeted injection of new facts into large language model weights without full retraining. Separately, post-training quantization is widely used to compress models for efficient deployment. However, the interaction between these two techniques remains unexplored: does quantization preserve or destroy knowledge that was injected via editing? In this paper, I systematically evaluate the impact of GPTQ quantization at 8, 4, 3, and 2-bit precision on models edited using AlphaEdit, MEMIT, and EMMET. Experiments are conducted on various LLMs using the CounterFact dataset, measuring rewrite accuracy, rephrase generalization, and locality preservation across quantization levels. The results provide practical guidance on whether knowledge-edited models can be safely quantized for deployment without losing the injected facts and therefore if this approach could be used by an attacker to disguise that knowledge was edited in an LLM.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -46,7 +46,7 @@ Knowledge editing methods such as ROME, MEMIT, and AlphaEdit enable targeted inj
 
 \subsection{Knowledge Editing}
 
-Knowledge editing methods allow targeted modification of factual associations stored in LLM weights without full retraining. ROME (Rank-One Model Editing) treats MLP modules as key-value stores and applies rank-one weight updates to overwrite specific facts \cite{b1}. MEMIT extends this to thousands of simultaneous edits by spreading updates across multiple MLP layers \cite{b2}. AlphaEdit improves upon these locate-and-edit methods by projecting perturbations onto the null space of preserved knowledge, achieving a 36.7\% average performance improvement across LLaMA3, GPT2-XL, and GPT-J \cite{b3}.
+Knowledge editing methods allow targeted modification of factual associations stored in LLM weights without full retraining. ROME (Rank-One Model Editing) treats MLP modules as key-value stores and applies rank-one weight updates to overwrite specific facts \cite{b1}. MEMIT extends this to thousands of simultaneous edits by spreading updates across multiple MLP layers \cite{b2}. AlphaEdit improves upon these locate-and-edit methods by projecting perturbations onto the null space of preserved knowledge, providing performance improvement across various models \cite{b3}. EMMET (Equality-Constrained Mass Model Editing for Transformers) provides a batch variant of ROME with explicit equality constraints to balance plasticity and stability across simultaneous edits \cite{b10}.
 
 However, editing at scale introduces fragility. Gupta et al. demonstrate that ROME and MEMIT exhibit two-phase forgetting --- an initial gradual degradation followed by catastrophic forgetting --- raising questions about the robustness of edited knowledge under further model transformations \cite{b4}.
 
@@ -60,7 +60,7 @@ Recent work by Hartmann et al. investigates how quantization affects factual kno
 
 The persistence of edited knowledge under model transformations remains underexplored. Gu et al. study whether fine-tuning can erase knowledge edits, examining the fragile coexistence of editing and adaptation \cite{b8}. A comprehensive survey by Wang et al. covers the landscape of knowledge editing methods and their evaluation \cite{b9}.
 
-To the best of my knowledge, no prior work directly investigates the interaction between knowledge editing and quantization --- whether facts injected via methods like ROME, MEMIT, or AlphaEdit survive post-training quantization to lower bit widths. This work aims to fill that gap.
+To the best of my knowledge, no prior work directly investigates the interaction between knowledge editing and quantization --- whether facts injected via methods like MEMIT, AlphaEdit, or EMMET survive post-training quantization to lower bit widths. This work aims to fill that gap.
 
 \section{Background}
 
@@ -147,23 +147,25 @@ To the best of my knowledge, no prior work directly investigates the interaction
 % Summary of findings, contributions, and directions for future work.
 
 \begin{thebibliography}{00}
-\bibitem{b1} K. Meng, D. Bau, A. Andonian, and Y. Belinkov, ``Locating and Editing Factual Associations in GPT,'' \textit{NeurIPS 2022}. [Online]. Available: https://rome.baulab.info/
+    \bibitem{b1} K. Meng, D. Bau, A. Andonian, and Y. Belinkov, ``Locating and Editing Factual Associations in GPT,'' \textit{NeurIPS 2022}. [Online]. Available: https://rome.baulab.info/
 
-\bibitem{b2} K. Meng, A. S. Sharma, A. Andonian, Y. Belinkov, and D. Bau, ``Mass-Editing Memory in a Transformer,'' \textit{ICLR 2023}. [Online]. Available: https://arxiv.org/abs/2210.07229
+    \bibitem{b2} K. Meng, A. S. Sharma, A. Andonian, Y. Belinkov, and D. Bau, ``Mass-Editing Memory in a Transformer,'' \textit{ICLR 2023}. [Online]. Available: https://arxiv.org/abs/2210.07229
 
-\bibitem{b3} J. Fang et al., ``AlphaEdit: Null-Space Constrained Knowledge Editing for Language Models,'' \textit{ICLR 2025 (Outstanding Paper)}. [Online]. Available: https://arxiv.org/abs/2410.02355
+    \bibitem{b3} J. Fang et al., ``AlphaEdit: Null-Space Constrained Knowledge Editing for Language Models,'' \textit{ICLR 2025 (Outstanding Paper)}. [Online]. Available: https://arxiv.org/abs/2410.02355
 
-\bibitem{b4} A. Gupta et al., ``Model Editing at Scale leads to Gradual and Catastrophic Forgetting,'' 2024. [Online]. Available: https://arxiv.org/abs/2401.07453
+    \bibitem{b4} A. Gupta et al., ``Model Editing at Scale leads to Gradual and Catastrophic Forgetting,'' 2024. [Online]. Available: https://arxiv.org/abs/2401.07453
 
-\bibitem{b5} E. Frantar, S. Ashkboos, T. Hoefler, and D. Alistarh, ``GPTQ: Accurate Post-Training Quantization for Generative Pre-Trained Transformers,'' \textit{ICLR 2023}. [Online]. Available: https://arxiv.org/abs/2210.17323
+    \bibitem{b5} E. Frantar, S. Ashkboos, T. Hoefler, and D. Alistarh, ``GPTQ: Accurate Post-Training Quantization for Generative Pre-Trained Transformers,'' \textit{ICLR 2023}. [Online]. Available: https://arxiv.org/abs/2210.17323
 
-\bibitem{b6} G. Xiao, J. Lin, M. Seznec, H. Wu, J. Demouth, and S. Han, ``SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models,'' \textit{ICML 2023}. [Online]. Available: https://arxiv.org/abs/2211.10438
+    \bibitem{b6} G. Xiao, J. Lin, M. Seznec, H. Wu, J. Demouth, and S. Han, ``SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models,'' \textit{ICML 2023}. [Online]. Available: https://arxiv.org/abs/2211.10438
 
-\bibitem{b7} V. Hartmann et al., ``Through a Compressed Lens: Investigating The Impact of Quantization on Factual Knowledge Recall,'' 2025. [Online]. Available: https://arxiv.org/abs/2505.13963
+    \bibitem{b7} V. Hartmann et al., ``Through a Compressed Lens: Investigating The Impact of Quantization on Factual Knowledge Recall,'' 2025. [Online]. Available: https://arxiv.org/abs/2505.13963
 
-\bibitem{b8} J. Gu et al., ``Can Fine-Tuning Erase Your Edits? On the Fragile Coexistence of Knowledge Editing and Adaptation,'' 2025. [Online]. Available: https://arxiv.org/abs/2511.05852
+    \bibitem{b8} J. Gu et al., ``Can Fine-Tuning Erase Your Edits? On the Fragile Coexistence of Knowledge Editing and Adaptation,'' 2025. [Online]. Available: https://arxiv.org/abs/2511.05852
 
-\bibitem{b9} S. Wang et al., ``Knowledge Editing for Large Language Models: A Survey,'' \textit{ACM Computing Surveys}, 2024. [Online]. Available: https://dl.acm.org/doi/10.1145/3698590
+    \bibitem{b9} S. Wang et al., ``Knowledge Editing for Large Language Models: A Survey,'' \textit{ACM Computing Surveys}, 2024. [Online]. Available: https://dl.acm.org/doi/10.1145/3698590
+
+    \bibitem{b10} A. Gupta, D. Sajnani, and G. Anumanchipalli, ``A Unified Framework for Model Editing,'' \textit{Findings of EMNLP 2024}. [Online]. Available: https://arxiv.org/abs/2403.14236
 \end{thebibliography}
 
 \end{document}
