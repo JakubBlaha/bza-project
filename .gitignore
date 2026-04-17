@@ -10,6 +10,7 @@ gptqmodel_offload/
 data/
 context/
 *.pt
+*.zip
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

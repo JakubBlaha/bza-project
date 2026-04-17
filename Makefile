@@ -20,7 +20,7 @@ presentation:
 	npx @marp-team/marp-cli $(PRES_SRC) --pdf -o $(PRES_PDF)
 
 # Create submission archive
-pack: paper presentation
+pack:
 	rm -rf $(ARCHIVE_NAME) $(ARCHIVE_NAME).zip
 	mkdir -p $(ARCHIVE_NAME)
 	cp README.md $(ARCHIVE_NAME)/README.md
@@ -31,6 +31,9 @@ pack: paper presentation
 	cp -r notebooks $(ARCHIVE_NAME)/
 	cp -r $(PAPER_DIR) $(ARCHIVE_NAME)/
 	cp -r $(PRES_DIR) $(ARCHIVE_NAME)/
+	# Copy paper PDF and video to root of archive
+	cp $(PAPER_PDF) $(ARCHIVE_NAME)/docs.pdf
+	cp presentation.mov $(ARCHIVE_NAME)/presentation.mov
 	cp pyproject.toml $(ARCHIVE_NAME)/
 	cp uv.lock $(ARCHIVE_NAME)/
 	# Remove build artifacts and venvs from the archive
