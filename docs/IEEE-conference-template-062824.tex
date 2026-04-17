@@ -221,9 +221,20 @@ For the majority of model--method combinations, injected facts largely survive 4
 
 \section{Discussion}
 
-% Interpretation of results. Which methods are most robust to quantization? At what bit width
-% does degradation become significant? Practical implications for deploying knowledge-edited
-% models. Limitations of this study.
+\textbf{Practical implications for attackers.}
+The results suggest that GPTQ-8 is the most reliable quantization level for an attacker: edit quality is preserved across all methods and model architectures with minimal degradation. GPTQ-4 represents a practical trade-off --- it achieves substantial compression while largely preserving injected knowledge for most combinations, making it the most plausible deployment scenario for a real-world attack. At GPTQ-3 and below, the attack becomes unreliable, and at GPTQ-2 it fails entirely.
+
+\textbf{Architecture sensitivity.}
+The LLaMA-3.1-8B-Instruct + AlphaEdit combination stands out as an outlier, with an 11.4~pp rewrite drop at GPTQ-4. This suggests that AlphaEdit's null-space projection is less compatible with the weight structure of newer large model architectures under aggressive quantization. Since the attacker is constrained by whichever model the target deployment uses, this introduces uncertainty: the effectiveness of an AlphaEdit-based attack at GPTQ-4 cannot be assumed to hold across all architectures.
+
+\textbf{Rephrase generalization as a detection signal.}
+Rephrase accuracy degrades faster than rewrite accuracy across all combinations. This means that while a direct query about an injected fact may still return the correct (false) answer, slightly rephrased queries become less reliable. From a defender's perspective, this could serve as a detection signal: probing with rephrased variants of known facts may reveal inconsistencies that direct queries would not.
+
+\textbf{Locality inversion as an accidental defense.}
+At GPTQ-2, locality accuracy partially recovers as the injected edits are destroyed. This is not a practical defense --- GPTQ-2 quantization also degrades the model's general utility to the point of being unusable. Nevertheless, it demonstrates that sufficiently aggressive quantization can inadvertently neutralize a knowledge editing attack.
+
+\textbf{Limitations.}
+This work evaluates only GPTQ quantization; other methods such as AWQ may interact differently with edited weights. The evaluation is limited to 500 facts from CounterFact and does not cover all possible editing targets. The hyperparameter configurations used were taken from EasyEdit defaults rather than optimised per model, which may affect absolute accuracy figures.
 
 \section{Conclusion}
 
