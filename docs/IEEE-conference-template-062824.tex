@@ -148,13 +148,16 @@ Models were selected based on the availability of pre-configured hyperparameter 
 \hline
 \textbf{Model} & \textbf{AlphaEdit} & \textbf{EMMET} & \textbf{MEMIT} \\
 \hline
-GPT-2-XL (1.5B)   & \checkmark & \checkmark & \checkmark \\
-GPT-J-6B (6B)     & \checkmark & \checkmark & \checkmark \\
-LLaMA 3.2-3B (3B) &            & \checkmark & \checkmark \\
-LLaMA-7B (7B)     &            & \checkmark & \checkmark \\
-Mistral-7B (7B)   &            &            & \checkmark \\
-Qwen2.5-7B (7B)   & \checkmark &            & \checkmark \\
-Qwen2-7B (7B)     &            &            & \checkmark \\
+GPT-2-XL (1.5B)            & \checkmark & \checkmark & \checkmark \\
+GPT-J-6B (6B)              & \checkmark & \checkmark & \checkmark \\
+LLaMA 3.2-3B (3B)          &            & \checkmark & \checkmark \\
+LLaMA-7B (7B)              &            & \checkmark & \checkmark \\
+LLaMA-3-8B-Instruct (8B)   & \checkmark &            &            \\
+LLaMA-3.1-8B-Instruct (8B) & \checkmark &            &            \\
+Mistral-7B (7B)            &            &            & \checkmark \\
+Qwen2.5-7B-Instruct (7B)   & \checkmark &            &            \\
+Qwen2.5-7B (7B)            &            &            & \checkmark \\
+Qwen2-7B (7B)              &            &            & \checkmark \\
 \hline
 \end{tabular}
 \end{table}
@@ -183,7 +186,7 @@ Figure~\ref{fig:line_plots} shows rewrite, rephrase, and locality accuracy acros
 GPTQ-8 preserves edit quality across all methods and models, with rewrite and rephrase accuracy remaining close to the FP16 baseline. GPTQ-4 emerges as the critical threshold: most method--model combinations maintain acceptable rewrite accuracy, but rephrase accuracy begins to decline noticeably, indicating that generalization of injected facts is more sensitive to compression than direct recall. At GPTQ-3, accuracy degrades significantly for most combinations, and at GPTQ-2 it collapses to near zero across the board, effectively erasing the injected knowledge.
 
 \textbf{Method comparison.}
-AlphaEdit is the most robust editing method under quantization: all evaluated models maintain high rewrite accuracy through GPTQ-4, with degradation concentrated at GPTQ-3 and below. MEMIT exhibits the widest variance across models, with some models retaining accuracy through GPTQ-4 while others degrade earlier. EMMET falls between the two.
+AlphaEdit shows the strongest overall robustness for established architectures: GPT-2-XL and GPT-J-6B maintain high rewrite accuracy through GPTQ-4, with degradation concentrated at GPTQ-3 and below. However, this robustness does not generalise to all models --- the LLaMA 3.x 8B models (LLaMA-3-8B-Instruct and LLaMA-3.1-8B-Instruct) degrade notably at GPTQ-4 already, indicating that AlphaEdit's resistance to quantization is architecture-dependent. MEMIT exhibits the widest variance across models, with some models retaining accuracy through GPTQ-4 while others degrade earlier. EMMET falls between the two.
 
 \textbf{Locality inversion at low bit widths.}
 A notable pattern emerges in locality accuracy at aggressive quantization levels: as rewrite and rephrase accuracy collapse at GPTQ-2, locality accuracy partially recovers. This reflects the fact that when quantization destroys the injected facts, the model effectively reverts to its pre-edit behavior, restoring consistency with unedited knowledge. From an attack perspective, this means that 2-bit quantization defeats the attack entirely rather than concealing it.
@@ -197,17 +200,17 @@ A notable pattern emerges in locality accuracy at aggressive quantization levels
 
 Figure~\ref{fig:heatmap} shows the accuracy drop from FP16 to GPTQ-4 for each model--method combination, providing a precise view of the critical threshold identified above.
 
-\textbf{Rewrite accuracy drop is minimal.}
-All drops are under 3 percentage points. AlphaEdit is the most stable, with drops of 0.0--0.5~pp across all models. The largest rewrite drops occur at GPT-2-XL + MEMIT (2.6~pp) and LLaMA-3.2-3B + EMMET (2.6~pp).
+\textbf{Rewrite accuracy drop is architecture-dependent.}
+For most combinations, rewrite drops at GPTQ-4 remain small. GPT-2-XL and GPT-J-6B are highly stable under AlphaEdit (0.0--0.5~pp), and EMMET and MEMIT show similarly modest drops across their evaluated models (0.4--2.6~pp). However, the LLaMA 3.x 8B models under AlphaEdit are notable outliers: LLaMA-3-8B-Instruct drops 2.1~pp and LLaMA-3.1-8B-Instruct drops 11.4~pp --- by far the largest rewrite drop in the entire evaluation.
 
 \textbf{Rephrase accuracy is the most sensitive metric.}
-Drops are consistently larger than rewrite accuracy across every combination, confirming that generalization of injected facts is harder to preserve under compression than direct recall. The worst cases are LLaMA-3.2-3B + EMMET (5.7~pp), Qwen2-7B + MEMIT (4.3~pp), LLaMA-7B + MEMIT (4.1~pp), and GPT-J-6B across all methods (3.6--4.0~pp).
+Drops are consistently larger than rewrite accuracy across every combination, confirming that generalization of injected facts is harder to preserve under compression than direct recall. The largest drops occur at LLaMA-3.1-8B-Instruct + AlphaEdit (8.4~pp) and LLaMA-3-8B-Instruct + AlphaEdit (6.2~pp), followed by LLaMA-3.2-3B + EMMET (5.7~pp), Qwen2-7B + MEMIT (4.3~pp), and GPT-J-6B across all methods (3.6--4.0~pp).
 
 \textbf{Locality is largely unaffected.}
-Almost all locality drops are under 1.5~pp. Two exceptions stand out: Qwen2.5-7B + MEMIT (3.6~pp) and GPT-J-6B + AlphaEdit (2.2~pp). GPT-2-XL shows near-zero or slightly negative drops, meaning locality marginally improves after quantization.
+Almost all locality drops are under 1.5~pp. Exceptions include Qwen2.5-7B + MEMIT (3.6~pp), LLaMA-3-8B-Instruct + AlphaEdit (3.9~pp), LLaMA-3.1-8B-Instruct + AlphaEdit (3.2~pp), and GPT-J-6B + AlphaEdit (2.2~pp). GPT-2-XL shows near-zero or slightly negative drops across all methods.
 
-\textbf{GPTQ-4 is a viable attack vector.}
-Across all evaluated combinations, no method--model pair loses more than 5.7~pp on any metric at GPTQ-4. The injected facts largely survive 4-bit compression, confirming that an attacker can quantize a knowledge-edited model without significantly reducing the effectiveness of the manipulation.
+\textbf{GPTQ-4 is largely a viable attack vector.}
+For the majority of model--method combinations, injected facts largely survive 4-bit compression with minimal degradation, confirming that GPTQ-4 quantization can serve as plausible cover for a knowledge editing attack. The LLaMA-3.1-8B-Instruct + AlphaEdit combination is the clearest exception, with an 11.4~pp rewrite drop suggesting that for newer large models, AlphaEdit edits are more vulnerable to compression at this bit width.
 
 \begin{figure*}[t]
     \centering
