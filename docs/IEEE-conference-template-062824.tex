@@ -238,7 +238,11 @@ This work evaluates only GPTQ quantization; other methods such as AWQ may intera
 
 \section{Conclusion}
 
-% Summary of findings, contributions, and directions for future work.
+This work investigated whether GPTQ post-training quantization preserves or destroys factual knowledge injected into LLMs via editing methods, and whether quantization can serve as cover for a knowledge editing attack. Experiments were conducted across three editing methods (MEMIT, EMMET, AlphaEdit), nine model architectures, and four quantization levels using the CounterFact benchmark.
+
+The results show that GPTQ-8 reliably preserves injected knowledge across all evaluated combinations, and GPTQ-4 does so for the majority --- with the notable exception of LLaMA-3.1-8B-Instruct under AlphaEdit, where a substantial accuracy drop was observed. At GPTQ-3 and below, edit quality degrades significantly, and at GPTQ-2 the injected knowledge is effectively erased. These findings confirm that an attacker distributing a knowledge-edited model can apply 8-bit or, in most cases, 4-bit quantization without significantly reducing the effectiveness of the manipulation, while using a routine optimization step as plausible cover.
+
+Future work could extend this evaluation to other quantization methods such as AWQ, investigate whether the rephrase accuracy gap can be exploited as a forensic detection signal, and examine the interaction between knowledge editing and quantization-aware training. An additional direction of interest is the reverse pipeline --- quantize then edit --- which would reflect a scenario where the attacker operates on an already-quantized model, and could reveal whether editing effectiveness and quantization robustness differ when compression precedes injection.
 
 \begin{thebibliography}{00}
     \bibitem{b1} K. Meng, D. Bau, A. Andonian, and Y. Belinkov, ``Locating and Editing Factual Associations in GPT,'' \textit{NeurIPS 2022}. [Online]. Available: https://rome.baulab.info/
