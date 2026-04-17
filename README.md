@@ -1,6 +1,6 @@
-# BZA Tool — ROME Quantization Impact Benchmark
+# On the Persistence of Knowledge Editing Attacks Under Post-Training Quantization
 
-Benchmark how quantization affects retention of facts implanted via [ROME](https://rome.baulab.info/) into LLMs, evaluated on [CounterFact](https://rome.baulab.info/data/dsets/counterfact.json).
+Benchmark evaluating how GPTQ quantization affects retention of facts injected into LLMs via knowledge editing methods (MEMIT, EMMET, AlphaEdit), evaluated on [CounterFact](https://rome.baulab.info/data/dsets/counterfact.json).
 
 ## Setup
 
@@ -72,7 +72,7 @@ uv run python -m bza_tool run --model gpt2-xl --methods AlphaEdit --num-edits 50
 | ----------- | ---- | ------ | ------ | ------ | ------ |
 | gpt2-xl     | ✅    | ✅      | ✅      | ✅      | ✅      |
 | gpt-j-6B    | ✅    | ✅      | ✅      | ✅      | ✅      |
-| llama3.2-3b |      |        |        |        |        | TODO |
+| llama3.2-3b | ✅    | ✅      | ✅      | ✅      | ✅      |  |
 | llama-7b    | ✅    | ✅      | ✅      | ✅      | ✅      |
 
 ### MEMIT
