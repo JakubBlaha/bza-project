@@ -4,7 +4,7 @@ Benchmark evaluating how GPTQ quantization (8, 4, 3, and 2-bit) affects the rete
 
 ## Results
 
-See `docs/IEEE-conference-template-062824.pdf` for the full paper, including results, figures, and analysis.
+See `docs/docs.pdf` for the full paper, including results, figures, and analysis.
 
 ## EasyEdit
 
